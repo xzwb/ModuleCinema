@@ -5,6 +5,7 @@ import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatche
 
 import javax.servlet.Filter;
 
+
 public class ModuleCinemaInit extends AbstractAnnotationConfigDispatcherServletInitializer {
     @Override
     protected Class<?>[] getRootConfigClasses() {
