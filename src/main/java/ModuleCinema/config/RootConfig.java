@@ -1,11 +1,9 @@
 package ModuleCinema.config;
 
-
-import ModuleCinema.dao.RegisterDao;
 import org.apache.commons.dbcp.BasicDataSource;
-import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.mybatis.spring.SqlSessionFactoryBean;
+import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.*;
 import org.springframework.core.io.DefaultResourceLoader;
@@ -19,6 +17,7 @@ import javax.sql.DataSource;
         @ComponentScan.Filter(type = FilterType.ANNOTATION, value = {Controller.class})
 })
 @PropertySource("classpath:/dataSource.properties")
+@MapperScan("ModuleCinema.dao")
 public class RootConfig {
     @Value("${jdbc.driver}")
     private String driver;
@@ -50,5 +49,4 @@ public class RootConfig {
         sessionFactoryBean.setConfigLocation(new DefaultResourceLoader().getResource("classpath:SqlMapConfig.xml"));
         return sessionFactoryBean.getObject();
     }
-
 }
