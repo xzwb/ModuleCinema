@@ -20,4 +20,10 @@ public class HomeController {
     public User home(@PathVariable int id) {
         return homeService.findUserByIdService(id);
     }
+
+    @ResponseBody
+    @GetMapping("/test")
+    public String test() {
+        return "1";
+    }
 }

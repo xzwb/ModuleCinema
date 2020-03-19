@@ -1,12 +1,15 @@
 package ModuleCinema.config;
 
+import ModuleCinema.interceptor.SessionInterceptor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.multipart.MultipartResolver;
 import org.springframework.web.multipart.support.StandardServletMultipartResolver;
 import org.springframework.web.servlet.ViewResolver;
 import org.springframework.web.servlet.config.annotation.DefaultServletHandlerConfigurer;
+import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurationSupport;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
 
@@ -32,5 +35,11 @@ public class WebConfig extends WebMvcConfigurationSupport {
     @Bean
     public MultipartResolver multipartResolver() {
         return new StandardServletMultipartResolver();
+    }
+
+    @Override
+    protected void addInterceptors(InterceptorRegistry registry) {
+        SessionInterceptor interceptor = new SessionInterceptor();
+        registry.addInterceptor(interceptor).addPathPatterns("/test");
     }
 }
