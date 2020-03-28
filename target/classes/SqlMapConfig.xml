@@ -4,6 +4,15 @@
         "http://mybatis.org/dtd/mybatis-3-config.dtd">
 
 <configuration>
+    <settings>
+        <!-- 启用缓存 -->
+        <setting name="cacheEnabled" value="true"/>
+        <!-- 支持jdbc生成键 -->
+        <setting name="useGeneratedKeys" value="true"/>
+        <!-- 延迟加载 -->
+        <setting name="lazyLoadingEnabled" value="true"/>
+    </settings>
+
     <mappers>
         <mapper resource="ModuleCinema/dao/RegisterDao.xml"/>
     </mappers>

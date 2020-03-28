@@ -17,6 +17,11 @@ public class User {
     private String userPassword;
     // 用户性别
     private String userSex;
+    // 用户密保问题
+    private String securityQuestion;
+    // 用户密保答案
+    private String classifiedAnswer;
+
 
     public String getUserSex() {
         return userSex;
@@ -26,10 +31,7 @@ public class User {
         this.userSex = userSex;
     }
 
-    // 用户密保问题
-    private String securityQuestion;
-    // 用户密保答案
-    private String classifiedAnswer;
+
 
     public int getUserId() {
         return userId;

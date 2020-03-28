@@ -8,10 +8,7 @@ import org.apache.ibatis.session.SqlSessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
 @Controller
 @CrossOrigin
@@ -21,8 +18,8 @@ public class RegisterController {
     private RegisterService registerService;
 
     @ResponseBody
-    @GetMapping("/register")
-    public Integer register(@RequestParam User user) {
+    @PostMapping("/register")
+    public Integer register(@RequestBody User user) {
         return registerService.registerService(user);
     }
 }

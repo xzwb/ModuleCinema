@@ -4,6 +4,7 @@ import ModuleCinema.dao.RegisterDao;
 import ModuleCinema.pojo.User;
 import ModuleCinema.service.RegisterService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
 @Service
