@@ -36,6 +36,10 @@ public class WebConfig extends WebMvcConfigurationSupport {
         return new StandardServletMultipartResolver();
     }
 
+    /**
+     * 配置拦截器拦截的url
+     * @param registry
+     */
     @Override
     protected void addInterceptors(InterceptorRegistry registry) {
         SessionInterceptor interceptor = new SessionInterceptor();

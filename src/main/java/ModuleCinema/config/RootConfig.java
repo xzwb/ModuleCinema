@@ -4,18 +4,25 @@ import org.apache.commons.dbcp.BasicDataSource;
 import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.*;
+import org.springframework.jdbc.datasource.DataSourceTransactionManager;
 import org.springframework.stereotype.Controller;
+import org.springframework.transaction.TransactionManager;
+import org.springframework.transaction.annotation.EnableTransactionManagement;
+import org.springframework.transaction.annotation.TransactionManagementConfigurer;
 
 import javax.sql.DataSource;
 
 
 @Configuration
+// 扫描除controller包以外的包
 @ComponentScan(basePackages = "ModuleCinema", excludeFilters = {
         @ComponentScan.Filter(type = FilterType.ANNOTATION, value = {Controller.class})
 })
+// 引入配置文件
 @PropertySource("classpath:/dataSource.properties")
+// 引入xml文件
 @ImportResource("classpath:config/SqlSession.xml")
-public class RootConfig {
+public class RootConfig implements TransactionManagementConfigurer {
     @Value("${jdbc.driver}")
     private String driver;
 
@@ -28,8 +35,11 @@ public class RootConfig {
     @Value("${jdbc.password}")
     private String password;
 
-
-    @Bean("dataSource")
+    /**
+     * 配置数据源
+     * @return
+     */
+    @Bean(name = "dataSource")
     public DataSource dataSource() {
         BasicDataSource dataSource = new BasicDataSource();
         dataSource.setDriverClassName(driver);
@@ -37,5 +47,17 @@ public class RootConfig {
         dataSource.setUsername(username);
         dataSource.setPassword(password);
         return dataSource;
+    }
+
+    /**
+     * 配置事务管理器
+     * @return
+     */
+    @Override
+    @Bean(name = "transactionManager")
+    public TransactionManager annotationDrivenTransactionManager() {
+        DataSourceTransactionManager transactionManager = new DataSourceTransactionManager();
+        transactionManager.setDataSource(dataSource());
+        return transactionManager;
     }
 }
