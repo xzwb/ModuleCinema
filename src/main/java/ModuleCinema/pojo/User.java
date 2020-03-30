@@ -17,6 +17,15 @@ public class User {
     private String userPassword;
     // 用户性别
     private String userSex;
+
+    public String getPhoneNumber() {
+        return phoneNumber;
+    }
+
+    public void setPhoneNumber(String phoneNumber) {
+        this.phoneNumber = phoneNumber;
+    }
+
     // 用户手机号
     private String phoneNumber;
     // 用户输入的验证码

@@ -9,6 +9,7 @@ import com.github.qcloudsms.SmsSingleSenderResult;
 import com.github.qcloudsms.httpclient.HTTPException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
@@ -34,13 +35,18 @@ public class RegisterServiceImpl implements RegisterService {
      * @return
      */
     @Override
-    public Result registerService(User user, String sms) {
+    public Result registerService(User user, String sms, String phoneNumber) {
         Result result = new Result();
-        if (!user.getSmsCode().equals(sms)) {
+        if (registerDao.registerSelect(user.getPhoneNumber()) != null) {
             result.setState(400);
-            result.setMessage("验证码错误");
+            result.setMessage("该手机号已经被注册");
             return result;
         }
+//        if (!user.getSmsCode().equals(sms) || !user.getPhoneNumber().equals(phoneNumber)) {
+//            result.setState(400);
+//            result.setMessage("验证码错误");
+//            return result;
+//        }
         registerDao.registerUpdate(user);
         // 这种是验证码正确但是注册失败的情况
         if (user.getUserId() == 0) {
@@ -81,6 +87,7 @@ public class RegisterServiceImpl implements RegisterService {
                 // 设置session存活时间
                 session.setMaxInactiveInterval(6*60);
                 session.setAttribute("sms", str);
+                session.setAttribute("phoneNumber", phoneNumber);
             } else {
                 r.setState(400);
                 r.setMessage("发送失败");

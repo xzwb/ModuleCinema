@@ -29,7 +29,8 @@ public class RegisterController {
     public Result register(@RequestBody User user, HttpSession session) {
         // 取出session
         String sms = (String) session.getAttribute("sms");
-        Result result =  registerService.registerService(user, sms);
+        String phoneNumber = (String) session.getAttribute("phoneNumber");
+        Result result =  registerService.registerService(user, sms, phoneNumber);
         // 如果注册成功删除session
         if (result.getState() == 200) {
             session.removeAttribute("sms");

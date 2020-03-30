@@ -6,4 +6,8 @@
     <update id="registerUpdate" useGeneratedKeys="true" keyProperty="userId" parameterType="ModuleCinema.pojo.User">
         insert into user values(default, #{userName}, '', 3, #{userPassword}, #{userSex}, #{birthday}, #{phoneNumber});
     </update>
+
+    <select id="registerSelect" parameterType="String" resultType="ModuleCinema.pojo.User">
+        select *from user where phoneNumber = #{phoneNumber};
+    </select>
 </mapper>

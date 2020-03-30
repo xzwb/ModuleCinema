@@ -12,7 +12,7 @@ public interface RegisterService {
      * @param sms session中保存的短信验证码
      * @return
      */
-    Result registerService(User user, String sms);
+    Result registerService(User user, String sms, String phoneNumber);
 
     Result sendMessageService(String phoneNumber, HttpSession session);
 }
