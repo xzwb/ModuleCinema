@@ -1,12 +1,18 @@
 package ModuleCinema.service;
 
+import ModuleCinema.pojo.Result;
 import ModuleCinema.pojo.User;
+
+import javax.servlet.http.HttpSession;
 
 public interface RegisterService {
     /**
-     * 注册的service层 成功返回账号 不成功返回-1
-     * @param user
+     * 注册
+     * @param user 用户信息
+     * @param sms session中保存的短信验证码
      * @return
      */
-    Integer registerService(User user);
+    Result registerService(User user, String sms);
+
+    Result sendMessageService(String phoneNumber, HttpSession session);
 }

@@ -17,21 +17,16 @@ public class User {
     private String userPassword;
     // 用户性别
     private String userSex;
-    // 用户密保问题
-    private String securityQuestion;
-    // 用户密保答案
-    private String classifiedAnswer;
+    // 用户输入的验证码
+    private String smsCode;
 
-
-    public String getUserSex() {
-        return userSex;
+    public String getSmsCode() {
+        return smsCode;
     }
 
-    public void setUserSex(String userSex) {
-        this.userSex = userSex;
+    public void setSmsCode(String smsCode) {
+        this.smsCode = smsCode;
     }
-
-
 
     public int getUserId() {
         return userId;
@@ -43,21 +38,6 @@ public class User {
 
     public String getUserName() {
         return userName;
-    }
-
-    @Override
-    public String  toString() {
-        return "User{" +
-                "userId=" + userId +
-                ", userName='" + userName + '\'' +
-                ", avatar='" + avatar + '\'' +
-                ", roleId=" + roleId +
-                ", birthday=" + birthday +
-                ", userPassword='" + userPassword + '\'' +
-                ", userSex='" + userSex + '\'' +
-                ", securityQuestion='" + securityQuestion + '\'' +
-                ", classifiedAnswer='" + classifiedAnswer + '\'' +
-                '}';
     }
 
     public void setUserName(String userName) {
@@ -96,19 +76,11 @@ public class User {
         this.userPassword = userPassword;
     }
 
-    public String getSecurityQuestion() {
-        return securityQuestion;
+    public String getUserSex() {
+        return userSex;
     }
 
-    public void setSecurityQuestion(String securityQuestion) {
-        this.securityQuestion = securityQuestion;
-    }
-
-    public String getClassifiedAnswer() {
-        return classifiedAnswer;
-    }
-
-    public void setClassifiedAnswer(String classifiedAnswer) {
-        this.classifiedAnswer = classifiedAnswer;
+    public void setUserSex(String userSex) {
+        this.userSex = userSex;
     }
 }

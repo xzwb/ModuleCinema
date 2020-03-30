@@ -15,15 +15,6 @@ import org.springframework.web.servlet.view.InternalResourceViewResolver;
 @Configuration
 @ComponentScan(basePackages = "ModuleCinema.controller")
 public class WebConfig extends WebMvcConfigurationSupport {
-    // 配置视图解析器
-    @Bean
-    public ViewResolver viewResolver() {
-        InternalResourceViewResolver resolver = new InternalResourceViewResolver();
-        resolver.setPrefix("/");
-        resolver.setSuffix(".html");
-        return resolver;
-    }
-
     // 配置可以访问静态资源
     @Override
     protected void configureDefaultServletHandling(DefaultServletHandlerConfigurer configurer) {
@@ -43,6 +34,6 @@ public class WebConfig extends WebMvcConfigurationSupport {
     @Override
     protected void addInterceptors(InterceptorRegistry registry) {
         SessionInterceptor interceptor = new SessionInterceptor();
-        registry.addInterceptor(interceptor).addPathPatterns("/test");
+        registry.addInterceptor(interceptor).addPathPatterns("/u/*");
     }
 }
