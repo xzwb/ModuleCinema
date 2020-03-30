@@ -42,11 +42,11 @@ public class RegisterServiceImpl implements RegisterService {
             result.setMessage("该手机号已经被注册");
             return result;
         }
-//        if (!user.getSmsCode().equals(sms) || !user.getPhoneNumber().equals(phoneNumber)) {
-//            result.setState(400);
-//            result.setMessage("验证码错误");
-//            return result;
-//        }
+        if (!user.getSmsCode().equals(sms) || !user.getPhoneNumber().equals(phoneNumber)) {
+            result.setState(400);
+            result.setMessage("验证码错误");
+            return result;
+        }
         registerDao.registerUpdate(user);
         // 这种是验证码正确但是注册失败的情况
         if (user.getUserId() == 0) {
