@@ -4,6 +4,6 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="ModuleCinema.dao.RegisterDao">
     <update id="registerUpdate" useGeneratedKeys="true" keyProperty="userId" parameterType="ModuleCinema.pojo.User">
-        insert into user values(default, #{userName}, '', 3, #{userPassword}, #{userSex}, #{birthday});
+        insert into user values(default, #{userName}, '', 3, #{userPassword}, #{userSex}, #{birthday}, #{phoneNumber});
     </update>
 </mapper>

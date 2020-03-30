@@ -8,10 +8,7 @@ import com.github.qcloudsms.SmsSingleSender;
 import com.github.qcloudsms.SmsSingleSenderResult;
 import com.github.qcloudsms.httpclient.HTTPException;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.SessionAttributes;
-import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
@@ -30,6 +27,12 @@ public class RegisterServiceImpl implements RegisterService {
     @Autowired
     private RegisterDao registerDao;
 
+    /**
+     * 做注册时验证码的校验
+     * @param user 用户信息
+     * @param sms session中保存的短信验证码
+     * @return
+     */
     @Override
     public Result registerService(User user, String sms) {
         Result result = new Result();
@@ -39,6 +42,7 @@ public class RegisterServiceImpl implements RegisterService {
             return result;
         }
         registerDao.registerUpdate(user);
+        // 这种是验证码正确但是注册失败的情况
         if (user.getUserId() == 0) {
             result.setState(400);
             result.setMessage("注册失败");
@@ -50,6 +54,12 @@ public class RegisterServiceImpl implements RegisterService {
         return result;
     }
 
+    /**
+     * 给用户手机发送短信验证码
+     * @param phoneNumber
+     * @param session
+     * @return
+     */
     @Override
     public Result sendMessageService(String phoneNumber, HttpSession session) {
         // 验证码
@@ -68,6 +78,7 @@ public class RegisterServiceImpl implements RegisterService {
             if (result.result == 0) {
                 r.setState(200);
                 r.setMessage("发送成功");
+                // 设置session存活时间
                 session.setMaxInactiveInterval(6*60);
                 session.setAttribute("sms", str);
             } else {

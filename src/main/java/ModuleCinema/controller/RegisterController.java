@@ -3,17 +3,13 @@ package ModuleCinema.controller;
 import ModuleCinema.pojo.Result;
 import ModuleCinema.pojo.User;
 import ModuleCinema.service.RegisterService;
-import com.github.qcloudsms.SmsSingleSender;
-import com.github.qcloudsms.SmsSingleSenderResult;
-import com.github.qcloudsms.httpclient.HTTPException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpSession;
-import java.io.IOException;
 import java.util.Map;
-import java.util.Random;
+
 
 @Controller
 @CrossOrigin
@@ -22,17 +18,31 @@ public class RegisterController {
     @Autowired
     private RegisterService registerService;
 
+    /**
+     * 用户注册
+     * @param user 用户信息
+     * @param session
+     * @return
+     */
     @ResponseBody
     @PostMapping("/a/post/register")
     public Result register(@RequestBody User user, HttpSession session) {
+        // 取出session
         String sms = (String) session.getAttribute("sms");
         Result result =  registerService.registerService(user, sms);
+        // 如果注册成功删除session
         if (result.getState() == 200) {
             session.removeAttribute("sms");
         }
         return result;
     }
 
+    /**
+     * 给用户发送短信验证码
+     * @param phoneNumber 用户手机号
+     * @param session HttpSession
+     * @return
+     */
     @ResponseBody
     @PostMapping("/a/post/register/sendMessage")
     public Result sendMessage(@RequestBody Map<String, String> phoneNumber, HttpSession session) {

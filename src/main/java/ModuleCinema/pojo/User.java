@@ -17,6 +17,8 @@ public class User {
     private String userPassword;
     // 用户性别
     private String userSex;
+    // 用户手机号
+    private String phoneNumber;
     // 用户输入的验证码
     private String smsCode;
 
