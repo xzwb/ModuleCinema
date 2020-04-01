@@ -8,6 +8,15 @@ public class Result {
     // 返回的具体内容
     private Object data;
 
+    @Override
+    public String toString() {
+        return "{" +
+                "\"state\"=" + state +
+                ", \"message\"=\"" + message + "\"" +
+                ", \"data\"=" + data +
+                '}';
+    }
+
     public int getState() {
         return state;
     }

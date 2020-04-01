@@ -13,6 +13,22 @@ public class User {
     private int roleId;
     // 用户生日
     private Date birthday;
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "userId=" + userId +
+                ", userName='" + userName + '\'' +
+                ", avatar='" + avatar + '\'' +
+                ", roleId=" + roleId +
+                ", birthday=" + birthday +
+                ", userPassword='" + userPassword + '\'' +
+                ", userSex='" + userSex + '\'' +
+                ", phoneNumber='" + phoneNumber + '\'' +
+                ", smsCode='" + smsCode + '\'' +
+                '}';
+    }
+
     // 用户密码
     private String userPassword;
     // 用户性别

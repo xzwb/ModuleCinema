@@ -13,7 +13,4 @@
         <setting name="lazyLoadingEnabled" value="true"/>
     </settings>
 
-    <mappers>
-        <mapper resource="ModuleCinema/dao/RegisterDao.xml"/>
-    </mappers>
 </configuration>

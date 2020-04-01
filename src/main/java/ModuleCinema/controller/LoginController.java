@@ -25,7 +25,7 @@ public class LoginController {
         if (result.getState() == 200) {
             user = (User) result.getData();
             session.setAttribute("user", user);
-            result.setData(user.getUserId());
+            session.setMaxInactiveInterval(2*60*60);
         }
         return result;
     }
@@ -37,7 +37,7 @@ public class LoginController {
         if (result.getState() == 200) {
             user = (User) result.getData();
             session.setAttribute("user", user);
-            result.setData(user.getUserId());
+            session.setMaxInactiveInterval(2*60*60);
         }
         return result;
     }
