@@ -7,4 +7,12 @@
     <select id="homeDao" resultType="ModuleCinema.pojo.Play">
         select *from play where playState = 1 limit 10;
     </select>
+
+    <select id="selectStaff" resultType="ModuleCinema.pojo.Staff">
+        select *from staff order by staffId limit #{start}, 10;
+    </select>
+
+    <select id="staffTotal" resultType="int">
+        select count(*) from staff;
+    </select>
 </mapper>

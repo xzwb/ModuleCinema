@@ -1,5 +1,6 @@
 package ModuleCinema.controller;
 
+import ModuleCinema.pojo.Boss;
 import ModuleCinema.pojo.Result;
 import ModuleCinema.pojo.User;
 import ModuleCinema.service.HomeService;
@@ -7,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpSession;
@@ -22,5 +24,12 @@ public class HomeController {
     public Result home(HttpSession session) {
         User user = (User) session.getAttribute("user");
         return homeService.homeService(user);
+    }
+
+    @GetMapping("/b/get/home/{page}")
+    @ResponseBody
+    public Result bossHome(HttpSession session, @PathVariable("page") int page) {
+        Boss boss = (Boss) session.getAttribute("boss");
+        return homeService.homeServiceBoss(boss, page);
     }
 }

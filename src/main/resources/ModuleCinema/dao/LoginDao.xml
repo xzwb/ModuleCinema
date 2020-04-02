@@ -10,4 +10,16 @@
     <select id="loginSelectByUserId" resultType="ModuleCinema.pojo.User">
         select *from user where userId = #{userId} and userPassword = #{userPassword};
     </select>
+
+    <select id="loginSelectByBossId" resultType="ModuleCinema.pojo.Boss">
+        select *from boss where bossId = #{bossId} and bossPassword = #{bossPassword};
+    </select>
+
+    <select id="loginSelectByStaffId" resultType="ModuleCinema.pojo.Staff">
+        select *from staff where staffId = #{staffId} and staffPassword = #{staffPassword};
+    </select>
+
+    <select id="staffTotal" resultType="int">
+        select count(*) from staff;
+    </select>
 </mapper>

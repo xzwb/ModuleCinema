@@ -1,5 +1,7 @@
 package ModuleCinema.config;
 
+import ModuleCinema.interceptor.BossSessionInterceptor;
+import ModuleCinema.interceptor.StaffSessionInterceptor;
 import ModuleCinema.interceptor.UserSessionInterceptor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
@@ -32,6 +34,10 @@ public class WebConfig extends WebMvcConfigurationSupport {
     @Override
     protected void addInterceptors(InterceptorRegistry registry) {
         UserSessionInterceptor interceptor = new UserSessionInterceptor();
+        StaffSessionInterceptor interceptor1 = new StaffSessionInterceptor();
+        BossSessionInterceptor interceptor2 = new BossSessionInterceptor();
         registry.addInterceptor(interceptor).addPathPatterns("/u/**");
+        registry.addInterceptor(interceptor1).addPathPatterns("/s/**");
+        registry.addInterceptor(interceptor2).addPathPatterns("/b/**");
     }
 }

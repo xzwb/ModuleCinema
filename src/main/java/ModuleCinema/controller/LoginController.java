@@ -1,6 +1,8 @@
 package ModuleCinema.controller;
 
+import ModuleCinema.pojo.Boss;
 import ModuleCinema.pojo.Result;
+import ModuleCinema.pojo.Staff;
 import ModuleCinema.pojo.User;
 import ModuleCinema.service.LoginService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -37,6 +39,30 @@ public class LoginController {
         if (result.getState() == 200) {
             user = (User) result.getData();
             session.setAttribute("user", user);
+            session.setMaxInactiveInterval(2*60*60);
+        }
+        return result;
+    }
+
+    @PostMapping("/a/post/login/bossId")
+    @ResponseBody
+    public Result loginByBossId(@RequestBody Boss boss, HttpSession session) {
+        Result result = loginService.loginServiceByBossId(boss.getBossId(), boss.getBossPassword());
+        if (result.getState() == 200) {
+            boss = (Boss) result.getData();
+            session.setAttribute("boss", boss);
+            session.setMaxInactiveInterval(2*60*60);
+        }
+        return result;
+    }
+
+    @PostMapping("/a/post/login/staffId")
+    @ResponseBody
+    public Result loginByStaffId(@RequestBody Staff staff, HttpSession session) {
+        Result result = loginService.loginServiceByStaffId(staff.getStaffId(), staff.getStaffPassword());
+        if (result.getState() == 200) {
+            staff = (Staff) result.getData();
+            session.setAttribute("staff", staff);
             session.setMaxInactiveInterval(2*60*60);
         }
         return result;

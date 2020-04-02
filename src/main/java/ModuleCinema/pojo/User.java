@@ -9,25 +9,9 @@ public class User {
     private String userName;
     // 用户头像路径
     private String avatar;
-    // 用户角色id (管理员, 游客, 经理)
-    private int roleId;
+
     // 用户生日
     private Date birthday;
-
-    @Override
-    public String toString() {
-        return "User{" +
-                "userId=" + userId +
-                ", userName='" + userName + '\'' +
-                ", avatar='" + avatar + '\'' +
-                ", roleId=" + roleId +
-                ", birthday=" + birthday +
-                ", userPassword='" + userPassword + '\'' +
-                ", userSex='" + userSex + '\'' +
-                ", phoneNumber='" + phoneNumber + '\'' +
-                ", smsCode='" + smsCode + '\'' +
-                '}';
-    }
 
     // 用户密码
     private String userPassword;
@@ -77,14 +61,6 @@ public class User {
 
     public void setAvatar(String avatar) {
         this.avatar = avatar;
-    }
-
-    public int getRoleId() {
-        return roleId;
-    }
-
-    public void setRoleId(int roleId) {
-        this.roleId = roleId;
     }
 
     public Date getBirthday() {

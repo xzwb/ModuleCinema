@@ -1,6 +1,7 @@
 package ModuleCinema.service.impl;
 
 import ModuleCinema.dao.HomeDao;
+import ModuleCinema.pojo.Boss;
 import ModuleCinema.pojo.Result;
 import ModuleCinema.pojo.User;
 import ModuleCinema.pojo.UserAndHotPlay;
@@ -12,6 +13,17 @@ import org.springframework.stereotype.Service;
 public class HomeServiceImpl implements HomeService {
     @Autowired
     HomeDao homeDao;
+
+    @Override
+    public Result homeServiceBoss(Boss boss, int page) {
+        Result result = new Result();
+        result.setState(homeDao.staffTotal());
+        int start = (page - 1) * 10;
+        boss.setStaffList(homeDao.selectStaff(start));
+        result.setData(boss);
+        result.setMessage("成功");
+        return result;
+    }
 
     @Override
     public Result homeService(User user) {

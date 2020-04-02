@@ -3,9 +3,9 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="ModuleCinema.dao.RegisterDao">
-    <update id="registerUpdate" useGeneratedKeys="true" keyProperty="userId" parameterType="ModuleCinema.pojo.User">
-        insert into user values(default, #{userName}, '', 3, #{userPassword}, #{userSex}, #{birthday}, #{phoneNumber});
-    </update>
+    <insert id="registerUpdate" useGeneratedKeys="true" keyProperty="userId" parameterType="ModuleCinema.pojo.User">
+        insert into user values(default, #{userName}, '', #{userPassword}, #{userSex}, #{birthday}, #{phoneNumber});
+    </insert>
 
     <select id="registerSelect" parameterType="String" resultType="ModuleCinema.pojo.User">
         select *from user where phoneNumber = #{phoneNumber};

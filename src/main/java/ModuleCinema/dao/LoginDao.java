@@ -1,8 +1,12 @@
 package ModuleCinema.dao;
 
+import ModuleCinema.pojo.Boss;
+import ModuleCinema.pojo.Staff;
 import ModuleCinema.pojo.User;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
+
+import java.util.List;
 
 @Repository
 public interface LoginDao {
@@ -23,4 +27,11 @@ public interface LoginDao {
      */
     User loginSelectByUserId(@Param("userId") int userId,
                              @Param("userPassword") String userPassword);
+
+    Boss loginSelectByBossId(@Param("bossId") int bossId,
+                             @Param("bossPassword") String bossPassword);
+
+    Staff loginSelectByStaffId(@Param("staffId") int staffId,
+                              @Param("staffPassword") String staffPassword);
+
 }

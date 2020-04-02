@@ -19,4 +19,17 @@ public interface LoginService {
      * @return
      */
     Result loginServiceByUserId(int userId, String userPassword);
+
+    /**
+     * 使用bossId进行登录
+     * @param bossId
+     * @param bossPassword
+     * @return
+     */
+    Result loginServiceByBossId(int bossId, String bossPassword);
+
+    /**
+     * 使用员工id进行登录
+     */
+    Result loginServiceByStaffId(int staffId, String staffPassword);
 }
