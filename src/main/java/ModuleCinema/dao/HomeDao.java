@@ -2,7 +2,6 @@ package ModuleCinema.dao;
 
 import ModuleCinema.pojo.Play;
 import ModuleCinema.pojo.Staff;
-import ModuleCinema.pojo.UserAndHotPlay;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
 

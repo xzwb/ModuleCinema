@@ -4,7 +4,6 @@ import ModuleCinema.dao.HomeDao;
 import ModuleCinema.pojo.Boss;
 import ModuleCinema.pojo.Result;
 import ModuleCinema.pojo.User;
-import ModuleCinema.pojo.UserAndHotPlay;
 import ModuleCinema.service.HomeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -15,25 +14,22 @@ public class HomeServiceImpl implements HomeService {
     HomeDao homeDao;
 
     @Override
-    public Result homeServiceBoss(Boss boss, int page) {
+    public Result getStaffs(int page) {
         Result result = new Result();
-        result.setState(homeDao.staffTotal());
-        int start = (page - 1) * 10;
-        boss.setStaffList(homeDao.selectStaff(start));
-        result.setData(boss);
+        result.setState(200);
+        page = (page - 1) * 6;
+        result.setData(homeDao.selectStaff(page));
         result.setMessage("成功");
         return result;
     }
 
     @Override
-    public Result homeService(User user) {
+    public Result homeServiceBoss(Boss boss) {
         Result result = new Result();
-        UserAndHotPlay userAndHotPlay = new UserAndHotPlay();
-        userAndHotPlay.setPlays(homeDao.homeDao());
-        userAndHotPlay.setUser(user);
-        result.setState(200);
-        result.setMessage("成功查找");
-        result.setData(userAndHotPlay);
+        result.setState(homeDao.staffTotal());
+        result.setData(boss);
+        result.setMessage("成功");
         return result;
     }
+
 }

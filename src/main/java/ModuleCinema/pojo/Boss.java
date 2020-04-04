@@ -10,8 +10,6 @@ public class Boss {
     private String bossName;
     private String bossPassword;
 
-    private List<Staff> staffList;
-
     public int getBossId() {
         return bossId;
     }
@@ -34,13 +32,5 @@ public class Boss {
 
     public void setBossPassword(String bossPassword) {
         this.bossPassword = bossPassword;
-    }
-
-    public List<Staff> getStaffList() {
-        return staffList;
-    }
-
-    public void setStaffList(List<Staff> staffList) {
-        this.staffList = staffList;
     }
 }

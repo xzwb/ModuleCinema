@@ -7,10 +7,7 @@ import ModuleCinema.pojo.User;
 import ModuleCinema.service.HomeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpSession;
 
@@ -20,18 +17,17 @@ public class HomeController {
     @Autowired
     HomeService homeService;
 
-    @GetMapping("/u/get/home")
+    @GetMapping("/b/get/staff/{page}")
     @ResponseBody
-    public Result home(HttpSession session) {
-        User user = (User) session.getAttribute("user");
-        return homeService.homeService(user);
+    public Result getStaffs(@PathVariable("page") int page) {
+        return homeService.getStaffs(page);
     }
 
-    @GetMapping("/b/get/home/{page}")
+    @GetMapping("/b/get/home")
     @ResponseBody
-    public Result bossHome(HttpSession session, @PathVariable("page") int page) {
+    public Result bossHome(HttpSession session) {
         Boss boss = (Boss) session.getAttribute("boss");
-        return homeService.homeServiceBoss(boss, page);
+        return homeService.homeServiceBoss(boss);
     }
 
     @GetMapping("/s/get/home")

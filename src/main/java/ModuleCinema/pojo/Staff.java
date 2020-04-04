@@ -10,16 +10,6 @@ public class Staff {
     // 员工照片所在的uri
     private String staffAvatar;
 
-    List<Play> plays;
-
-    public List<Play> getPlays() {
-        return plays;
-    }
-
-    public void setPlays(List<Play> plays) {
-        this.plays = plays;
-    }
-
     public int getStaffId() {
         return staffId;
     }

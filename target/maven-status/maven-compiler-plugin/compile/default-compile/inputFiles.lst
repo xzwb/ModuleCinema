@@ -15,7 +15,6 @@
 /home/xzwb/ModuleCinema/src/main/java/ModuleCinema/service/impl/LoginServiceImpl.java
 /home/xzwb/ModuleCinema/src/main/java/ModuleCinema/service/LoginService.java
 /home/xzwb/ModuleCinema/src/main/java/ModuleCinema/service/BossService.java
-/home/xzwb/ModuleCinema/src/main/java/ModuleCinema/pojo/UserAndHotPlay.java
 /home/xzwb/ModuleCinema/src/main/java/ModuleCinema/pojo/Boss.java
 /home/xzwb/ModuleCinema/src/main/java/ModuleCinema/dao/BossDao.java
 /home/xzwb/ModuleCinema/src/main/java/ModuleCinema/service/impl/RegisterServiceImpl.java
