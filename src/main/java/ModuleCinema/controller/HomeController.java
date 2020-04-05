@@ -3,7 +3,6 @@ package ModuleCinema.controller;
 import ModuleCinema.pojo.Boss;
 import ModuleCinema.pojo.Result;
 import ModuleCinema.pojo.Staff;
-import ModuleCinema.pojo.User;
 import ModuleCinema.service.HomeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -12,7 +11,7 @@ import org.springframework.web.bind.annotation.*;
 import javax.servlet.http.HttpSession;
 
 @Controller
-@CrossOrigin
+@CrossOrigin(allowCredentials = "true")
 public class HomeController {
     @Autowired
     HomeService homeService;

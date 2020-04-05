@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import javax.servlet.http.HttpSession;
 
 @Controller
-@CrossOrigin
+@CrossOrigin(allowCredentials = "true")
 public class LoginController {
     @Autowired
     LoginService loginService;

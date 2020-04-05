@@ -14,7 +14,7 @@ import java.util.Calendar;
 import java.util.Map;
 
 @Controller
-@CrossOrigin
+@CrossOrigin(allowCredentials = "true")
 public class BossController {
     @Autowired
     BossService bossService;

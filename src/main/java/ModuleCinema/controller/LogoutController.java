@@ -12,7 +12,7 @@ import javax.servlet.http.HttpSession;
  * 注销
  */
 @Controller
-@CrossOrigin
+@CrossOrigin(allowCredentials = "true")
 public class LogoutController {
     @GetMapping("/a/get/user/logout")
     @ResponseBody
