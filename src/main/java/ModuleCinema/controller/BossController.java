@@ -34,7 +34,15 @@ public class BossController {
 
     @PostMapping("/b/post/insert")
     @ResponseBody
-    public Result insertStaff(@RequestBody Staff staff, @RequestPart("staffAvatar") Part part, HttpSession session) {
+    public Result insertStaff(@RequestParam String staffName,
+                              @RequestParam String staffGrade,
+                              @RequestParam String staffPassword,
+                              @RequestPart("file") Part part,
+                              HttpSession session) {
+        Staff staff = new Staff();
+        staff.setStaffGrade(staffGrade);
+        staff.setStaffName(staffName);
+        staff.setStaffPassword(staffPassword);
         long timeInMillis = Calendar.getInstance().getTimeInMillis();
         String staffAvatar = session.getServletContext().getRealPath("/") +
                 timeInMillis + part.getSubmittedFileName();

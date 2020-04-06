@@ -4,6 +4,8 @@ import org.springframework.web.filter.CharacterEncodingFilter;
 import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer;
 
 import javax.servlet.Filter;
+import javax.servlet.MultipartConfigElement;
+import javax.servlet.ServletRegistration;
 
 
 public class ModuleCinemaInit extends AbstractAnnotationConfigDispatcherServletInitializer {
@@ -32,5 +34,10 @@ public class ModuleCinemaInit extends AbstractAnnotationConfigDispatcherServletI
         filter.setEncoding("utf-8");
         filter.setForceEncoding(true);
         return new Filter[] {filter};
+    }
+
+    @Override
+    protected void customizeRegistration(ServletRegistration.Dynamic registration) {
+        registration.setMultipartConfig(new MultipartConfigElement("/www/server/tomcat/webapps/ModuleCinema"));
     }
 }
