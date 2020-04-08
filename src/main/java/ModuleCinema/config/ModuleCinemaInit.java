@@ -39,5 +39,6 @@ public class ModuleCinemaInit extends AbstractAnnotationConfigDispatcherServletI
     @Override
     protected void customizeRegistration(ServletRegistration.Dynamic registration) {
         registration.setMultipartConfig(new MultipartConfigElement("/www/server/tomcat/webapps/ModuleCinema"));
+//        registration.setMultipartConfig(new MultipartConfigElement("/home/xzwb/ModuleCinema/target/ModuleCinema"));
     }
 }

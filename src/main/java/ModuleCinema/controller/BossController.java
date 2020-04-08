@@ -34,22 +34,25 @@ public class BossController {
 
     @PostMapping("/b/post/insert")
     @ResponseBody
-    public Result insertStaff(@RequestParam String staffName,
-                              @RequestParam String staffGrade,
-                              @RequestParam String staffPassword,
+//    public Result insertStaff(@RequestParam String staffName,
+//                              @RequestParam String staffGrade,
+//                              @RequestParam String staffPassword,
+//                              @RequestPart("file") Part part,
+//                              HttpSession session) {
+    public Result insertStaff(Staff staff,
                               @RequestPart("file") Part part,
                               HttpSession session) {
-        Staff staff = new Staff();
-        staff.setStaffGrade(staffGrade);
-        staff.setStaffName(staffName);
-        staff.setStaffPassword(staffPassword);
+//        Staff staff = new Staff();
+//        staff.setStaffGrade(staffGrade);
+//        staff.setStaffName(staffName);
+//        staff.setStaffPassword(staffPassword);
         long timeInMillis = Calendar.getInstance().getTimeInMillis();
-        String staffAvatar = session.getServletContext().getRealPath("/") +
-                timeInMillis + part.getSubmittedFileName();
+        String src = session.getServletContext().getRealPath("/");
+        String staffAvatar = timeInMillis + part.getSubmittedFileName();
         if (!"".equals(part.getSubmittedFileName())) {
             staff.setStaffAvatar(staffAvatar);
             try {
-                part.write(staffAvatar);
+                part.write(src + staffAvatar);
             } catch (IOException e) {
                 e.printStackTrace();
             }
