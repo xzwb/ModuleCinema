@@ -7,6 +7,8 @@ import ModuleCinema.service.BossService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.io.File;
+
 @Service
 public class BossServiceImpl implements BossService {
     @Autowired
@@ -22,8 +24,11 @@ public class BossServiceImpl implements BossService {
     }
 
     @Override
-    public Result deleteService(int staffId) {
+    public Result deleteService(int staffId, String src) {
         Result result = new Result();
+        src = src + bossDao.getStaffAvatar(staffId);
+        File file = new File(src);
+        file.delete();
         bossDao.deleteStaff(staffId);
         result.setState(200);
         result.setMessage("成功删除编号为"+staffId+"的员工");

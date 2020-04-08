@@ -15,4 +15,8 @@
     <insert id="insertStaff" useGeneratedKeys="true" keyProperty="staffId" parameterType="ModuleCinema.pojo.Staff">
         insert into staff values(default, #{staffName}, #{staffPassword}, #{staffGrade}, #{staffAvatar});
     </insert>
+
+    <select id="getStaffAvatar" resultType="String">
+        select staffAvatar from staff where staffId = #{staffId};
+    </select>
 </mapper>

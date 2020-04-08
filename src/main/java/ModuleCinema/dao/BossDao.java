@@ -11,4 +11,7 @@ public interface BossDao {
     void updateStaff(@Param("staffId") int staffId, @Param("staffGrade") String staffGrade);
 
     void insertStaff(Staff staff);
+
+    // 获取头像文件路径
+    String getStaffAvatar(@Param("staffId") int StaffId);
 }

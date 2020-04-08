@@ -11,7 +11,6 @@ import javax.servlet.http.HttpSession;
 import javax.servlet.http.Part;
 import java.io.IOException;
 import java.util.Calendar;
-import java.util.Map;
 
 @Controller
 @CrossOrigin(allowCredentials = "true")
@@ -21,15 +20,18 @@ public class BossController {
 
     @PostMapping("/b/post/delete/{staffId}")
     @ResponseBody
-    public Result deleteStaff(@PathVariable("staffId") int staffId) {
-        return bossService.deleteService(staffId);
+    public Result deleteStaff(@PathVariable("staffId") int staffId, HttpSession session) {
+        String src = session.getServletContext().getRealPath("/");
+        return bossService.deleteService(staffId, src);
     }
 
-    @PostMapping("/b/post/update/{staffId}")
+//    @PostMapping("/b/post/update/{staffId}")
+    @PostMapping("/b/post/update")
     @ResponseBody
-    public Result updateStaff(@PathVariable("staffId") int staffId,
-                              @RequestBody Map<String, String> staffGrade) {
-        return bossService.updateService(staffId, staffGrade.get("staffGrade"));
+//    public Result updateStaff(@PathVariable("staffId") int staffId,
+//                              @RequestBody(required = false)Map<String, String> staffGrade) {
+    public Result updateStaff(@RequestBody Staff staff) {
+        return bossService.updateService(staff.getStaffId(), staff.getStaffGrade());
     }
 
     @PostMapping("/b/post/insert")
