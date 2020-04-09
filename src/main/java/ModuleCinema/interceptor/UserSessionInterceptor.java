@@ -18,7 +18,7 @@ public class UserSessionInterceptor extends HandlerInterceptorAdapter {
         if (user == null) {
             response.setContentType("application/json;charset=UTF-8");
             Result result = new Result();
-            result.setState(400);
+            result.setState(-1);
             result.setMessage("长时间未操作");
             response.getWriter().write(result.toString());
             return false;

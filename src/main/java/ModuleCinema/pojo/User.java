@@ -7,8 +7,6 @@ public class User {
     private int userId;
     // 用户昵称
     private String userName;
-    // 用户头像路径
-    private String avatar;
 
     // 用户生日
     private Date birthday;
@@ -53,14 +51,6 @@ public class User {
 
     public void setUserName(String userName) {
         this.userName = userName;
-    }
-
-    public String getAvatar() {
-        return avatar;
-    }
-
-    public void setAvatar(String avatar) {
-        this.avatar = avatar;
     }
 
     public Date getBirthday() {

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="ModuleCinema.dao.StaffDao">
+    <select id="getPlays" resultType="ModuleCinema.pojo.Play">
+        select *from play order by playId desc limit #{page}, 6;
+    </select>
+
+    <select id="getTotal" resultType="int">
+        select count(*) from play;
+    </select>
+
+    <update id="updatePlayState">
+        update play set playState = #{playState} where playId = #{playId};
+    </update>
+
+    <insert id="insertPlay" parameterType="ModuleCinema.pojo.Play" useGeneratedKeys="true" keyProperty="playId">
+        insert into play values(default, #{playName}, #{playDuration}, #{playState}, #{playIntroduction}, #{playSrcFile});
+    </insert>
+</mapper>

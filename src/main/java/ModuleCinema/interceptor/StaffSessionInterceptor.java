@@ -17,7 +17,7 @@ public class StaffSessionInterceptor extends HandlerInterceptorAdapter {
         if (staff == null) {
             response.setContentType("application/json;charset=UTF-8");
             Result result = new Result();
-            result.setState(400);
+            result.setState(-1);
             result.setMessage("长时间未操作");
             response.getWriter().write(result.toString());
             return false;

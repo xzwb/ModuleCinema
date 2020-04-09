@@ -37,7 +37,7 @@ public class WebConfig extends WebMvcConfigurationSupport {
         StaffSessionInterceptor interceptor1 = new StaffSessionInterceptor();
         BossSessionInterceptor interceptor2 = new BossSessionInterceptor();
         registry.addInterceptor(interceptor).addPathPatterns("/u/**");
-        registry.addInterceptor(interceptor1).addPathPatterns("/s/**");
+//        registry.addInterceptor(interceptor1).addPathPatterns("/s/**");
         registry.addInterceptor(interceptor2).addPathPatterns("/b/**");
     }
 }
