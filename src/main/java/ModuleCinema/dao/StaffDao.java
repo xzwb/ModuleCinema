@@ -1,6 +1,7 @@
 package ModuleCinema.dao;
 
 import ModuleCinema.pojo.Play;
+import ModuleCinema.pojo.Show;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
 
@@ -29,4 +30,6 @@ public interface StaffDao {
      * @param play
      */
     void insertPlay(Play play);
+
+    void insertShow(Show show);
 }

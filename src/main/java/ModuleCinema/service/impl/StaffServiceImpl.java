@@ -3,6 +3,7 @@ package ModuleCinema.service.impl;
 import ModuleCinema.dao.StaffDao;
 import ModuleCinema.pojo.Play;
 import ModuleCinema.pojo.Result;
+import ModuleCinema.pojo.Show;
 import ModuleCinema.pojo.Staff;
 import ModuleCinema.service.StaffService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -49,6 +50,16 @@ public class StaffServiceImpl implements StaffService {
         result.setState(200);
         result.setMessage("成功添加");
         result.setData(play.getPlayId());
+        return result;
+    }
+
+    @Override
+    public Result insertShow(Show show) {
+        Result result = new Result();
+        staffDao.insertShow(show);
+        result.setState(200);
+        result.setMessage("成功添加");
+        result.setData(show.getShowId());
         return result;
     }
 }

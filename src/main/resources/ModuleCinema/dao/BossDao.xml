@@ -8,9 +8,9 @@
         delete from staff where staffId = #{staffId};
     </delete>
 
-    <update id="updateStaff">
+    <select id="updateStaff">
         update staff set staffGrade = #{staffGrade} where staffId = #{staffId};
-    </update>
+    </select>
 
     <insert id="insertStaff" useGeneratedKeys="true" keyProperty="staffId" parameterType="ModuleCinema.pojo.Staff">
         insert into staff values(default, #{staffName}, #{staffPassword}, #{staffGrade}, #{staffAvatar});

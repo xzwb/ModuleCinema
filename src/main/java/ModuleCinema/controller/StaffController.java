@@ -2,6 +2,7 @@ package ModuleCinema.controller;
 
 import ModuleCinema.pojo.Play;
 import ModuleCinema.pojo.Result;
+import ModuleCinema.pojo.Show;
 import ModuleCinema.pojo.Staff;
 import ModuleCinema.service.StaffService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -58,4 +59,11 @@ public class StaffController {
         }
         return staffService.insertPlay(play);
     }
+
+    @PostMapping("/s/insert/show")
+    @ResponseBody
+    public Result insertShow(@RequestBody Show show) {
+        return staffService.insertShow(show);
+    }
+
 }

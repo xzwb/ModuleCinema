@@ -34,6 +34,7 @@ public class RegisterController {
         // 如果注册成功删除session
         if (result.getState() == 200) {
             session.removeAttribute("sms");
+            session.removeAttribute("phoneNumber");
         }
         return result;
     }

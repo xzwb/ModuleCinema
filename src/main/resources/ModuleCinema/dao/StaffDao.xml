@@ -12,11 +12,15 @@
         select count(*) from play;
     </select>
 
-    <update id="updatePlayState">
+    <select id="updatePlayState">
         update play set playState = #{playState} where playId = #{playId};
-    </update>
+    </select>
 
     <insert id="insertPlay" parameterType="ModuleCinema.pojo.Play" useGeneratedKeys="true" keyProperty="playId">
         insert into play values(default, #{playName}, #{playDuration}, #{playState}, #{playIntroduction}, #{playSrcFile});
+    </insert>
+
+    <insert id="insertShow" parameterType="ModuleCinema.pojo.Show" useGeneratedKeys="true" keyProperty="showId">
+        insert into playShow values(default, #{showTing}, #{startTime}, #{price}, #{showDate}, #{playId});
     </insert>
 </mapper>

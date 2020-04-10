@@ -2,6 +2,7 @@ package ModuleCinema.service;
 
 import ModuleCinema.pojo.Play;
 import ModuleCinema.pojo.Result;
+import ModuleCinema.pojo.Show;
 import ModuleCinema.pojo.Staff;
 
 public interface StaffService {
@@ -33,4 +34,11 @@ public interface StaffService {
      * @return
      */
     Result insertPlay(Play play);
+
+    /**
+     * 添加演出信息
+     * @param show
+     * @return
+     */
+    Result insertShow(Show show);
 }

@@ -1,5 +1,6 @@
 /home/xzwb/ModuleCinema/src/main/java/ModuleCinema/service/RegisterService.java
 /home/xzwb/ModuleCinema/src/main/java/ModuleCinema/config/ModuleCinemaInit.java
+/home/xzwb/ModuleCinema/src/main/java/ModuleCinema/service/impl/StaffServiceImpl.java
 /home/xzwb/ModuleCinema/src/main/java/ModuleCinema/service/HomeService.java
 /home/xzwb/ModuleCinema/src/main/java/ModuleCinema/pojo/Staff.java
 /home/xzwb/ModuleCinema/src/main/java/ModuleCinema/controller/HomeController.java
@@ -8,6 +9,7 @@
 /home/xzwb/ModuleCinema/src/main/java/ModuleCinema/controller/LogoutController.java
 /home/xzwb/ModuleCinema/src/main/java/ModuleCinema/interceptor/BossSessionInterceptor.java
 /home/xzwb/ModuleCinema/src/main/java/ModuleCinema/pojo/Play.java
+/home/xzwb/ModuleCinema/src/main/java/ModuleCinema/service/StaffService.java
 /home/xzwb/ModuleCinema/src/main/java/ModuleCinema/controller/RegisterController.java
 /home/xzwb/ModuleCinema/src/main/java/ModuleCinema/dao/HomeDao.java
 /home/xzwb/ModuleCinema/src/main/java/ModuleCinema/dao/RegisterDao.java
@@ -19,6 +21,7 @@
 /home/xzwb/ModuleCinema/src/main/java/ModuleCinema/dao/BossDao.java
 /home/xzwb/ModuleCinema/src/main/java/ModuleCinema/service/impl/RegisterServiceImpl.java
 /home/xzwb/ModuleCinema/src/main/java/ModuleCinema/controller/BossController.java
+/home/xzwb/ModuleCinema/src/main/java/ModuleCinema/dao/StaffDao.java
 /home/xzwb/ModuleCinema/src/main/java/ModuleCinema/interceptor/StaffSessionInterceptor.java
 /home/xzwb/ModuleCinema/src/main/java/ModuleCinema/config/RootConfig.java
 /home/xzwb/ModuleCinema/src/main/java/ModuleCinema/config/WebConfig.java
@@ -26,3 +29,4 @@
 /home/xzwb/ModuleCinema/src/main/java/ModuleCinema/pojo/Result.java
 /home/xzwb/ModuleCinema/src/main/java/ModuleCinema/service/impl/HomeServiceImpl.java
 /home/xzwb/ModuleCinema/src/main/java/ModuleCinema/pojo/User.java
+/home/xzwb/ModuleCinema/src/main/java/ModuleCinema/controller/StaffController.java

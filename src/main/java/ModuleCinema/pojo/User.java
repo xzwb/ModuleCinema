@@ -7,10 +7,6 @@ public class User {
     private int userId;
     // 用户昵称
     private String userName;
-
-    // 用户生日
-    private Date birthday;
-
     // 用户密码
     private String userPassword;
     // 用户性别
@@ -51,14 +47,6 @@ public class User {
 
     public void setUserName(String userName) {
         this.userName = userName;
-    }
-
-    public Date getBirthday() {
-        return birthday;
-    }
-
-    public void setBirthday(Date birthday) {
-        this.birthday = birthday;
     }
 
     public String getUserPassword() {
