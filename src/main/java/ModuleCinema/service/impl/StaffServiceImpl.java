@@ -62,4 +62,23 @@ public class StaffServiceImpl implements StaffService {
         result.setData(show.getShowId());
         return result;
     }
+
+    @Override
+    public Result deleteShow(int showId) {
+        staffDao.deleteShow(showId);
+        Result result = new Result();
+        result.setState(200);
+        result.setMessage("成功");
+        return result;
+    }
+
+    @Override
+    public Result getShow(int page) {
+        Result result = new Result();
+        result.setState(staffDao.getShowTotal());
+        result.setMessage("成功");
+        page = (page - 1) * 6;
+        result.setData(staffDao.getShow(page));
+        return result;
+    }
 }

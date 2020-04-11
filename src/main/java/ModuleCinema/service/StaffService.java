@@ -41,4 +41,13 @@ public interface StaffService {
      * @return
      */
     Result insertShow(Show show);
+
+    /**
+     * 获取演出信息
+     * @param page
+     * @return
+     */
+    Result getShow(int page);
+
+    Result deleteShow(int showId);
 }

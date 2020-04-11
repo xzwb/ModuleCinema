@@ -32,4 +32,14 @@ public interface StaffDao {
     void insertPlay(Play play);
 
     void insertShow(Show show);
+
+    /**
+     * 获取show的总数
+     * @return
+     */
+    int getShowTotal();
+
+    List<Show> getShow(@Param("page") int page);
+
+    void deleteShow(@Param("showId") int showId);
 }

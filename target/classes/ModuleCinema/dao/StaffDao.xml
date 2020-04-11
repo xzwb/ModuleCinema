@@ -4,6 +4,23 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="ModuleCinema.dao.StaffDao">
+    <resultMap id="showAndPlay" type="ModuleCinema.pojo.Show">
+        <id property="showId" column="showId"/>
+        <result property="showTing" column="showTing"/>
+        <result property="startTime" column="startTime"/>
+        <result property="price" column="price"/>
+        <result property="showDate" column="showDate"/>
+        <result property="playId" column="playId"/>
+        <association property="play" javaType="ModuleCinema.pojo.Play">
+            <id property="playId" column="playId"/>
+            <result property="playName" column="playName"/>
+            <result property="playDuration" column="playDuration"/>
+            <result property="playState" column="playState"/>
+            <result property="playIntroduction" column="playIntroduction"/>
+            <result property="playSrcFile" column="playSrcFile"/>
+        </association>
+    </resultMap>
+
     <select id="getPlays" resultType="ModuleCinema.pojo.Play">
         select *from play order by playId desc limit #{page}, 6;
     </select>
@@ -23,4 +40,16 @@
     <insert id="insertShow" parameterType="ModuleCinema.pojo.Show" useGeneratedKeys="true" keyProperty="showId">
         insert into playShow values(default, #{showTing}, #{startTime}, #{price}, #{showDate}, #{playId});
     </insert>
+
+    <select id="getShowTotal" resultType="int">
+        select count(*) from playShow;
+    </select>
+
+    <select id="getShow" resultMap="showAndPlay">
+        select *from playShow, play where playShow.playId = play.playId limit #{page}, 6;
+    </select>
+
+    <delete id="deleteShow">
+        delete from playShow where showId = #{showId};
+    </delete>
 </mapper>

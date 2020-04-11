@@ -66,4 +66,15 @@ public class StaffController {
         return staffService.insertShow(show);
     }
 
+    @GetMapping("/s/get/show/{page}")
+    @ResponseBody
+    public Result getShows(@PathVariable("page") int page) {
+        return staffService.getShow(page);
+    }
+
+    @PostMapping("/s/delete/{showId}")
+    @ResponseBody
+    public Result deleteShow(@PathVariable("showId") int showId) {
+        return staffService.deleteShow(showId);
+    }
 }
