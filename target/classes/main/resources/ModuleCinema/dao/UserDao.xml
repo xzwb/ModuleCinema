@@ -11,4 +11,8 @@
     <select id="userGetHotPlay" resultType="ModuleCinema.pojo.Play">
         select *from play where playState = 1 or playState = 2 order by playState, playId desc limit #{page}, 6;
     </select>
+
+    <select id="selectByPlayName" resultType="ModuleCinema.pojo.Play">
+        select *from play where playName = #{playName};
+    </select>
 </mapper>

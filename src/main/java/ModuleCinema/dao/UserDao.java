@@ -17,4 +17,11 @@ public interface UserDao {
      * 用户获取热门影片总数
      */
     int getHotPlayTotal();
+
+    /**
+     * 查询by电影名字
+     * @param playName
+     * @return
+     */
+    List<Play> selectByPlayName(@Param("playName") String playName);
 }
