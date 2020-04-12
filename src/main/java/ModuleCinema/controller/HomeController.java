@@ -3,6 +3,7 @@ package ModuleCinema.controller;
 import ModuleCinema.pojo.Boss;
 import ModuleCinema.pojo.Result;
 import ModuleCinema.pojo.Staff;
+import ModuleCinema.pojo.User;
 import ModuleCinema.service.HomeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -36,6 +37,17 @@ public class HomeController {
         Result result = new Result();
         result.setData(200);
         result.setMessage("登陆成功");
+        return result;
+    }
+
+    @GetMapping("/u/get/home")
+    @ResponseBody
+    public Result userHome(HttpSession session) {
+        User user = (User) session.getAttribute("user");
+        Result result = new Result();
+        result.setState(200);
+        result.setMessage("用户主页");
+        result.setData(user);
         return result;
     }
 }

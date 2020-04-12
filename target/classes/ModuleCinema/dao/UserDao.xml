@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="ModuleCinema.dao.UserDao">
+    <select id="getHotPlayTotal" resultType="int">
+        select count(*) from play where playState = 1 or playState = 2;
+    </select>
+
+    <select id="userGetHotPlay" resultType="ModuleCinema.pojo.Play">
+        select *from play where playState = 1 or playState = 2 order by playState, playId desc limit #{page}, 6;
+    </select>
+</mapper>
