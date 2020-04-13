@@ -15,4 +15,12 @@
     <select id="selectByPlayName" resultType="ModuleCinema.pojo.Play">
         select *from play where playName = #{playName};
     </select>
+
+    <select id="selectByPlayId" resultType="ModuleCinema.pojo.Play">
+        select *from play where playId = #{playId};
+    </select>
+
+    <select id="selectShow" resultType="ModuleCinema.pojo.Show">
+        select *from playShow where playId = #{playId} and showDate = #{date} order by showId;
+    </select>
 </mapper>
