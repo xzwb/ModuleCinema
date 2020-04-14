@@ -1,11 +1,14 @@
 package ModuleCinema.controller;
 
 import ModuleCinema.pojo.Result;
+import ModuleCinema.pojo.Set;
+import ModuleCinema.pojo.User;
 import ModuleCinema.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpSession;
 import java.util.Date;
 import java.util.Map;
 
@@ -47,5 +50,18 @@ public class UserController {
     @ResponseBody
     public Result getPlay(@PathVariable("playId") int playId) {
         return userService.getPlayByPlayId(playId);
+    }
+
+    @GetMapping("/u/choose/set/{showId}")
+    @ResponseBody
+    public Result getSet(@PathVariable("showId") int showId) {
+        return userService.getSet(showId);
+    }
+
+    @PostMapping("/u/buy")
+    @ResponseBody
+    public Result buyTick(@RequestBody Set set, HttpSession session) {
+        User user = (User) session.getAttribute("user");
+        return userService.buy(set, user.getUserId());
     }
 }

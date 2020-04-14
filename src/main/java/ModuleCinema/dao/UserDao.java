@@ -1,6 +1,7 @@
 package ModuleCinema.dao;
 
 import ModuleCinema.pojo.Play;
+import ModuleCinema.pojo.Set;
 import ModuleCinema.pojo.Show;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
@@ -31,4 +32,11 @@ public interface UserDao {
                           @Param("playId") int PlayId);
 
     Play selectByPlayId(@Param("playId") int playId);
+
+    List<Set> getSet(@Param("showId") int showId);
+
+    void buy(@Param("showId") int showId,
+             @Param("row") int row,
+             @Param("col") int col,
+             @Param("userId") int userId);
 }

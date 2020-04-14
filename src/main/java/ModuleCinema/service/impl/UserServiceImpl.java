@@ -2,6 +2,7 @@ package ModuleCinema.service.impl;
 
 import ModuleCinema.dao.UserDao;
 import ModuleCinema.pojo.Result;
+import ModuleCinema.pojo.Set;
 import ModuleCinema.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -62,6 +63,24 @@ public class UserServiceImpl implements UserService {
         result.setState(200);
         result.setMessage("查看票务");
         result.setData(userDao.selectShow(date, playId));
+        return result;
+    }
+
+    @Override
+    public Result getSet(int showId) {
+        Result result = new Result();
+        result.setState(200);
+        result.setMessage("成功");
+        result.setData(userDao.getSet(showId));
+        return result;
+    }
+
+    @Override
+    public Result buy(Set set, int userId) {
+        Result result = new Result();
+        userDao.buy(set.getShowId(), set.getRow(), set.getCol(), userId);
+        result.setState(200);
+        result.setMessage("成功");
         return result;
     }
 

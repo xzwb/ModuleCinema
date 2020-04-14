@@ -23,4 +23,12 @@
     <select id="selectShow" resultType="ModuleCinema.pojo.Show">
         select *from playShow where playId = #{playId} and showDate = #{date} order by showId;
     </select>
+
+    <select id="getSet" resultType="ModuleCinema.pojo.Set">
+        select *from userOrder where showId = #{showId};
+    </select>
+
+    <insert id="buy" parameterType="ModuleCinema.pojo.Set">
+        insert into userOrder values(#{showId}, #{row}, #{col}, #{userId});
+    </insert>
 </mapper>
