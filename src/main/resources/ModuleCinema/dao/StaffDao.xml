@@ -22,7 +22,7 @@
     </resultMap>
 
     <select id="getPlays" resultType="ModuleCinema.pojo.Play">
-        select *from play order by playId desc limit #{page}, 6;
+        select *from play order by playId desc limit #{page}, 8;
     </select>
 
     <select id="getTotal" resultType="int">
@@ -46,7 +46,7 @@
     </select>
 
     <select id="getShow" resultMap="showAndPlay">
-        select *from playShow, play where playShow.playId = play.playId limit #{page}, 6;
+        select *from playShow, play where playShow.playId = play.playId limit #{page}, 8;
     </select>
 
     <delete id="deleteShow">

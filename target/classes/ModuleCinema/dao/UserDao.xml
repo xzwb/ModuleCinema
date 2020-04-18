@@ -9,7 +9,7 @@
     </select>
 
     <select id="userGetHotPlay" resultType="ModuleCinema.pojo.Play">
-        select *from play where playState = 1 or playState = 2 order by playState, playId desc limit #{page}, 6;
+        select *from play where playState = 1 or playState = 2 order by playState, playId desc limit #{page}, 8;
     </select>
 
     <select id="selectByPlayName" resultType="ModuleCinema.pojo.Play">
@@ -31,4 +31,8 @@
     <insert id="buy" parameterType="ModuleCinema.pojo.Set">
         insert into userOrder values(#{showId}, #{row}, #{col}, #{userId});
     </insert>
+
+    <select id="selectShowToday" resultType="ModuleCinema.pojo.Show">
+        select *from playShow where playId = #{playId} and showDate = #{date} and startTime > #{startTime} order by showId;
+    </select>
 </mapper>

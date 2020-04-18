@@ -3,11 +3,6 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="ModuleCinema.dao.HomeDao">
-
-    <select id="homeDao" resultType="ModuleCinema.pojo.Play">
-        select *from play where playState = 1 limit 6;
-    </select>
-
     <select id="selectStaff" resultType="ModuleCinema.pojo.Staff">
         select *from staff order by staffId limit #{start}, 6;
     </select>

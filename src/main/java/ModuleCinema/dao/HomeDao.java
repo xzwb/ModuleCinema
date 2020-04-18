@@ -9,7 +9,6 @@ import java.util.List;
 
 @Repository
 public interface HomeDao {
-    List<Play> homeDao();
 
     /**
      * 获取员工的集合

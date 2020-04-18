@@ -47,7 +47,15 @@ public class UserServiceImpl implements UserService {
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
         String date = null;
         if (day == 1) {
+            SimpleDateFormat simpleDateFormat1 = new SimpleDateFormat("HH:mm");
+            String startTime = simpleDateFormat1.format(new Date());
+            System.out.println(startTime);
             date = simpleDateFormat.format(new Date());
+            Result result = new Result();
+            result.setState(200);
+            result.setMessage("查看票务");
+            result.setData(userDao.selectShowToday(date, playId, startTime));
+            return result;
         } else if (day == 2) {
             Calendar calendar = new GregorianCalendar();
             calendar.setTime(new Date());

@@ -18,7 +18,7 @@ public class StaffServiceImpl implements StaffService {
     @Override
     public Result getStaffHome(Staff staff) {
         Result result = new Result();
-        result.setState(200);
+        result.setState(staffDao.getTotal());
         result.setMessage("成功来到主页");
         result.setData(staff);
         return result;
@@ -26,7 +26,7 @@ public class StaffServiceImpl implements StaffService {
 
     @Override
     public Result getPlays(int page) {
-        page = (page - 1) * 6;
+        page = (page - 1) * 8;
         Result result = new Result();
         result.setState(staffDao.getTotal());
         result.setMessage("成功");
@@ -77,7 +77,7 @@ public class StaffServiceImpl implements StaffService {
         Result result = new Result();
         result.setState(staffDao.getShowTotal());
         result.setMessage("成功");
-        page = (page - 1) * 6;
+        page = (page - 1) * 8;
         result.setData(staffDao.getShow(page));
         return result;
     }
