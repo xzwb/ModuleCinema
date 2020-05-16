@@ -87,7 +87,7 @@ public class UserServiceImpl implements UserService {
     public Result buy(Set set, int userId) {
         Result result = new Result();
         userDao.buy(set.getShowId(), set.getRow(), set.getCol(), userId);
-        result.setState(200);
+        result.setState(userDao.selectOrderId(set.getShowId(), set.getRow(), set.getCol(), userId));
         result.setMessage("成功");
         return result;
     }

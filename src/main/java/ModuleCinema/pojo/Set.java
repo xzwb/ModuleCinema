@@ -4,6 +4,16 @@ package ModuleCinema.pojo;
  * 座位
  */
 public class Set {
+    private int orderId;
+
+    public int getOrderId() {
+        return orderId;
+    }
+
+    public void setOrderId(int orderId) {
+        this.orderId = orderId;
+    }
+
     // 行
     public int row;
 

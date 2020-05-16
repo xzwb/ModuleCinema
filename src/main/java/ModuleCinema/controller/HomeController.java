@@ -1,5 +1,6 @@
 package ModuleCinema.controller;
 
+import ModuleCinema.dao.UserDao;
 import ModuleCinema.pojo.Boss;
 import ModuleCinema.pojo.Result;
 import ModuleCinema.pojo.Staff;
@@ -16,6 +17,9 @@ import javax.servlet.http.HttpSession;
 public class HomeController {
     @Autowired
     HomeService homeService;
+
+    @Autowired
+    UserDao userDao;
 
     @GetMapping("/b/get/staff/{page}")
     @ResponseBody
@@ -45,7 +49,7 @@ public class HomeController {
     public Result userHome(HttpSession session) {
         User user = (User) session.getAttribute("user");
         Result result = new Result();
-        result.setState(200);
+        result.setState(userDao.getHotPlayTotal());
         result.setMessage("用户主页");
         result.setData(user);
         return result;

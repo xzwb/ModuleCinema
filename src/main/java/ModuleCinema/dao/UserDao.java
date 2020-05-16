@@ -43,4 +43,9 @@ public interface UserDao {
     List<Show> selectShowToday(@Param("date") String date,
                                @Param("playId") int playId,
                                @Param("startTime") String startTime);
+
+    int selectOrderId(@Param("showId") int showId,
+                      @Param("row") int row,
+                      @Param("col") int col,
+                      @Param("userId") int userId);
 }

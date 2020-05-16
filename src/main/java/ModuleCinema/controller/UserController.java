@@ -26,10 +26,10 @@ public class UserController {
         return userService.getHotPlay(page);
     }
 
-    @GetMapping("/u/search/play")
+    @PostMapping("/u/search/play")
     @ResponseBody
-    public Result searchPlay(@RequestBody Map<String, String> playName) {
-        return userService.getPlayByName(playName.get("playName"));
+    public Result searchPlay(String playName) {
+        return userService.getPlayByName(playName);
     }
 
     /**

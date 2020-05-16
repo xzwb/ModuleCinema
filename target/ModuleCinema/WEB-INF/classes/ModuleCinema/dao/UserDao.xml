@@ -29,8 +29,12 @@
     </select>
 
     <insert id="buy" parameterType="ModuleCinema.pojo.Set">
-        insert into userOrder values(#{showId}, #{row}, #{col}, #{userId});
+        insert into userOrder values(#{showId}, #{row}, #{col}, #{userId}, default);
     </insert>
+
+    <select id="selectOrderId" resultType="int">
+        select orderId from userOrder where showId = #{showId} and row = #{row} and col = #{col} and userId = #{userId};
+    </select>
 
     <select id="selectShowToday" resultType="ModuleCinema.pojo.Show">
         select *from playShow where playId = #{playId} and showDate = #{date} and startTime > #{startTime} order by showId;
