@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="../axios.min.js"></script>
+    <script  src="../vue-router.js"></script> 
+</head>
+<body>
+    <div style="position: absolute;left: 50px;" id = "temp">
+        
+                <svg style="width: 435px;height:90px" t="1589609463670" class="icon" viewBox="0 0 4464 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="20708" width="128" height="128"><path d="M4132.864 1024H331.776L0 512 331.776 0h3801.088c184.32 0 331.776 151.552 331.776 339.968v339.968c0 192.512-147.456 344.064-331.776 344.064zM516.096 409.6c-65.536 0-114.688 53.248-114.688 118.784s53.248 118.784 114.688 118.784 114.688-53.248 114.688-118.784-53.248-118.784-114.688-118.784z m348.16-266.24h-65.536v737.28h65.536v-737.28z" fill="#0E79CB" p-id="20709"></path><div style="position: absolute;top:20px;left:180px;font-size:30px;color:white">选座购票</div></svg>
+                <svg style="width: 435px;height:90px" t="1589609463670" class="icon" viewBox="0 0 4464 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="20708" width="128" height="128"><path d="M4132.864 1024H331.776L0 512 331.776 0h3801.088c184.32 0 331.776 151.552 331.776 339.968v339.968c0 192.512-147.456 344.064-331.776 344.064zM516.096 409.6c-65.536 0-114.688 53.248-114.688 118.784s53.248 118.784 114.688 118.784 114.688-53.248 114.688-118.784-53.248-118.784-114.688-118.784z m348.16-266.24h-65.536v737.28h65.536v-737.28z" fill="#d4237a" p-id="20709"></path><div style="position: absolute;top:20px;left:600px;font-size:30px;color:white">核对票务信息</div> </svg>
+                <svg style="width: 435px;height:90px" t="1589609463670" class="icon" viewBox="0 0 4464 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="20708" width="128" height="128"><path d="M4132.864 1024H331.776L0 512 331.776 0h3801.088c184.32 0 331.776 151.552 331.776 339.968v339.968c0 192.512-147.456 344.064-331.776 344.064zM516.096 409.6c-65.536 0-114.688 53.248-114.688 118.784s53.248 118.784 114.688 118.784 114.688-53.248 114.688-118.784-53.248-118.784-114.688-118.784z m348.16-266.24h-65.536v737.28h65.536v-737.28z" fill="#0E79CB" p-id="20709"></path> <div style="position: absolute;top:20px;left:1050px;font-size:30px;color:white">购票完成</div></svg>
+                <div style="position: absolute;left: 200px;top:350px;bottom: 200px;">
+                <div style="position: absolute;left: 280px;margin-top: 100px;margin-bottom: 350px;z-index: 100;"><input style="color:white;width: 400px;height: 70px;cursor: pointer; background-color: rgba(46, 204, 113,1.0);font-size: 20px;border-radius: 10px;outline: none;" type="button" value="支付(Pay now)💰" @click="jump"> </div>
+                <div style="position: absolute;left: 280px;margin-top: 200px;margin-bottom: 350px;z-index: 100;"><input style="color:white;width: 400px;height: 70px;cursor: pointer; background-color: #ff7979;font-size: 20px;border-radius: 10px;outline: none;" type="button" value="重新搜索(New search)🔍" onclick="jumpSearch()"> </div>
+                <div style="position: absolute;left: 280px;margin-top: 300px;margin-bottom: 350px;z-index: 100;"><input style="color:white;width: 400px;height: 70px;cursor: pointer; background-color: #9b59b6;font-size: 20px;border-radius: 10px;outline: none;" type="button" value="返回座位列表（Return list of seat）💺" onclick="returnSeat()"> </div>
+                </div>
+                <div style = "border: 5px solid gray;height: 160px;width: 450px;border-radius: 10px;position: relative;left: 450px;top:100px" >
+                    <div style = "height: 590px;width: 550px;border-radius: 10px;position: absolute;left:-75px;top:5px;overflow-y: scroll;">
+                    <div style = "position: relative;"> <svg style = "width: 600px;height: 150px;" t="1589617044598" class="icon" viewBox="0 0 3178 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="29086" width="128" height="128"><path d="M3057.91943624 32H1159.61435155a45.4677525 45.4677525 0 0 1-90.935505 0H113.60950874a17.60950875 17.60950875 0 0 0-17.60950875 17.60950875v924.74576344a17.60950875 17.60950875 0 0 0 17.60950875 17.60950875h955.13977594a45.4677525 45.4677525 0 1 1 90.935505 0H3057.91943624a17.60950875 17.60950875 0 0 0 17.60950969-17.60950875V49.64472781A17.60950875 17.60950875 0 0 0 3057.91943624 32zM1127.63548312 811.36165531a13.20713156 13.20713156 0 0 1-26.41426407 0V751.17235344a13.20713156 13.20713156 0 0 1 26.41426407 0z m0-179.15914594a13.20713156 13.20713156 0 0 1-26.41426407 0v-60.33017812a13.20713156 13.20713156 0 0 1 26.41426407 0z m0-179.15914593a13.20713156 13.20713156 0 0 1-26.41426407 0v-60.22452094a13.20713156 13.20713156 0 0 1 26.41426407 0z m0-179.15914594a13.20713156 13.20713156 0 0 1-26.41426407 0v-60.22452094a13.20713156 13.20713156 0 0 1 26.41426407 0z" fill="#ee3c61" p-id="29087"></path></svg>
+                        <div style="position: absolute;top:20px;left:120px;font-size:30px;color:white">票价<div style="margin-top: 10px;">{{ arr.price }}元</div></div>
+                        <div style="position: absolute;top:20px;left:300px;font-size:15px;color:white" >
+                            {{ name }}            {{ row }}排{{ col }}座
+                            
+                            <div style="margin-top: 10px;">
+                                {{ arr.showTing }}号演出厅
+                            </div>
+                            <div style="margin-top: 10px;">
+                                开始时间:{{ arr.startTime }}
+                            </div>
+                            <div style="margin-top: 10px;">
+                                播放日期:{{ arr.showDate }}
+                            </div>
+                        </div>
+                    </div>
+                    
+                    
+                </div> 
+        </div>
+    </div>
+</body>
+<script>
+    // function jump(){
+    //     document.location = "/Users/zhuchenguang/Desktop/NodejsExpressMongo/杨懿凡项目/用户/购票成功.html"
+    // }
+    // var myrow
+    // var mycol
+    function jumpSearch(){
+        document.location = "./用户登录后跳转的页面.html"
+    }
+    function returnSeat(){
+        var url = window.location.href;
+
+        var urlParmStr = url.slice(url.indexOf('showId='));//获取问号后所有的字符串
+                console.log(urlParmStr)
+
+    //     var row = new Array()
+    //     var col = new Array()
+    //     var j = 0
+    //     var temp = 0
+
+    //     for(var i = 0;i < urlParmStr.length;i++){
+    //         console.log(row,col)
+    //         if( '0' <= (urlParmStr[i]) && (urlParmStr[i]) <= '9'){
+    //             row[j] =  urlParmStr[i]
+    //             j++;
+                
+    //         }
+    //         else if(row.length >= 2 && typeof(urlParmStr[i+1]) != Number || row.length >= 1 && typeof(urlParmStr[i+1]) != Number){
+                
+    //             temp = i;
+    //             break
+    //         }
+    //     }
+
+    //     j = 0;
+        
+    //     for(var i = temp;i < urlParmStr.length;i++){
+    //         if('0' <= (urlParmStr[i]) && (urlParmStr[i]) <= '9'){
+    //             col[j] =  urlParmStr[i]
+    //             j++;
+    //         }
+    //         else if(col.length >= 2 && typeof(urlParmStr[i+1]) != Number || col.length >= 1 && typeof(urlParmStr[i+1]) != Number){
+                
+    //             break
+    //         }
+    //     }
+        
+    //    myrow = row.join("")
+    //    mycol = col.join("")
+    //    console.log(myrow)
+    // app._data.finally.row = myrow;
+    // app._data.finally.col = mycol;
+    // app._data.finally.showId = myshowId
+
+        document.location = "./选座购票.html?" + urlParmStr
+    }
+    
+
+    axios.defaults.withCredentials = true;
+            
+            var app = new Vue({
+                el:"#temp",
+                data:{
+                    row:"",
+                    col:"",
+                    finally:{
+                        "row":"",
+                        "col":"",
+                        "showId":""
+                    },
+                    arr:[],
+                    name:""
+                },
+
+                mounted:function(){
+                    this.inforTicket()
+                },
+                methods:{
+
+                inforTicket(){
+                var that = this;
+
+                var url = window.location.href;
+        console.log(url)
+        var urlParmStr = url.slice(url.indexOf('?'));//获取问号后所有的字符串
+        var myshowId = url.slice(url.indexOf('showId=') + 7);
+        console.log(myshowId)
+        that.finally.showId = myshowId
+        console.log(typeof(urlParmStr))
+
+        var row = new Array()
+        var col = new Array()
+        var myArr = new Array()
+        var j = 0
+        var temp = 0
+        var mytemp = 0
+
+        for(var i = 0;i < urlParmStr.length;i++){
+            console.log(row,col)
+            if( '0' <= (urlParmStr[i]) && (urlParmStr[i]) <= '9'){
+                row[j] =  urlParmStr[i]
+                j++;
+                
+            }
+            else if(row.length >= 2 && typeof(urlParmStr[i+1]) != Number || row.length >= 1 && typeof(urlParmStr[i+1]) != Number){
+                
+                temp = i;
+                break
+            }
+        }
+
+        j = 0;
+        
+        for(var i = temp;i < urlParmStr.length;i++){
+            if('0' <= (urlParmStr[i]) && (urlParmStr[i]) <= '9'){
+                col[j] =  urlParmStr[i]
+                j++;
+            }
+            else if(col.length >= 2 && typeof(urlParmStr[i+1]) != Number || col.length >= 1 && typeof(urlParmStr[i+1]) != Number){
+                mytemp = i
+                break
+            }
+        }
+
+        j = 0;
+
+        for(var i = mytemp;i < urlParmStr.length;i++){
+            if('0' <= (urlParmStr[i]) && (urlParmStr[i]) <= '9'){
+                myArr[j] =  urlParmStr[i]
+                j++;
+            }
+            else if(myArr.length >= 2 && typeof(urlParmStr[i+1]) != Number || myArr.length >= 1 && typeof(urlParmStr[i+1]) != Number){
+                
+                break
+            }
+        }
+        that.finally.row = row.join("")
+       that.finally.col = col.join("")
+       that.row = that.finally.row
+       that.col = that.finally.col
+        that.finally.showId = myArr.join("")
+
+                console.log(that.finally.showId)
+                axios.post("http://localhost:8080/ModuleCinema/u/getShow/" + that.finally.showId).then(resp=>{
+                  console.log(resp)
+                  that.arr = resp.data.data
+                    console.log(that.arr.playId)
+                  axios.get("http://localhost:8080/ModuleCinema/u/get/" + that.arr.playId).then(resp=>{
+                  
+                  that.name = resp.data.data.playName
+                  console.log(that.name)
+                  
+              }).catch(err=>{
+                console.log('error')
+              })
+                  
+              }).catch(err=>{
+                console.log('error')
+              })
+
+              
+              
+
+            },
+
+                jump(){
+                var that = this;
+
+                var url = window.location.href;
+        console.log(url)
+        var urlParmStr = url.slice(url.indexOf('?'));//获取问号后所有的字符串
+        var myshowId = url.slice(url.indexOf('showId=') + 7);
+        console.log(myshowId)
+        
+
+        var row = new Array()
+        var col = new Array()
+        var j = 0
+        var temp = 0
+
+        for(var i = 0;i < urlParmStr.length;i++){
+            console.log(row,col)
+            if( '0' <= (urlParmStr[i]) && (urlParmStr[i]) <= '9'){
+                row[j] =  urlParmStr[i]
+                j++;
+                
+            }
+            else if(row.length >= 2 && typeof(urlParmStr[i+1]) != Number || row.length >= 1 && typeof(urlParmStr[i+1]) != Number){
+                
+                temp = i;
+                break
+            }
+        }
+
+        j = 0;
+        
+        for(var i = temp;i < urlParmStr.length;i++){
+            if('0' <= (urlParmStr[i]) && (urlParmStr[i]) <= '9'){
+                col[j] =  urlParmStr[i]
+                j++;
+            }
+            else if(col.length >= 2 && typeof(urlParmStr[i+1]) != Number || col.length >= 1 && typeof(urlParmStr[i+1]) != Number){
+                
+                break
+            }
+        }
+
+                  axios.post("http://localhost:8080/ModuleCinema/u/buy",that.finally)
+                  .then(resp=>{
+                      console.log(resp)
+                        if(resp.data.message === "成功"){
+                            
+                            document.location = "./购票成功.html"
+                        }else{
+                            
+                            document.location = "./购票失败.html"
+                        }
+                        
+                  }).catch(err=>{
+                    console.log('error')
+                  })
+                  
+              },
+                    
+                }
+            })
+</script>
+</html>

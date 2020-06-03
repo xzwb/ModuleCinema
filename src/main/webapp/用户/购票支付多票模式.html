@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div style="position: absolute;left: 50px;">
+        
+                <svg style="width: 435px;height:90px" t="1589609463670" class="icon" viewBox="0 0 4464 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="20708" width="128" height="128"><path d="M4132.864 1024H331.776L0 512 331.776 0h3801.088c184.32 0 331.776 151.552 331.776 339.968v339.968c0 192.512-147.456 344.064-331.776 344.064zM516.096 409.6c-65.536 0-114.688 53.248-114.688 118.784s53.248 118.784 114.688 118.784 114.688-53.248 114.688-118.784-53.248-118.784-114.688-118.784z m348.16-266.24h-65.536v737.28h65.536v-737.28z" fill="#0E79CB" p-id="20709"></path><div style="position: absolute;top:20px;left:180px;font-size:30px;color:white">选座购票</div></svg>
+                <svg style="width: 435px;height:90px" t="1589609463670" class="icon" viewBox="0 0 4464 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="20708" width="128" height="128"><path d="M4132.864 1024H331.776L0 512 331.776 0h3801.088c184.32 0 331.776 151.552 331.776 339.968v339.968c0 192.512-147.456 344.064-331.776 344.064zM516.096 409.6c-65.536 0-114.688 53.248-114.688 118.784s53.248 118.784 114.688 118.784 114.688-53.248 114.688-118.784-53.248-118.784-114.688-118.784z m348.16-266.24h-65.536v737.28h65.536v-737.28z" fill="#d4237a" p-id="20709"></path><div style="position: absolute;top:20px;left:600px;font-size:30px;color:white">核对票务信息</div> </svg>
+                <svg style="width: 435px;height:90px" t="1589609463670" class="icon" viewBox="0 0 4464 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="20708" width="128" height="128"><path d="M4132.864 1024H331.776L0 512 331.776 0h3801.088c184.32 0 331.776 151.552 331.776 339.968v339.968c0 192.512-147.456 344.064-331.776 344.064zM516.096 409.6c-65.536 0-114.688 53.248-114.688 118.784s53.248 118.784 114.688 118.784 114.688-53.248 114.688-118.784-53.248-118.784-114.688-118.784z m348.16-266.24h-65.536v737.28h65.536v-737.28z" fill="#0E79CB" p-id="20709"></path> <div style="position: absolute;top:20px;left:1050px;font-size:30px;color:white">购票完成</div></svg>
+                <div style="position: absolute;left: 500px;">
+                <div style="position: absolute;left: 290px;margin-top: 100px;margin-bottom: 500px;"><input style="color:white;width: 400px;height: 70px;cursor: pointer; background-color: rgba(46, 204, 113,1.0);font-size: 20px;border-radius: 10px;outline: none;" type="button" value="支付(Pay now)💰" onclick="jump()"> </div>
+                <div style="position: absolute;left: 290px;margin-top: 250px;margin-bottom: 500px;"><input style="color:white;width: 400px;height: 70px;cursor: pointer; background-color: #ff7979;font-size: 20px;border-radius: 10px;outline: none;" type="button" value="重新搜索(New Search)🔍" onclick="jumpSearch()"> </div>
+                <div style="position: absolute;left: 290px;margin-top: 400px;margin-bottom: 500px;"><input style="color:white;width: 400px;height: 70px;cursor: pointer; background-color: #9b59b6;font-size: 20px;border-radius: 10px;outline: none;" type="button" value="返回座位列表（return list of seat）💺" onclick="jumpSearch()"> </div>
+                </div>
+                <div style = "border: 5px solid gray;height: 600px;width: 450px;border-radius: 10px;position: relative;left: 150px;top:100px">
+                    <div style = "height: 590px;width: 550px;border-radius: 10px;position: absolute;left:-75px;top:5px;overflow-y: scroll;">
+                    <div style = "position: relative;"> <svg style = "width: 600px;height: 150px;" t="1589617044598" class="icon" viewBox="0 0 3178 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="29086" width="128" height="128"><path d="M3057.91943624 32H1159.61435155a45.4677525 45.4677525 0 0 1-90.935505 0H113.60950874a17.60950875 17.60950875 0 0 0-17.60950875 17.60950875v924.74576344a17.60950875 17.60950875 0 0 0 17.60950875 17.60950875h955.13977594a45.4677525 45.4677525 0 1 1 90.935505 0H3057.91943624a17.60950875 17.60950875 0 0 0 17.60950969-17.60950875V49.64472781A17.60950875 17.60950875 0 0 0 3057.91943624 32zM1127.63548312 811.36165531a13.20713156 13.20713156 0 0 1-26.41426407 0V751.17235344a13.20713156 13.20713156 0 0 1 26.41426407 0z m0-179.15914594a13.20713156 13.20713156 0 0 1-26.41426407 0v-60.33017812a13.20713156 13.20713156 0 0 1 26.41426407 0z m0-179.15914593a13.20713156 13.20713156 0 0 1-26.41426407 0v-60.22452094a13.20713156 13.20713156 0 0 1 26.41426407 0z m0-179.15914594a13.20713156 13.20713156 0 0 1-26.41426407 0v-60.22452094a13.20713156 13.20713156 0 0 1 26.41426407 0z" fill="#ee3c61" p-id="29087"></path></svg>
+                        <div style="position: absolute;top:20px;left:120px;font-size:30px;color:white">票价<div style="margin-top: 10px;">35元</div></div>
+                        <div style="position: absolute;top:20px;left:300px;font-size:15px;color:white">
+                            变形金刚  3排6座
+                            
+                            <div style="margin-top: 10px;">
+                                1号演出厅
+                            </div>
+                            <div style="margin-top: 10px;">
+                                开始时间:15:00
+                            </div>
+                            <div style="margin-top: 10px;">
+                                播放日期:12-03
+                            </div>
+                        </div>
+                    </div>
+                    <div style = "position: relative;"> <svg style = "width: 600px;height: 150px;" t="1589617044598" class="icon" viewBox="0 0 3178 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="29086" width="128" height="128"><path d="M3057.91943624 32H1159.61435155a45.4677525 45.4677525 0 0 1-90.935505 0H113.60950874a17.60950875 17.60950875 0 0 0-17.60950875 17.60950875v924.74576344a17.60950875 17.60950875 0 0 0 17.60950875 17.60950875h955.13977594a45.4677525 45.4677525 0 1 1 90.935505 0H3057.91943624a17.60950875 17.60950875 0 0 0 17.60950969-17.60950875V49.64472781A17.60950875 17.60950875 0 0 0 3057.91943624 32zM1127.63548312 811.36165531a13.20713156 13.20713156 0 0 1-26.41426407 0V751.17235344a13.20713156 13.20713156 0 0 1 26.41426407 0z m0-179.15914594a13.20713156 13.20713156 0 0 1-26.41426407 0v-60.33017812a13.20713156 13.20713156 0 0 1 26.41426407 0z m0-179.15914593a13.20713156 13.20713156 0 0 1-26.41426407 0v-60.22452094a13.20713156 13.20713156 0 0 1 26.41426407 0z m0-179.15914594a13.20713156 13.20713156 0 0 1-26.41426407 0v-60.22452094a13.20713156 13.20713156 0 0 1 26.41426407 0z" fill="#ee3c61" p-id="29087"></path></svg>
+                        <div style="position: absolute;top:20px;left:120px;font-size:30px;color:white">票价<div style="margin-top: 10px;">35元</div></div>
+                        <div style="position: absolute;top:20px;left:300px;font-size:15px;color:white">
+                            变形金刚  3排6座
+                            
+                            <div style="margin-top: 10px;">
+                                1号演出厅
+                            </div>
+                            <div style="margin-top: 10px;">
+                                开始时间:15:00
+                            </div>
+                            <div style="margin-top: 10px;">
+                                播放日期:12-03
+                            </div>
+                        </div>
+                    </div>
+                    <div style = "position: relative;"> <svg style = "width: 600px;height: 150px;" t="1589617044598" class="icon" viewBox="0 0 3178 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="29086" width="128" height="128"><path d="M3057.91943624 32H1159.61435155a45.4677525 45.4677525 0 0 1-90.935505 0H113.60950874a17.60950875 17.60950875 0 0 0-17.60950875 17.60950875v924.74576344a17.60950875 17.60950875 0 0 0 17.60950875 17.60950875h955.13977594a45.4677525 45.4677525 0 1 1 90.935505 0H3057.91943624a17.60950875 17.60950875 0 0 0 17.60950969-17.60950875V49.64472781A17.60950875 17.60950875 0 0 0 3057.91943624 32zM1127.63548312 811.36165531a13.20713156 13.20713156 0 0 1-26.41426407 0V751.17235344a13.20713156 13.20713156 0 0 1 26.41426407 0z m0-179.15914594a13.20713156 13.20713156 0 0 1-26.41426407 0v-60.33017812a13.20713156 13.20713156 0 0 1 26.41426407 0z m0-179.15914593a13.20713156 13.20713156 0 0 1-26.41426407 0v-60.22452094a13.20713156 13.20713156 0 0 1 26.41426407 0z m0-179.15914594a13.20713156 13.20713156 0 0 1-26.41426407 0v-60.22452094a13.20713156 13.20713156 0 0 1 26.41426407 0z" fill="#ee3c61" p-id="29087"></path></svg>
+                        <div style="position: absolute;top:20px;left:120px;font-size:30px;color:white">票价<div style="margin-top: 10px;">35元</div></div>
+                        <div style="position: absolute;top:20px;left:300px;font-size:15px;color:white">
+                            变形金刚  3排6座
+                            
+                            <div style="margin-top: 10px;">
+                                1号演出厅
+                            </div>
+                            <div style="margin-top: 10px;">
+                                开始时间:15:00
+                            </div>
+                            <div style="margin-top: 10px;">
+                                播放日期:12-03
+                            </div>
+                        </div>
+                    </div>
+                    <div style = "position: relative;"> <svg style = "width: 600px;height: 150px;" t="1589617044598" class="icon" viewBox="0 0 3178 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="29086" width="128" height="128"><path d="M3057.91943624 32H1159.61435155a45.4677525 45.4677525 0 0 1-90.935505 0H113.60950874a17.60950875 17.60950875 0 0 0-17.60950875 17.60950875v924.74576344a17.60950875 17.60950875 0 0 0 17.60950875 17.60950875h955.13977594a45.4677525 45.4677525 0 1 1 90.935505 0H3057.91943624a17.60950875 17.60950875 0 0 0 17.60950969-17.60950875V49.64472781A17.60950875 17.60950875 0 0 0 3057.91943624 32zM1127.63548312 811.36165531a13.20713156 13.20713156 0 0 1-26.41426407 0V751.17235344a13.20713156 13.20713156 0 0 1 26.41426407 0z m0-179.15914594a13.20713156 13.20713156 0 0 1-26.41426407 0v-60.33017812a13.20713156 13.20713156 0 0 1 26.41426407 0z m0-179.15914593a13.20713156 13.20713156 0 0 1-26.41426407 0v-60.22452094a13.20713156 13.20713156 0 0 1 26.41426407 0z m0-179.15914594a13.20713156 13.20713156 0 0 1-26.41426407 0v-60.22452094a13.20713156 13.20713156 0 0 1 26.41426407 0z" fill="#ee3c61" p-id="29087"></path></svg>
+                        <div style="position: absolute;top:20px;left:120px;font-size:30px;color:white">票价<div style="margin-top: 10px;">35元</div></div>
+                        <div style="position: absolute;top:20px;left:300px;font-size:15px;color:white">
+                            变形金刚  3排6座
+                            
+                            <div style="margin-top: 10px;">
+                                1号演出厅
+                            </div>
+                            <div style="margin-top: 10px;">
+                                开始时间:15:00
+                            </div>
+                            <div style="margin-top: 10px;">
+                                播放日期:12-03
+                            </div>
+                        </div>
+                    </div>
+                    <div style = "position: relative;"> <svg style = "width: 600px;height: 150px;" t="1589617044598" class="icon" viewBox="0 0 3178 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="29086" width="128" height="128"><path d="M3057.91943624 32H1159.61435155a45.4677525 45.4677525 0 0 1-90.935505 0H113.60950874a17.60950875 17.60950875 0 0 0-17.60950875 17.60950875v924.74576344a17.60950875 17.60950875 0 0 0 17.60950875 17.60950875h955.13977594a45.4677525 45.4677525 0 1 1 90.935505 0H3057.91943624a17.60950875 17.60950875 0 0 0 17.60950969-17.60950875V49.64472781A17.60950875 17.60950875 0 0 0 3057.91943624 32zM1127.63548312 811.36165531a13.20713156 13.20713156 0 0 1-26.41426407 0V751.17235344a13.20713156 13.20713156 0 0 1 26.41426407 0z m0-179.15914594a13.20713156 13.20713156 0 0 1-26.41426407 0v-60.33017812a13.20713156 13.20713156 0 0 1 26.41426407 0z m0-179.15914593a13.20713156 13.20713156 0 0 1-26.41426407 0v-60.22452094a13.20713156 13.20713156 0 0 1 26.41426407 0z m0-179.15914594a13.20713156 13.20713156 0 0 1-26.41426407 0v-60.22452094a13.20713156 13.20713156 0 0 1 26.41426407 0z" fill="#ee3c61" p-id="29087"></path></svg>
+                        <div style="position: absolute;top:20px;left:120px;font-size:30px;color:white">票价<div style="margin-top: 10px;">35元</div></div>
+                        <div style="position: absolute;top:20px;left:300px;font-size:15px;color:white">
+                            变形金刚  3排6座
+                            
+                            <div style="margin-top: 10px;">
+                                1号演出厅
+                            </div>
+                            <div style="margin-top: 10px;">
+                                开始时间:15:00
+                            </div>
+                            <div style="margin-top: 10px;">
+                                播放日期:12-03
+                            </div>
+                        </div>
+                    </div>
+                </div> 
+        </div>
+    </div>
+</body>
+<script>
+    function jump(){
+        document.location = "/Users/zhuchenguang/Desktop/NodejsExpressMongo/杨懿凡项目/用户/购票成功.html"
+    }
+</script>
+</html>

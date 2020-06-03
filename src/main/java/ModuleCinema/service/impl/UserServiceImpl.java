@@ -16,6 +16,7 @@ import java.util.GregorianCalendar;
 public class UserServiceImpl implements UserService {
     @Override
     public Result getPlayByName(String playName) {
+        System.out.println(playName);
         Result result = new Result();
         result.setState(200);
         result.setMessage("返回查询结果");
@@ -51,6 +52,7 @@ public class UserServiceImpl implements UserService {
             String startTime = simpleDateFormat1.format(new Date());
             System.out.println(startTime);
             date = simpleDateFormat.format(new Date());
+            System.out.println(date);
             Result result = new Result();
             result.setState(200);
             result.setMessage("查看票务");
@@ -89,6 +91,15 @@ public class UserServiceImpl implements UserService {
         userDao.buy(set.getShowId(), set.getRow(), set.getCol(), userId);
         result.setState(userDao.selectOrderId(set.getShowId(), set.getRow(), set.getCol(), userId));
         result.setMessage("成功");
+        return result;
+    }
+
+    @Override
+    public Result getShowByShowId(int showId) {
+        Result result = new Result();
+        result.setState(200);
+        result.setMessage("成功");
+        result.setData(userDao.getShowByShowId(showId));
         return result;
     }
 

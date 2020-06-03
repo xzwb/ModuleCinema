@@ -1,0 +1,175 @@
+input{
+	background-color: rgba(0,0,0,0);
+}
+.clearfix::after{
+	content: "";
+	display: block;
+	clear: both;
+}
+.i-title{
+	text-align: center;
+}
+.i-title h2{
+	
+	font-style: bold;
+	font-size: 3em;
+	margin: 20px 10px 10px 10px;
+	color: white;
+	display: inline-block;
+
+}
+.title-line1{
+	border: 0.5px solid #dcdfe6;
+	width: 250px;
+	margin: 10px;
+	display: inline-block;
+}
+.title-line2{
+	border: 0.5px solid #dcdfe6;
+	width: 250px;
+	margin: 10px;
+	display: inline-block;
+}
+.form{
+	position: relative;
+}
+
+/*以上设置注册信息*/
+
+.form{
+
+	width:980px;
+	margin: 1em auto;
+	margin-top: 70px;
+}
+.form-item{
+	margin: 40px 0;
+	position: relative;
+}
+.form .form-area{
+	margin: 0 auto;
+	width: 423px;
+}
+
+input[type = "text"],input[type = "password"]{
+	border:1px solid;width: 100%;
+	height: 40px;
+	text-indent: 1em;
+	box-sizing: border-box;
+	border-radius: 4px;
+	border-color:#dcdfe6;
+	font-size: 14px;
+	color:rgba(225, 112, 85,1.0);
+}
+input[type = "text"]:hover,input[type = "password"]:hover{
+	border-color: rgb(51,102,205);
+}
+input[type = "text"]::placeholder,input[type = "password"]::placeholder{
+	color:rgba(225, 112, 85,1.0);
+}
+input[type = "text"]:focus,input[type = "password"]:focus{
+	border-color: #00a1d6;
+}
+a{
+	font-size: 12px;
+	color:#00a1d6;
+	text-decoration: none;
+}
+
+div .form-item:nth-child(4){
+	margin-bottom: 0;
+	position: relative;
+	
+}
+div .form-item:nth-child(6){
+	margin-bottom: 0;
+	margin-top: 0;
+
+}
+.form-item .select-item,.form-item .input{
+	float: left;
+	height: 40px;
+	
+}
+.form-item .select-item{
+	width: 130px;
+	
+	line-height: 40px;
+	border: 1px solid;
+	box-sizing: border-box;
+
+	border-radius: 4px;
+	border-color:#dcdfe6;
+	font-size: 14px;
+	color:#606266;
+	border-top-right-radius: 0;
+	border-bottom-right-radius: 0;
+	position: relative;
+}
+.form-item .select .input input{
+	width: 293px;
+	border-top-left-radius: 0;
+	border-bottom-left-radius: 0;
+}
+.form-item .select-item .title{
+	padding-left: 15px;
+	position: relative;
+	color: rgba(225, 112, 85,1.0);
+}
+.form-item .select-item .title img{
+	width: 25px;
+	height: 20px;
+	position: absolute;
+	top:10px;
+	right: 5px;
+}
+.readme{
+	margin: 12px 0;
+}
+.tip{
+	margin: 10px 0;
+}
+
+.form-item .select ul{
+	position: absolute;
+	z-index: 1;
+	max-height: 250px;
+	overflow: scroll;
+	background: #fff;
+	top:50px;
+	left: -1px;
+	border:1px solid #dcdfe6;
+	width: 130px;
+	padding-left: 10px;
+	border-radius: 4px;
+}
+
+.form-item:nth-child(5) button{
+	width: 130px;
+	height: 38px;
+	background: #00a0d8;
+	position: absolute;
+	right: 1px;
+	top:1px;
+	color: #fff;
+	cursor:pointer;
+}
+.form-item:nth-child(5) button:hover{
+	background: #5cb2db;
+}
+
+.error{
+	position: absolute;
+	width: 240px;
+	right: -250px;
+	top:5px;
+	color: red;
+	font-size: 20px;
+	display: none;
+}
+.haserror .error{
+	display:block;
+}
+.haserror input{
+	border-color: red;
+}

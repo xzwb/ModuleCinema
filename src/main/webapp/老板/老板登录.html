@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="../axios.min.js"></script>
+    <script  src="../vue-router.js"></script> 
+    
+    
+    <link rel="stylesheet" href="https://at.alicdn.com/t/font_1695482_1equvfd6nfhk.css">
+    
+    <link rel="stylesheet" href="../reset.css">
+
+    
+    <style>
+        body{
+            margin: 0;
+            padding: 0;
+        }
+        .head{
+            height: 88px;
+            padding: 22px;
+            box-sizing: border-box;
+        }
+        .head-center{
+            margin: 0 auto;
+            width: 1200px;
+            
+        }
+        
+        
+        .back{
+            height: 600px;
+            width: 100%;
+            background-image: url(./img/IDR_THEME_NTP_BACKGROUND.png); 
+            background-position: 50%;
+            
+            /* overflow: hidden; */
+        }
+        .iconfont{
+            color: #ff5502;
+            font-size: 45px;
+            float: left;
+        }
+        .clock{
+            text-align: center;
+            width: 900px;
+            margin: auto;
+            background-color: #fef2f2;
+            color: #6C6C6C;
+            font-size: 12px;
+            border: 1px solid #ffb4a8;
+            height: 30px;
+            line-height: 30px;
+            box-sizing: border-box;
+            overflow: hidden;
+        }
+        .clearfix{
+            content: "";
+            clear: both;
+            display: block;
+        }
+        .size1{
+            font-size: 18px;
+            color: #f40;
+            line-height: 44px;
+        }
+        
+        .change{
+            float: right;text-decoration:none;width: 125px;color: #666;font-size: 12px;line-height: 44px;
+        }
+        .change:hover{
+            color: #f40;
+        }
+        .login{
+            width: 350px;
+            height: 350px;
+            background-color: rgba(255,255,255);
+            position: absolute;
+            top: 120px;
+            left: 60px;
+            box-shadow: 2px 2px 5px 5px rgba(0,0,0,0.7);
+        }
+        
+        .login-content{
+            width: 300px;
+            height: 293px;
+            padding-top: 25px;
+            padding-right: 25px;
+            padding-bottom: 23px;
+            padding-left: 25px;
+        }
+        .content{
+            margin: 0 auto;height: 100%;width: 1200px;box-sizing: border-box;
+            position: relative;
+            padding-top: 25px;
+            padding-right: 25px;
+            padding-bottom: 23px;
+            padding-left: 25px;
+            
+        }
+        
+        .ewm{
+            font-size: 62px;
+            cursor: pointer;
+            position: absolute;
+            color:#f40;
+            right: 0;
+            top:0;
+            margin-top: 1px;
+        }
+        .ewm:hover{
+            color: rgb(255, 0, 0);
+        }
+        .safe{
+            color: #df9c1f;
+            font-size: 16px;
+            margin-right: 7px;
+            line-height: 16px;
+        }
+        .input1{
+            margin-top: 20px;
+            position: relative;
+            width: 300px;
+            border:1px solid #ddd;
+            line-height: 40px;
+            height: 40px;
+            cursor: pointer;
+
+            
+        }
+        .lg{
+            margin-top: 20px;
+            position: relative;
+            width: 300px;
+            
+            line-height: 42px;
+            height: 42px;
+            cursor: pointer;
+            
+        }
+        .lg input{
+            padding: 11px;cursor: pointer;width: 300px;height: 42px; background-color: #f40;border-radius: 5px;text-align: center;color: #fff;letter-spacing: 0.3em;font-weight: bold;
+        }
+        .lg input:hover{
+            background-color:rgb(255, 25, 0)
+        }
+        input{
+            font: 400 14px system-ui;
+            color: black;
+            padding: 11px 11px 10px 20px;
+            position: absolute;
+            right: 0;
+            width: 240px;
+            border: none;
+        }
+        .man{
+            position: absolute;
+            left: -1px;
+            width: 40px;
+            height: 40px;
+            text-align: center;
+            color: white;
+            font-size: 24px;
+            float: left;
+            z-index: 1;
+            background-color: #ddd;
+            padding-left: 2px;
+        }
+        .wz{
+            margin-top: 20px;
+        }
+        .wz div{
+            display: inline-block;
+            margin-right: 20px;
+            color: #6c6c6c;
+            font-size: 12px;
+            line-height: 1px;
+            cursor: pointer;
+        }
+        .wz div:hover{
+            color: #f40
+        }
+        .temp1{
+            font-size: 16px;
+            color: red;
+            margin-right: 3px;
+        }
+        .temp2{
+            font-size: 16px;
+            color: #3498db;
+            margin-right: 3px;
+        }
+        .ps{
+            margin-top: 25px;
+            text-align: right;
+        }
+        .ps div{
+            margin-right: 10px;
+            display: inline-block;
+            color:#6c6c6c;
+            cursor: pointer;
+            font-size: 12px;
+        }
+        .ps div:hover{
+            color: #f40
+        }
+
+        
+        .tag4{
+            margin: 0 8px;
+            width: 56px;
+            height: 18px;
+            text-align: center;
+            font-size: 12px;
+            white-space: nowrap;
+            color: #9c9c9c;
+            text-decoration: none;
+            
+        }
+        .tag5{
+            margin: 0 8px;
+            width: 56px;
+            height: 18px;
+            text-align: center;
+            font-size: 12px;
+            white-space: nowrap;
+            color: #9c9c9c;
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <div style = "font-size: 40px;font-weight: 200;height: 100px;width: 100%;text-align: center;line-height: 100px;">欢迎登陆~老板您辛苦了！</div>
+    </div>
+    <div class = "middle">
+        <div class = "back">
+            <div class = "content">
+                
+                <div class = "login"> 
+                    <div class = "login-content">
+                        <div style = "height: 18px;
+                        line-height: 18px;
+                        font-size: 16px;
+                        color: #3c3c3c;
+                        margin-top: 9px;
+                        padding-bottom: 8px;
+                        font-weight: 700;">密码登录</div>
+                        
+                        <div id = "temp">
+                            <div class = "input1">
+                                <div class = "iconfont man">&#xe6a2;</div>
+                                <input v-model = "temp.bossId" name = "bossId" type="number" style = "outline: none;height:18px" placeholder="您的ID">
+                            </div>
+                            <div class = "input1">
+                                <div class = "iconfont man">&#xe648;</div>
+                                <input v-model = "temp.bossPassword" name = "bossPassword" type="text" style = "outline: none;height:18px" placeholder="您的密码">
+                            </div> 
+                            <div  class = "lg">
+                                <input type="submit" value = "登录"  @click = "MyGet" >  
+                            </div> 
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+   
+
+        <script>
+            axios.defaults.withCredentials = true;
+            
+            var app = new Vue({
+                el:"#temp",
+                data:{
+                    temp :{
+                        "bossId":"",
+                        "bossPassword":""
+                    }
+                    
+                },
+                methods:{
+                    MyGet(){
+                        var that = this;
+                        console.log(that.temp)
+                        console.log(typeof(that.bossId),typeof(that.bossPassword))
+                        // axios({
+                        //      methods:'post',
+                        //      url:("http://localhost:8080/MyTest/login"),
+                        //      data: {
+                        //          id:'1'
+                        //      }
+                        // })
+                        // axios.post("http://localhost:8080/MyTest/login/",{id : that.id})
+                        axios.post("http://localhost:8080/ModuleCinema/a/post/login/bossId",that.temp)
+                        
+                        .then(resp=>{
+                            
+                            if(resp.data.message  == "校验成功"){
+                                alert("登录成功")
+                                console.log("成功")
+                                document.location = "./老板首页以及删除员工.html"
+                            }else{
+                                alert("登录失败，请重试")
+                                document.location = "./老板登录.html"
+                            }
+                            
+                            // this.$router.push({path:'https://www.baidu.com'});
+                        }).catch(err=>{
+                            
+                            console.log("失败")
+                            
+                        })
+                        
+                        
+                    },
+                    
+                }
+            })
+        </script>        
+</body>
+</html>

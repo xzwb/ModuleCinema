@@ -4,6 +4,23 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="ModuleCinema.dao.UserDao">
+    <resultMap id="showAndPlay1" type="ModuleCinema.pojo.Show">
+        <id property="showId" column="showId"/>
+        <result property="showTing" column="showTing"/>
+        <result property="startTime" column="startTime"/>
+        <result property="price" column="price"/>
+        <result property="showDate" column="showDate"/>
+        <result property="playId" column="playId"/>
+        <association property="play" javaType="ModuleCinema.pojo.Play">
+            <id property="playId" column="playId"/>
+            <result property="playName" column="playName"/>
+            <result property="playDuration" column="playDuration"/>
+            <result property="playState" column="playState"/>
+            <result property="playIntroduction" column="playIntroduction"/>
+            <result property="playSrcFile" column="playSrcFile"/>
+        </association>
+    </resultMap>
+
     <select id="getHotPlayTotal" resultType="int">
         select count(*) from play where playState = 1 or playState = 2;
     </select>
@@ -38,5 +55,9 @@
 
     <select id="selectShowToday" resultType="ModuleCinema.pojo.Show">
         select *from playShow where playId = #{playId} and showDate = #{date} and startTime > #{startTime} order by showId;
+    </select>
+
+    <select id="getShowByShowId" resultMap="showAndPlay1">
+        select *from playShow p left join play on p.playId = play.playId where showId = #{showId};
     </select>
 </mapper>

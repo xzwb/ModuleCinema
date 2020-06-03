@@ -15,4 +15,6 @@ public interface UserService {
     Result getSet(int showId);
 
     Result buy(Set set, int userId);
+
+    Result getShowByShowId(int showId);
 }

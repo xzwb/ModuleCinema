@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>员工注册</title>
+    <link rel="stylesheet" href="../reset.css">
+    <link rel="stylesheet" href="./用户注册.css">
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="../axios.min.js"></script>
+    <style>
+        video{
+            position: fixed;
+            right: 0;
+            bottom: 0;
+            min-width: 100%;
+            min-height: 100%;
+            width: auto;
+            height: auto; 
+            z-index: -100; 
+            /* -webkit-filter: grayscale(20%); */
+        }
+        .dis{
+            display: none;
+        }
+        .changeColor{
+            background-color: rgba(250, 177, 160,1.0);
+            color:azure
+        }
+        button{
+            color: rgb(96, 167, 124);background-color: #f5f5f5;border-color: #d9d9d9;height: 40px;width: 100%;border-radius: 4px;font-size: 14px;
+        }
+    </style>
+</head>
+
+<body>
+    <video  loop = "loop" autoplay= "autoplay" src="./img/96486aeb4ce2839d038853e83dda8094.mp4"></video>
+    
+    <!-- <div style="text-align: center;background-color: #00a0d8;height: 86px;">
+        <img src="/Users/zhuchenguang/Downloads/rl_top.35edfde.png" alt="">
+    </div> -->
+    <div id = "temp">
+        <div class="form" style="background-color:rgba(52, 73, 94,0.7);height: 700px;border-radius: 20px;">
+            <div class="i-title">
+                <p class="title-line1"></p>
+                <h2>Register</h2>
+                <p class="title-line2"></p>
+            </div>
+            <!--  -->
+            <div class="form-area">
+                <div class="form-item">
+                    <input type="text" placeholder="昵称" v-model = "myjson.userName">
+                    <div class="error">
+                        error
+                    </div>
+                </div>
+                <div class="form-item ">
+                    <input type="password" placeholder="密码（6-16个字符组成，区分大小写）" v-model = "myjson.userPassword">
+                    <div class="error">
+                        error
+                    </div>
+                </div>
+                <div class="form-item">
+                    <input type="text" placeholder="性别" v-model = "myjson.userSex">
+                    <div class="error">
+                        error
+                    </div>
+                </div>
+                <div class="form-item">
+                    <div class="select clearfix">
+                        <div class="select-item ">
+                            <div class="title">中国大陆
+                                <img  onclick="showList()" src="./img/jiantouxia.png" alt="">
+
+                            </div>
+                            
+                            <ul  id = "temp-ul" class = "dis">
+                                <li  class=" selected"><span>中国大陆</span></li>
+                                <li  class=""><span>中国香港特别行政区</span></li>
+                                <li  class=""><span>中国澳门特别行政区</span></li>
+                                <li  class=""><span>中国台湾</span></li>
+                                <li  class=""><span>美国</span></li>
+                                <li  class=""><span>比利时</span></li>
+                                <li  class=""><span>澳大利亚</span></li>
+                                <li  class=" hover"><span>法国</span></li>
+                                <li  class=""><span>加拿大</span></li>
+                                <li  class=""><span>日本</span></li>
+                                <li  class=""><span>新加坡</span></li>
+                                <li  class=""><span>韩国</span></li>
+                                <li  class=""><span>马来西亚</span></li>
+                                <li  class=""><span>英国</span></li>
+                                <li  class=""><span>意大利</span></li>
+                                <li  class=""><span>德国</span></li>
+                                <li  class=""><span>俄罗斯</span></li>
+                                <li  class=""><span>新西兰</span></li>
+                                <li  class=" is-disabled"><span>--其它--</span></li>
+                                <li  class=""><span>阿富汗</span></li>
+                                <li  class=""><span>阿尔巴尼亚</span></li>
+                                <li  class=""><span>阿尔及利亚</span></li>
+                                <li  class=""><span>安道尔</span></li>
+                                <li  class=""><span>安哥拉</span></li>
+                                <li  class=""><span>安提瓜岛和巴布达</span></li>
+                                <li  class=""><span>阿根廷</span></li>
+                                <li  class=""><span>亚美尼亚</span></li>
+                                <li  class=""><span>阿森松岛</span></li>
+                                <li  class=""><span>奥地利</span></li>
+                                <li  class=""><span>阿塞拜疆</span></li>
+                                <li  class=""><span>巴哈马群岛</span></li>
+                                <li  class=""><span>巴林</span></li>
+                                <li  class=""><span>孟加拉国</span></li>
+                                <li  class=""><span>巴巴多斯</span></li>
+                                <li  class=""><span>白俄罗斯</span></li>
+                                <li  class=""><span>伯利兹</span></li>
+                                <li  class=""><span>贝宁</span></li>
+                                <li  class=""><span>百慕大群岛</span></li>
+                                <li  class=""><span>不丹</span></li>
+                                <li  class=""><span>玻利维亚</span></li>
+                                <li  class=""><span>波黑</span></li>
+                                <li  class=""><span>博茨瓦纳</span></li>
+                                <li  class=""><span>巴西</span></li>
+                                <li  class=""><span>文莱</span></li>
+                                <li  class=""><span>保加利亚</span></li>
+                                <li  class=""><span>布基纳法索</span></li>
+                                <li  class=""><span>布隆迪</span></li>
+                                <li  class=""><span>柬埔寨</span></li>
+                                <li  class=""><span>喀麦隆</span></li>
+                                <li  class=""><span>佛得角</span></li>
+                                <li  class=""><span>开曼群岛</span></li>
+                                <li  class=""><span>非洲中部</span></li>
+                                <li  class=""><span>乍得</span></li>
+                                <li  class=""><span>智利</span></li>
+                                <li  class=""><span>哥伦比亚</span></li>
+                                <li  class=""><span>科摩罗</span></li>
+                                <li  class=""><span>刚果</span></li>
+                                <li  class=""><span>刚果(金)</span></li>
+                                <li  class=""><span>库克岛</span></li>
+                                <li  class=""><span>哥斯达黎加</span></li>
+                                <li  class=""><span>克罗地亚</span></li>
+                                <li  class=""><span>古巴</span></li>
+                                <li  class=""><span>塞浦路斯</span></li>
+                                <li  class=""><span>捷克</span></li>
+                                <li  class=""><span>丹麦</span></li>
+                                <li  class=""><span>迪戈加西亚岛</span></li>
+                                <li  class=""><span>吉布提</span></li>
+                                <li  class=""><span>多米尼加</span></li>
+                                <li  class=""><span>多米尼加代表</span></li>
+                                <li  class=""><span>厄瓜多尔</span></li>
+                                <li  class=""><span>埃及</span></li>
+                                <li  class=""><span>萨尔瓦多</span></li>
+                                <li  class=""><span>赤道几内亚</span></li>
+                                <li  class=""><span>厄立特里亚</span></li>
+                                <li  class=""><span>爱沙尼亚</span></li>
+                                <li  class=""><span>埃塞俄比亚</span></li>
+                                <li  class=""><span>福克兰岛</span></li>
+                                <li  class=""><span>法罗岛</span></li>
+                                <li  class=""><span>斐济</span></li>
+                                <li  class=""><span>芬兰</span></li>
+                                <li  class=""><span>法属圭亚那</span></li>
+                                <li  class=""><span>法属波利尼西亚</span></li>
+                                <li  class=""><span>加蓬</span></li>
+                                <li  class=""><span>冈比亚</span></li>
+                                <li  class=""><span>格鲁吉亚</span></li>
+                                <li  class=""><span>加纳</span></li>
+                                <li  class=""><span>直布罗陀</span></li>
+                                <li  class=""><span>希腊</span></li>
+                                <li  class=""><span>格陵兰岛</span></li>
+                                <li  class=""><span>格林纳达</span></li>
+                                <li  class=""><span>瓜德罗普岛</span></li>
+                                <li  class=""><span>关岛</span></li>
+                                <li  class=""><span>几内亚</span></li>
+                                <li  class=""><span>几内亚比绍</span></li>
+                                <li  class=""><span>海地</span></li>
+                                <li  class=""><span>洪都拉斯</span></li>
+                                <li  class=""><span>匈牙利</span></li>
+                                <li  class=""><span>冰岛</span></li>
+                                <li  class=""><span>印度</span></li>
+                                <li  class=""><span>印尼</span></li>
+                                <li  class=""><span>伊朗</span></li>
+                                <li  class=""><span>伊拉克</span></li>
+                                <li  class=""><span>爱尔兰</span></li>
+                                <li  class=""><span>以色列</span></li>
+                                <li  class=""><span>科特迪瓦</span></li>
+                                <li  class=""><span>牙买加</span></li>
+                                <li  class=""><span>约旦</span></li>
+                                <li  class=""><span>肯尼亚</span></li>
+                                <li  class=""><span>基里巴斯</span></li>
+                                <li  class=""><span>朝鲜</span></li>
+                                <li  class=""><span>科威特</span></li>
+                                <li  class=""><span>吉尔吉斯斯坦</span></li>
+                                <li  class=""><span>老挝</span></li>
+                                <li  class=""><span>拉脱维亚</span></li>
+                                <li  class=""><span>黎巴嫩</span></li>
+                                <li  class=""><span>莱索托</span></li>
+                                <li  class=""><span>利比里亚</span></li>
+                                <li  class=""><span>利比亚</span></li>
+                                <li  class=""><span>立陶宛</span></li>
+                                <li  class=""><span>卢森堡</span></li>
+                                <li  class=""><span>马其顿</span></li>
+                                <li  class=""><span>马达加斯加</span></li>
+                                <li  class=""><span>马拉维</span></li>
+                                <li  class=""><span>马尔代夫</span></li>
+                                <li  class=""><span>马里</span></li>
+                                <li  class=""><span>马耳他</span></li>
+                                <li  class=""><span>马里亚纳岛</span></li>
+                                <li  class=""><span>马歇尔岛</span></li>
+                                <li  class=""><span>马提尼克岛</span></li>
+                                <li  class=""><span>毛里塔尼亚</span></li>
+                                <li  class=""><span>毛里求斯</span></li>
+                                <li  class=""><span>墨西哥</span></li>
+                                <li  class=""><span>密克罗尼西亚</span></li>
+                                <li  class=""><span>摩尔多瓦</span></li>
+                                <li  class=""><span>摩纳哥</span></li>
+                                <li  class=""><span>蒙古</span></li>
+                                <li  class=""><span>蒙特塞拉特岛</span></li>
+                                <li  class=""><span>摩洛哥</span></li>
+                                <li  class=""><span>莫桑比克</span></li>
+                                <li  class=""><span>缅甸</span></li>
+                                <li  class=""><span>纳米比亚</span></li>
+                                <li  class=""><span>瑙鲁</span></li>
+                                <li  class=""><span>尼泊尔</span></li>
+                                <li  class=""><span>荷兰</span></li>
+                                <li  class=""><span>尼加拉瓜</span></li>
+                                <li  class=""><span>尼日尔</span></li>
+                                <li  class=""><span>尼日利亚</span></li>
+                                <li  class=""><span>纽埃岛</span></li>
+                                <li  class=""><span>诺福克岛</span></li>
+                                <li  class=""><span>挪威</span></li>
+                                <li  class=""><span>阿曼</span></li>
+                                <li  class=""><span>巴基斯坦</span></li>
+                                <li  class=""><span>帕劳</span></li>
+                                <li  class=""><span>巴拿马</span></li>
+                                <li  class=""><span>巴布亚新几内亚</span></li>
+                                <li  class=""><span>巴拉圭</span></li>
+                                <li  class=""><span>秘鲁</span></li>
+                                <li  class=""><span>菲律宾</span></li>
+                                <li  class=""><span>波兰</span></li>
+                                <li  class=""><span>葡萄牙</span></li>
+                                <li  class=""><span>波多黎各</span></li>
+                                <li  class=""><span>卡塔尔</span></li>
+                                <li  class=""><span>聚会岛</span></li>
+                                <li  class=""><span>罗马尼亚</span></li>
+                                <li  class=""><span>卢旺达</span></li>
+                                <li  class=""><span>萨摩亚，东部</span></li>
+                                <li  class=""><span>萨摩亚，西部</span></li>
+                                <li  class=""><span>圣马力诺</span></li>
+                                <li  class=""><span>圣多美和普林西比</span></li>
+                                <li  class=""><span>沙特阿拉伯</span></li>
+                                <li  class=""><span>塞内加尔</span></li>
+                                <li  class=""><span>塞舌尔共和国</span></li>
+                                <li  class=""><span>塞拉利昂</span></li>
+                                <li  class=""><span>斯洛伐克</span></li>
+                                <li  class=""><span>斯洛文尼亚</span></li>
+                                <li  class=""><span>所罗门群岛</span></li>
+                                <li  class=""><span>索马里</span></li>
+                                <li  class=""><span>南非</span></li>
+                                <li  class=""><span>西班牙</span></li>
+                                <li  class=""><span>斯里兰卡</span></li>
+                                <li  class=""><span>圣卢西亚</span></li>
+                                <li  class=""><span>圣皮埃尔和密克隆群岛</span></li>
+                                <li  class=""><span>苏丹</span></li>
+                                <li  class=""><span>苏里南</span></li>
+                                <li  class=""><span>斯威士兰</span></li>
+                                <li  class=""><span>瑞典</span></li>
+                                <li  class=""><span>瑞士</span></li>
+                                <li  class=""><span>叙利亚</span></li>
+                                <li  class=""><span>坦桑尼亚</span></li>
+                                <li  class=""><span>泰国</span></li>
+                                <li  class=""><span>多哥</span></li>
+                                <li  class=""><span>托克劳岛</span></li>
+                                <li  class=""><span>汤加</span></li>
+                                <li  class=""><span>特立尼达和多巴哥</span></li>
+                                <li  class=""><span>突尼斯</span></li>
+                                <li  class=""><span>土耳其</span></li>
+                                <li  class=""><span>土库曼斯坦</span></li>
+                                <li  class=""><span>特克斯和凯科斯</span></li>
+                                <li  class=""><span>图瓦卢</span></li>
+                                <li  class=""><span>乌干达</span></li>
+                                <li  class=""><span>乌克兰</span></li>
+                                <li  class=""><span>阿联酋</span></li>
+                                <li  class=""><span>乌拉圭</span></li>
+                                <li  class=""><span>乌兹别克斯坦</span></li>
+                                <li  class=""><span>瓦努阿图</span></li>
+                                <li  class=""><span>委内瑞拉</span></li>
+                                <li  class=""><span>越南</span></li>
+                                <li  class=""><span>维珍群岛(英属)</span></li>
+                                <li  class=""><span>维珍群岛(美属)</span></li>
+                                <li  class=""><span>维克岛</span></li>
+                                <li  class=""><span>瓦利斯群岛和富图纳群岛</span></li>
+                                <li  class=""><span>也门</span></li>
+                                <li  class=""><span>塞尔维亚</span></li>
+                                <li  class=""><span>赞比亚</span></li>
+                                <li  class=""><span>桑给巴尔岛</span></li>
+                                <li  class=""><span>津巴布韦</span></li>
+                            </ul>
+
+                        </div>
+                        <div class="input">
+                            <input type="text" placeholder="填写常用手机号" v-model = "messcode.phoneNumber">
+                        </div>
+                    </div>
+                </div>
+                <div class="form-item">
+                    <input type="text" placeholder="请输入短信验证码" v-model = "myjson.smsCode">
+                    <button style="border:none" @click = "getcode">点击获取</button>
+
+                </div>
+                <div class="readme">
+                    <label for="">
+                        <input type="checkbox" style="height:14px;width: 14px" onclick="mychange()">
+                        <span style="font-size :12px;">我已同意
+                            <a href="">《剧院票务管理用户协议》</a>
+                            和
+                            <a href="">《剧院票务隐私政策》</a>
+                        </span>
+                    </label>
+                </div>
+
+                <div class="form-item">
+
+                    <button   id = "change" style="border:none ;" @click = "getInfor">注册</button>
+                </div>
+                <div class="tip">
+                    <a href="./用户登录.html" style="padding-left: 295px;">已有账号请，直接登录&gt;</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+<script>
+    var show = document.getElementById('temp-ul')
+    var change = document.getElementById('change')
+    var temp = 1;
+    var tempChange = 1;
+    function mychange(){
+        tempChange++
+        if(tempChange%2 == 0){
+            change.classList.add("changeColor")
+        }else{
+            change.classList.remove("changeColor")
+        }
+        
+    }
+    function showList(){
+        temp++
+        if(temp%2 == 0){
+            show.classList.remove("dis")
+            
+        }else{
+            show.classList.add("dis")
+        }
+    }
+    axios.defaults.withCredentials = true;
+            
+            var app = new Vue({
+                el:"#temp",
+                data:{
+                    myjson:{
+                    "userName":"",
+                    "userPassword":"",
+                    "userSex":"",
+                    "phoneNumber":"",
+                    "smsCode":""
+                    },
+                    messcode:{       
+                        "phoneNumber":""
+                    },
+                },
+                methods:{
+                   getInfor(){
+                    this.myjson.phoneNumber = this.messcode.phoneNumber
+                   var that = this;
+                   axios.post("http://localhost:8080/ModuleCinema/a/post/register", that.myjson)
+                   .then(resp=>{
+                      console.log(resp)
+                      if(resp.data.state == 200){
+                            alert("注册成功")
+                      }else{
+                        alert("注册失败")
+                        document.location = "./用户注册页面.html"
+                      }
+                      
+                      if(resp.data[9] === '-1'){
+                        document.location = "/Users/zhuchenguang/Desktop/NodejsExpressMongo/淘票票项目的副本/登录.html"
+                      }
+                      console.log(resp.data.data)
+                      that.arr = resp.data.data
+                  }).catch(err=>{
+                    console.log('error')
+                  })
+            },
+            getcode(){
+                  var that = this;
+                  axios.post("http://localhost:8080/ModuleCinema/a/post/register/sendMessage",that.messcode)
+                  .then(resp=>{
+                      console.log(resp)
+                      if(resp.data[9] === '-1'){
+                        document.location = "/Users/zhuchenguang/Desktop/NodejsExpressMongo/淘票票项目的副本/登录.html"
+                      }
+                      console.log(resp.data.data)
+                      that.arr = resp.data.data
+                  }).catch(err=>{
+                    console.log('error')
+                  })
+            },
+                    
+                }
+            })
+</script>
+</html>
+
+        
+

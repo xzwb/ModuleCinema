@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./layui-v2.5.6/layui/layui.all.js">
+    <link rel="stylesheet" href="./layui-v2.5.6/layui/css/layui.css">
+    <style>
+        .title{
+            text-align: center;
+            font-size: 20px;
+            color:#ff7979;
+            background-color: #444;
+            width: 100vw;
+            height: 45px;
+            position: fixed;
+            z-index: 2;
+        }
+        .Three-div{
+            height: 350px;
+            width: 250px;
+            
+            display: flex;
+        }
+        .layui-nav li{
+            margin-left: 30px;
+            margin-right: 30px;
+        }
+    </style>
+</head>
+<body>
+    <!--  -->
+    <div class = "title"></div>
+    
+    <!-- 导航栏 -->
+    <ul class="layui-nav" lay-filter="" style="background-color: rgba(0, 0, 0, 0.9);color: white;height: 55px;position: fixed;top:8vh;width: 100vw;z-index: 2;">
+        <li class="layui-nav-item"><a   href="">
+            <img style="height: 30px;width: 33px;" src="./IMG/piao.png" alt=""></a>
+            
+        </li>
+        
+        
+        <li class="layui-nav-item"><a   href="">Latest Activity</a></li>
+        <li class="layui-nav-item"><a href="">Product</a></li>
+        <li class="layui-nav-item"><a href="">Big Data</a></li>
+        <li class="layui-nav-item">
+          <a href="javascript:;">solution</a>
+          <dl class="layui-nav-child"> <!-- 二级菜单 -->
+            <dd><a href="">移动模块</a></dd>
+            <dd><a href="">后台模版</a></dd>
+            <dd><a href="">电商平台</a></dd>
+          </dl>
+        </li>
+        <li class="layui-nav-item"><a href="">Community</a></li>
+      </ul>
+
+    <!--  -->
+    <div>
+        <div style="position: relative;top:40px">
+            <img style = "height: 90vh;width: 100%;" src="./IMG/timg-8.jpeg" alt="">
+            <div style="position: absolute;top:30%;left: 50px;">
+                <li style="z-index: 1;font-size: 50px;top:200px;color: white;">唯一的不同是</li>
+                <li style="z-index: 1;left: 40%;top:250px;font-size: 50px;color: white;">处处都不同</li>
+                <li style="z-index: 1;left: 40%;top:250px;font-size: 50px;color: white;">在线订票，退票</li>
+                
+                <li style="z-index: 1;font-size: 20px;top:350px;color: #ff6348;margin-top: 50px;">
+                    点击预览
+                </li>
+                <li style="z-index: 1;font-size: 50px;">
+                    <img style="height:50px;width:50px;" src="./IMG/iconfontyoujiantou-copy.png" alt="">
+                </li>
+                
+                
+                <!-- <li style="z-index: 1;font-size: 50px;top:300px;color: white;">带给你全新的</li>
+                <li style="z-index: 1;left: 40%;top:350px;font-size: 50px;color: white;">冲浪体验</li> -->
+            </div>
+            <div style="position: absolute;top:38%;left: 700px;">
+                <li style="z-index: 1;position: absolute;">
+                    <img style="height: 500px;width: 370px;" src="./IMG/timg-9.jpeg" alt="">
+                </li>
+            </div>
+            <div style="position: absolute;top:18%;left: 950px;">
+                <li style="z-index: 1;position: absolute;">
+                    <img style="height: 350;width: 270px;" src="./IMG/timg-10.jpeg" alt="">
+                </li>
+            </div>
+            
+        </div>
+
+        <div style="position: relative;top:300px">
+            <img style = "height: 90vh;width: 100%;" src="./IMG/timg-11.jpeg" alt="">
+            <div style="position: absolute;top:10%;left: 39%;">
+                <li style="z-index: 1;font-size: 50px;top:300px;color: white;">带给你全新的</li>
+                
+            </div>
+            <div style="position: absolute;top:20%;left: 41%;">
+                <li style="z-index: 1;font-size: 50px;top:150px;color: white;">沉浸式体验</li> 
+            </div>
+            <!-- <div style="position: absolute;top:38%;left: 700px;">
+                <li style="z-index: 1;position: absolute;">
+                    <img style="height: 500px;width: 370px;" src="/Users/zhuchenguang/Downloads/timg-9.jpeg" alt="">
+                </li>
+            </div> -->
+            <div style="position: absolute;top:35%;left: 30%;">
+                <li style="z-index: 1;position: absolute;">
+                    <img style="height: 800;width: 570px;" src="./IMG/timg-12.jpeg" alt="">
+                </li>
+            </div>
+            
+        </div>
+        <div style="position: relative;top:380px;width: 100%;text-align: center;font-size: 50px;line-height: 100px;height: 100px;">
+            Login
+        </div>
+        <div style = "display: flex;justify-content: space-around;height: 500px;top:55vh;position: relative;">
+            
+            <a href="./用户/用户登录.html">
+                <div style = "background-color: #0984e3;margin-top: 50px;font-size: 40px;align-items:flex-end;justify-content:center;color: white;font-weight: 100;" class = "Three-div">
+                    <img src="./IMG/user-active-copy.png" alt="">
+                        User
+                </div>
+            </a>
+            <a href="./员工/员工登录.html">
+            <div style = "background-color: #ffa502;margin-top: 50px;font-size: 40px;align-items:flex-end;justify-content:center;color: white;font-weight: 100;" class = "Three-div">
+                <img src="./IMG/yuangong.png" alt="">
+                
+                staff</div>
+            </a>
+            <a href="./老板/老板登录.html">
+                <div style = "background-color: #ff4757;margin-top: 50px;font-size: 40px;align-items:flex-end;justify-content:center;color: white;font-weight: 100;" class = "Three-div">
+                    <img src="./IMG/icon-test-2.png" alt="">
+                    Boss</div>
+                </a>
+          </div> 
+    </div>
+    
+    
+
+    <!-- 底角 -->
+    <div style="position: relative;top:500px;text-align: center;">
+        <div style="border: 1px solid gray;font-weight: 2px;"></div>
+        <div>联系我们：18723306327</div>
+        <div>CopyRight@2019</div>
+    </div>
+    
+
+
+
+    <script>
+        
+        layui.use('element', function(){
+          var element = layui.element;
+          
+          //…
+        });
+        </script>
+</body>
+</html>

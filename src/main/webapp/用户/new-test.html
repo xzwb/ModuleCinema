@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../layui-v2.5.6/layui/layui.all.js">
+    <link rel="stylesheet" href="../layui-v2.5.6/layui/css/layui.css">
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="../../jQuery.js"></script>
+    
+    <!-- <script src="./main.js"></script> -->
+    <style>
+      .title{
+        text-align: center;
+        color: white;
+        font-size: 40px;
+      }
+      .foot{
+        text-align: center;
+        color:cornsilk;
+        font-size: 20px;
+        
+      }
+      .content{
+        height: 700px;
+        width: 900px;
+        border: 1px solid black;
+        border-width: 4px;
+        border-radius: 5px;
+        margin: 0 auto;
+        margin-top: 80px;
+        background-color: rgba(256, 256, 256, 0.8);
+        
+      }
+      .ul-li{
+        height:700px;
+        width: 1000px;
+        float: center;
+      }
+      .ul-li li{
+        
+        height: 66px;
+        margin-left: 64px;
+        margin-right: 20px;
+        display: inline-block;
+        
+      }
+      .ul-li li .tag{
+        
+        font-size: 20px;
+        height: 45px;
+        line-height: 45px;
+        margin-top: 20px;
+        
+      }
+      .change{
+        text-align: center;
+        margin-top: 40px;
+        width: 90%;
+        height: 100px;
+        padding-left: 60px;
+        display: inline-block;
+        line-height: 150px;
+      }
+      .div-value{
+        display: block;
+        font-size: 20px;
+        height: 200px;
+        
+        line-height: 217px;
+        /* vertical-align: middle; */
+        
+      }
+      .div-name{
+        display: block;
+        font-size: 20px;
+        height: 20px;
+        
+        line-height: 20px;
+      }
+      .div-intro{
+        display: inline-block;
+        font-size: 10px;
+        height: 30px;
+        
+        line-height: 30px;
+      }
+      .tag-intro{
+        display: inline-block;
+        font-size: 20px;
+        height: 25px;
+        line-height: 25px;
+        width: 158px;
+      }
+    </style>
+</head>
+<body class="layui-layout-body" style = "background-image: url(/Users/zhuchenguang/Downloads/timg-21.jpeg); background-repeat: no-repeat;background-size: cover;background-position: top;">
+	
+   <div id = "temp"><input type="button" @click = "get"></div>
+      
+    
+</body>
+
+<script>
+
+// layui.use('element', function(){
+//   var element = layui.element;
+// });
+  changeOrigin: true,
+  axios.defaults.withCredentials = true;
+  // http.defaults.withCredentials = true;
+
+  var app = new Vue({
+      el:"#temp",
+      data:{
+          id:1,
+          arr:[],
+          page:temp,
+          arrdots:[],
+          myInterval:1,
+          fathertemp:"",
+
+      },
+  
+      methods:{
+          
+ 
+          get(){
+              var that = this
+              axios.post("http://localhost:8080/ModuleCinema/u/getShow/28")
+              .then(resp=>{
+                  console.log(resp)
+                  that.arr = resp.data.data
+
+                  
+                  if(resp.data[9] === '-1'){
+                    document.location = "/Users/zhuchenguang/Desktop/NodejsExpressMongo/淘票票项目的副本/登录.html"
+                  }
+
+                 
+                  
+              }).catch(err=>{
+                console.log('error')
+              })
+
+          },
+          
+      }
+  })
+
+</script>
+</html>

@@ -48,4 +48,6 @@ public interface UserDao {
                       @Param("row") int row,
                       @Param("col") int col,
                       @Param("userId") int userId);
+
+    Show getShowByShowId(@Param("showId") int showId);
 }

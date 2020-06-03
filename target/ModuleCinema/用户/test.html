@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../../jQuery.js"></script>
+</head>
+<body>
+    <form id = "form" method="post">
+        <input type="text" name = "playName">
+        <!-- <input type="button" onclick="Search()"> -->
+        <input type="button" onclick="Search()">
+    </form>
+
+    <script>
+        function Search() {
+    
+    
+    // var temp = {
+    //     "playName":""
+    // }
+    // temp.playName =  $('#input-value').val()
+    // console.log(typeof(temp))
+    // if(temp.playName){
+            $.ajax({
+            //几个参数需要注意一下
+                type: "POST",//方法类型
+                contentType:"",
+                dataType: "json",//预期服务器返回的数据类型
+                url: "http://localhost:8080/ModuleCinema/u/search/play" ,//url
+                data:  $('#form').serialize(),
+                success: function (result) {
+                    console.log(result);//打印服务端返回的数据(调试用)
+                    if (result.resultCode == 200) {
+                        alert("SUCCESS");
+                    }
+                    ;
+                },
+                error : function(err) {
+                    console.log(err)
+                    alert("异常！");
+                }
+            });
+        }
+    // }
+
+    </script>
+</body>
+</html>

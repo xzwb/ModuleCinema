@@ -1,9 +1,6 @@
 package ModuleCinema.controller;
 
-import ModuleCinema.pojo.Play;
-import ModuleCinema.pojo.Result;
-import ModuleCinema.pojo.Show;
-import ModuleCinema.pojo.Staff;
+import ModuleCinema.pojo.*;
 import ModuleCinema.service.StaffService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -12,6 +9,7 @@ import org.springframework.web.bind.annotation.*;
 import javax.servlet.http.HttpSession;
 import javax.servlet.http.Part;
 import java.io.IOException;
+import java.text.ParseException;
 import java.util.Calendar;
 import java.util.Map;
 
@@ -62,7 +60,26 @@ public class StaffController {
 
     @PostMapping("/s/insert/show")
     @ResponseBody
-    public Result insertShow(@RequestBody Show show) {
+    public Result insertShow(@RequestParam("price") String price,
+                             @RequestParam("showTing") String showTing,
+                             @RequestParam("playId") String playId,
+                             @RequestParam("startTime") String startTime,
+                             @RequestParam("showDate") String showDate) throws ParseException {
+//    public Result insertShow(Show1 show1) {
+        Show1 show1 = new Show1();
+        show1.setPrice(price);
+
+        show1.setShowTing(showTing);
+        show1.setPlayId(playId);
+        show1.setStartTime(startTime);
+        show1.setShowDate(showDate);
+        System.out.println(show1);
+        Show show = new Show();
+        show.setPlayId(show1.getPlayId());
+        show.setPrice(show1.getPrice());
+        show.setShowDate(show1.getShowDate());
+        show.setShowTing(show1.getShowTing());
+        show.setStartTime(show1.getStartTime());
         return staffService.insertShow(show);
     }
 

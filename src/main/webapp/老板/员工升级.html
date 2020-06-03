@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../layui-v2.5.6/layui/layui.all.js">
+    <link rel="stylesheet" href="../layui-v2.5.6/layui/css/layui.css">
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="../axios.min.js"></script>
+    <script src="../jQuery.js"></script>
+    
+    <!-- <script src="./main.js"></script> -->
+    <style>
+      .title{
+        text-align: center;
+        color: white;
+        font-size: 40px;
+      }
+      .foot{
+        text-align: center;
+        color:cornsilk;
+        font-size: 20px;
+        
+      }
+      .content{
+        height: 400px;
+        width: 700px;
+        border: 1px solid cornsilk;;
+        border-width: 4px;
+        border-radius: 5px;
+        margin: 0 auto;
+        margin-top: 30px;
+        background-color: rgba(255,248,220,0.5);
+      }
+      .ul-li li{
+        border-bottom: 1px solid gray;
+        height: 66px;
+        margin-left: 20px;
+        margin-right: 20px;
+      }
+      .ul-li li .tag{
+        display: inline-block;
+        font-size: 20px;
+        height: 65px;
+        line-height: 65px;
+        
+      }
+      .change{
+        text-align: center;
+        margin-top: 40px;
+        width: 90%;
+        height: 182px;
+        padding-left: 70px;
+        display: inline-block;
+        line-height: 150px;
+        
+      }
+      .div-value{
+        display: inline-block;
+        font-size: 20px;
+        height: 65px;
+        line-height: 65px;
+        /* vertical-align: middle; */
+        
+      }
+    </style>
+</head>
+<body class="layui-layout-body" style = "background-image: url(./img/5-13050GT031.gif);">
+        <div class="layui-layout layui-layout-admin" id = "temp">
+            <div class="layui-header">
+          <div class = "title">Boss管理系统</div>
+        </div>
+        <div class="layui-side layui-bg-black" style = "width: 130px;">
+            <ul class="layui-nav layui-nav-tree" lay-filter="test" style = "height: 50px;font-size: 20px;">
+                <!-- 侧边导航: <ul class="layui-nav layui-nav-tree layui-nav-side"> -->
+                  <li class="layui-nav-item layui-nav-itemed">
+                    <a style = "height: 50px;font-size: 15px;" href="./老板首页以及删除员工.html">boss首页</a>
+                  </li>
+                  <li class="layui-nav-item">
+                    <a style = "height: 50px;font-size: 15px;" href="./添加员工.html" >添加员工
+                    </a>
+                  </li>
+                  
+                  <li class="layui-nav-item"><a style = "height: 50px;font-size: 15px;" href="./员工升级.html">员工升级</a></li>
+                  <li class="layui-nav-item"><a style = "height: 50px;font-size: 15px;" @click="out" >退出登录</a></li>
+                </ul>
+      </div>
+    <!-- 内容 -->
+        
+    <div class="layui-body"  style= "width: 90%;left: 100px;">
+            <div style = "text-align: center;font-size: 25px;height: 70px;line-height: 70px;color:cornsilk;">请输入(升/降)级后的等级</div>
+      <div class = "content" >
+        <ul class = "ul-li" >
+          <li id = "one" v-for="(item,index) in arr">
+            <div class = "tag">ID:
+              <div class = "div-value" style = "width: 30px;">{{ item.staffId }}</div>
+            </div>
+            <div class = "tag">姓名:
+              <div class = "div-value" style = "width: 180px;">{{ item.staffName }}</div>
+            </div>
+            <div class = "tag">密码:
+              <div  class = "div-value" style = "width: 100px;">{{ item.staffPassword}}</div>
+            </div>
+            <div class = "tag">级别:
+              <div  class = "div-value" style = "width: 30px;">{{ item.staffGrade }}</div>
+            </div>
+            <div class = "tag">
+              <input  type="text" v-model = "item.staffGrade" style = "display: inline-block;width: 50px;height: 30px;">
+              <input onclick = "change()" type="button" value = "提交" style = "display: inline-block;;background-color: white;color: red;width: 50px;height: 35px;">
+              
+            </div>
+          </li>
+          
+        </ul>
+      </div>
+      <!-- 切换 -->
+      <div class = "change">
+        <a style="display: inline-block;color:cornsilk" href="">前一页</a> 
+        <div id = "select" style = "display: inline-block;height:30px;width: 60px; ">
+          
+          <div v-for="(item,index) in arrdots" style = "display: inline-block;">
+            <a style="height: 10px;width: 10px;color:cornsilk" onclick = "myclick(this)">{{item}}</a> 
+          </div>
+        </div>
+        <a style="display: inline-block;color:cornsilk" href="">后一页</a>
+      
+      </div>
+    </div>
+		<div class="layui-footer" style = "left: 0;
+        background-color: rgba(256,256,256,0);">
+      <div class = "foot" >Copyright@2020-杨懿凡</div>
+    </div>
+	</div>	
+</body>
+
+<script>
+
+function change(){
+    // console.log(app._data.staffId)
+    // app._data.myjson.staffGrade
+    $.ajax({
+    //几个参数需要注意一下
+        type: "POST",//方法类型
+        crossDomain:true, //设置跨域为true
+        xhrFields: {
+            withCredentials: true //默认情况下，标准的跨域请求是不会发送cookie的
+        },
+
+        contentType: "application/json", 
+        dataType: "html",//预期服务器返回的数据类型
+        url: "http://localhost:8080/ModuleCinema/b/post/update/" + app._data.staffId ,//url
+        data: JSON.stringify(app._data.myjson),
+        success: 
+        function (result) {
+
+            console.log(result);//打印服务端返回的数据(调试用)
+
+            // var temp = (JSON.parse(result)).data[0].playId
+            
+            // document.location = "/Users/zhuchenguang/Desktop/NodejsExpressMongo/杨懿凡项目/用户/电影详情主界面.html?id=" + (JSON.parse(result)).data[0].playId
+
+            if (result.resultCode == 200) {
+                alert("SUCCESS");
+            }
+            ;
+        },
+        error : function(err){
+            console.log(err)
+            alert("异常！");
+        }
+    });
+    
+}  
+
+
+// layui.use('element', function(){
+//   var element = layui.element;
+// });
+  changeOrigin: true,
+  axios.defaults.withCredentials = true;
+  // http.defaults.withCredentials = true;
+
+axios.defaults.headers = {
+    'Content-Type': 'application/json;charset=UTF-8'
+};
+
+  var temp = 1
+  function myclick(obj){
+      console.log(obj.innerText)
+      temp = obj.innerText
+      app._data.page = temp
+      app.getInfor()
+  }
+  
+  var app = new Vue({
+      el:"#temp",
+      data:{
+          id:1,
+          arr:[],
+          page:temp,
+          arrdots:[],
+          myInterval:1,
+          fathertemp:"",
+          staffId:"",
+          myjson:{
+            
+            "staffGrade":"S"
+          }
+          
+      },
+      mounted:function(){
+        this.getInfor()
+      },
+      methods:{
+          // add(){
+          //   var temp  = document.getElementById('#add')
+          //   console.log(temp)
+          //   temp.href = "/Users/zhuchenguang/Desktop/NodejsExpressMongo/杨懿凡项目/添加员工.html"
+          // },
+          
+          send:function(){
+              FixedTime.testApproves(this.send)
+          },
+          out(){
+            var that = this
+              axios.get("http://localhost:8080/ModuleCinema/a/get/boss/logout")
+              .then(resp=>{
+                  console.log(resp)
+                  if(resp.data.message == "已注销"){
+                    alert("注销成功")
+                    document.location = "./老板登录.html"
+                  }else{
+                    alert("未登录或其他错误")
+                  }
+                  
+                  
+              }).catch(err=>{
+                console.log('error')
+              })
+            
+          },
+          // change(staffId,staffGrade){
+          //   // this.myjson.staffGrade = staffGrade
+          //   // this.myjson.staffId = staffId
+          //   // var sub = JSON.stringify(this.myjson)
+          //   // console.log(sub)
+          //   var that = this;
+            
+          //     axios.post("http://localhost:8080/ModuleCinema/b/post/update/9",that.myjson)
+          //     .then(resp=>{
+          //         console.log(resp)
+                  
+          //     }).catch(err=>{
+          //       console.log('error')
+          //     })
+          // },
+          getInfor(){
+              var that = this;
+              axios.get("http://localhost:8080/ModuleCinema/b/get/staff/" + that.page)
+              .then(resp=>{
+                  console.log(resp)
+                  if(resp.data[9] === '-1'){
+                    document.location = "/Users/zhuchenguang/Desktop/NodejsExpressMongo/淘票票项目的副本/登录.html"
+                  }
+                  
+                  that.arr = resp.data.data
+                  that.staffId = resp.data.data[0].staffId
+                  
+              }).catch(err=>{
+                console.log('error')
+              })
+              axios.get("http://localhost:8080/ModuleCinema/b/get/home")
+              .then(resp=>{
+                  console.log(resp)
+                  if(resp.data[9] === '-1'){
+                    document.location = "/Users/zhuchenguang/Desktop/NodejsExpressMongo/淘票票项目的副本/登录.html"
+                  }
+                  
+                  var temp = Math.ceil((resp.data.state)/6)
+                  if(this.myInterval === 1){
+                    for(var i = 1;i <= temp;i++){
+                        that.arrdots.push(i)
+                    }
+                    console.log(that.arrdots)
+                    this.myInterval++
+                    this.fathertemp = temp
+                  }else if(fathertemp === temp){
+
+                  }else{
+                    for(var i = 1;i <= temp;i++){
+                        that.arrdots.push(i)
+                    }
+                    console.log(that.arrdots)
+                    this.myInterval++
+                    this.fathertemp = temp
+                  }
+
+                  
+
+                  // if(resp.)
+                  // that.arr = resp.data.data
+                  
+              }).catch(err=>{
+                console.log('error')
+              })
+          },
+          
+          // getChange(pageNumber){
+          //     var that = this;
+          //     axios.post("http://localhost:3000/")
+          //     .then(resp=>{
+          //         console.log(resp.data);
+          //         if(resp.data === true){
+          //             console.log("open")
+          //             document.location = "/Users/zhuchenguang/Desktop/vscode/Axios/晨光天气.html"
+          //         }
+          //     }).catch(err=>{
+          //         console.error(err)
+          //     })
+          // },
+          // var select = document.getElementById('select').getElementsByTagName('a')
+          //         console.log(select[1])
+          //         for (var i=0; i<select.length; i++){
+          //                 (function (i) {
+          //                   select[1].addEventListener("click",function(e){
+          //                     console.log(e)
+          //                   })
+          //                 })(i);
+          //         }
+
+      }
+  })
+
+</script>
+</html>

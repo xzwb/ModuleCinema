@@ -45,6 +45,12 @@ public class UserController {
         return userService.getShow(playId, day);
     }
 
+    @PostMapping("/u/getShow/{showId}")
+    @ResponseBody
+    public Result getShow(@PathVariable("showId") int showId) {
+        return userService.getShowByShowId(showId);
+    }
+
     @GetMapping("/u/get/{playId}")
     @ResponseBody
     public Result getPlay(@PathVariable("playId") int playId) {

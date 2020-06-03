@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="../axios.min.js"></script>
+    <script  src="../vue-router.js"></script> 
+    
+    
+    <link rel="stylesheet" href="https://at.alicdn.com/t/font_1695482_1equvfd6nfhk.css">
+    
+    <link rel="stylesheet" href="../reset.css">
+
+    
+    <style>
+        body{
+            margin: 0;
+            padding: 0;
+        }
+        .head{
+            height: 88px;
+            padding: 22px;
+            box-sizing: border-box;
+        }
+        .head-center{
+            margin: 0 auto;
+            width: 1200px;
+            
+        }
+        
+        
+        .back{
+            height: 600px;
+            width: 100%;
+            background-image: url(./img/bg1_1600.jpg);
+            background-position: 50%;
+            
+            /* overflow: hidden; */
+        }
+        .iconfont{
+            color: #ff5502;
+            font-size: 45px;
+            float: left;
+        }
+        .clock{
+            text-align: center;
+            width: 900px;
+            margin: auto;
+            background-color: #fef2f2;
+            color: #6C6C6C;
+            font-size: 12px;
+            border: 1px solid #ffb4a8;
+            height: 30px;
+            line-height: 30px;
+            box-sizing: border-box;
+            overflow: hidden;
+        }
+        .clearfix{
+            content: "";
+            clear: both;
+            display: block;
+        }
+        .size1{
+            font-size: 18px;
+            color: #f40;
+            line-height: 44px;
+        }
+        
+        .change{
+            float: right;text-decoration:none;width: 125px;color: #666;font-size: 12px;line-height: 44px;
+        }
+        .change:hover{
+            color: #f40;
+        }
+        .login{
+            width: 350px;
+            height: 350px;
+            background-color: rgba(255,255,255,.9);
+            position: absolute;
+            top: 120px;
+            right: 60px;
+        }
+        
+        .login-content{
+            width: 300px;
+            height: 293px;
+            padding-top: 25px;
+            padding-right: 25px;
+            padding-bottom: 23px;
+            padding-left: 25px;
+        }
+        .content{
+            margin: 0 auto;height: 100%;width: 1200px;box-sizing: border-box;
+            position: relative;
+            padding-top: 25px;
+            padding-right: 25px;
+            padding-bottom: 23px;
+            padding-left: 25px;
+            
+        }
+        
+        .ewm{
+            font-size: 62px;
+            cursor: pointer;
+            position: absolute;
+            color:#f40;
+            right: 0;
+            top:0;
+            margin-top: 1px;
+        }
+        .ewm:hover{
+            color: rgb(255, 0, 0);
+        }
+        .safe{
+            color: #df9c1f;
+            font-size: 16px;
+            margin-right: 7px;
+            line-height: 16px;
+        }
+        .input1{
+            margin-top: 20px;
+            position: relative;
+            width: 300px;
+            border:1px solid #ddd;
+            line-height: 40px;
+            height: 40px;
+            cursor: pointer;
+
+            
+        }
+        .lg{
+            margin-top: 20px;
+            position: relative;
+            width: 300px;
+            
+            line-height: 42px;
+            height: 42px;
+            cursor: pointer;
+            
+        }
+        .lg input{
+            padding: 11px;cursor: pointer;width: 300px;height: 42px; background-color: #f40;border-radius: 5px;text-align: center;color: #fff;letter-spacing: 0.3em;font-weight: bold;
+        }
+        .lg input:hover{
+            background-color:rgb(255, 25, 0)
+        }
+        input{
+            font: 400 14px system-ui;
+            color: black;
+            padding: 11px 11px 10px 20px;
+            position: absolute;
+            right: 0;
+            width: 240px;
+            border: none;
+        }
+        .man{
+            position: absolute;
+            left: -1px;
+            width: 40px;
+            height: 40px;
+            text-align: center;
+            color: white;
+            font-size: 24px;
+            float: left;
+            z-index: 1;
+            background-color: #ddd;
+            padding-left: 2px;
+        }
+        .wz{
+            margin-top: 20px;
+        }
+        .wz div{
+            display: inline-block;
+            margin-right: 20px;
+            color: #6c6c6c;
+            font-size: 12px;
+            line-height: 1px;
+            cursor: pointer;
+        }
+        .wz div:hover{
+            color: #f40
+        }
+        .temp1{
+            font-size: 16px;
+            color: red;
+            margin-right: 3px;
+        }
+        .temp2{
+            font-size: 16px;
+            color: #3498db;
+            margin-right: 3px;
+        }
+        .ps{
+            margin-top: 25px;
+            text-align: right;
+        }
+        .ps div{
+            margin-right: 10px;
+            display: inline-block;
+            color:#6c6c6c;
+            cursor: pointer;
+            font-size: 12px;
+        }
+        .ps div:hover{
+            color: #f40
+        }
+
+        
+        .tag4{
+            margin: 0 8px;
+            width: 56px;
+            height: 18px;
+            text-align: center;
+            font-size: 12px;
+            white-space: nowrap;
+            color: #9c9c9c;
+            text-decoration: none;
+            
+        }
+        .tag5{
+            margin: 0 8px;
+            width: 56px;
+            height: 18px;
+            text-align: center;
+            font-size: 12px;
+            white-space: nowrap;
+            color: #9c9c9c;
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <div style = "font-size: 40px;font-weight: 200;height: 100px;width: 100%;text-align: center;line-height: 100px;font-family: sans-serif;">欢迎登陆~购票系统</div>
+    </div>
+    <div class = "middle">
+        <div class = "back">
+            <div class = "content">
+                <div ><a style = "width: 500px;height: 500px;position: absolute;"></a></div>
+                <div class = "login"> 
+                    <div class = "login-content">
+                        <div style = "height: 18px;
+                        line-height: 18px;
+                        font-size: 16px;
+                        color: #3c3c3c;
+                        margin-top: 9px;
+                        padding-bottom: 8px;
+                        font-weight: 700;">密码登录</div>
+                        
+                        <div id = "temp">
+                            <div class = "input1">
+                                <div class = "iconfont man">&#xe6a2;</div>
+                                <input v-model = "myPhoneNumber.phoneNumber" name = "phoneNumber" type="number" style = "outline: none;height:18px" placeholder="手机号">
+                            </div>
+                            <div class = "input1">
+                                <div class = "iconfont man">&#xe648;</div>
+                                <input v-model = "myPhoneNumber.userPassword" name = "userPassword" type="text" style = "outline: none;height:18px" placeholder="密码">
+                            </div> 
+                            <div  class = "lg">
+                                <input type="submit" value = "登录"  @click = "mycheckPhone">  
+                            </div> 
+                        </div>
+                        <div class = "wz">
+                            <div> <i class = "iconfont temp1">&#xe617;</i> 微博登录</div>
+                            <div> <i class = "iconfont temp2">&#xe602;</i> 支付宝登录</div>
+                            <div>
+                                <a href="./用户登录.html">
+                                    <img src="./img/mi.png" alt="" style="height: 20px;width: 20px;position: absolute;
+                                top: 265px;"> 
+                                <div style="position: absolute;
+                                right: 25px;
+                                top: 275px;
+                                    ">
+                                    ID密码登陆
+                                </div></a>
+                                
+                                
+                            </div>
+                            <!-- <div>
+                                <img src="/Users/zhuchenguang/Downloads/shouji.png" alt="" style="height: 20px;width: 20px;position: absolute;
+                                top: 265px;"> 
+                                <div style="position: absolute;
+                                right: 35px;
+                                top: 275px;
+                            ">
+                                    手机登陆
+                                </div>
+                                
+                            </div> -->
+                        </div>
+                        <div class = "ps">
+                            
+                            <div><a style="text-decoration: none;color:#ff5502;" href="./用户注册页面.html">免费注册</a></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+   
+
+        <script>
+            axios.defaults.withCredentials = true;
+            
+            var app = new Vue({
+                el:"#temp",
+                data:{
+                    
+                    myPhoneNumber:{
+                        "phoneNumber":"",
+                        "userPassword":""
+                    },
+                },
+                methods:{
+                    
+              mycheckPhone(){
+                  var that = this;
+                  axios.post("http://localhost:8080/ModuleCinema/a/post/login/phoneNumber",that.myPhoneNumber)
+                  .then(resp=>{
+                      console.log(resp)
+                      if(resp.status == 200){
+                            alert("登录成功")
+                            document.location = "./用户登录后跳转的页面.html"
+                        }else{
+                            alert("登录失败")
+                            document.location = "./用户手机登录.html"
+                        }
+                      console.log(resp.data.data)
+                      that.arr = resp.data.data
+                  }).catch(err=>{
+                    console.log('error')
+                  })
+            },
+              
+                    
+                }
+            })
+        </script>        
+</body>
+</html>

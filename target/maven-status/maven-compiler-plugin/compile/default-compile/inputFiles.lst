@@ -17,6 +17,7 @@
 /home/xzwb/ModuleCinema/src/main/java/ModuleCinema/service/StaffService.java
 /home/xzwb/ModuleCinema/src/main/java/ModuleCinema/controller/RegisterController.java
 /home/xzwb/ModuleCinema/src/main/java/ModuleCinema/service/impl/UserServiceImpl.java
+/home/xzwb/ModuleCinema/src/main/java/ModuleCinema/pojo/Show1.java
 /home/xzwb/ModuleCinema/src/main/java/ModuleCinema/dao/HomeDao.java
 /home/xzwb/ModuleCinema/src/main/java/ModuleCinema/dao/RegisterDao.java
 /home/xzwb/ModuleCinema/src/main/java/ModuleCinema/interceptor/UserSessionInterceptor.java

@@ -11,6 +11,7 @@ import javax.servlet.http.HttpSession;
 import javax.servlet.http.Part;
 import java.io.IOException;
 import java.util.Calendar;
+import java.util.Map;
 
 @Controller
 @CrossOrigin(allowCredentials = "true")
@@ -25,13 +26,14 @@ public class BossController {
         return bossService.deleteService(staffId, src);
     }
 
-//    @PostMapping("/b/post/update/{staffId}")
-    @PostMapping("/b/post/update")
+    @PostMapping("/b/post/update/{staffId}")
+//    @PostMapping("/b/post/update")
     @ResponseBody
-//    public Result updateStaff(@PathVariable("staffId") int staffId,
-//                              @RequestBody(required = false)Map<String, String> staffGrade) {
-    public Result updateStaff(@RequestBody Staff staff) {
-        return bossService.updateService(staff.getStaffId(), staff.getStaffGrade());
+    public Result updateStaff(@PathVariable("staffId") int staffId,
+                              @RequestBody(required = false) Map<String, String> staffGrade) {
+//    public Result updateStaff(@RequestBody Staff staff) {
+//        return bossService.updateService(staff.getStaffId(), staff.getStaffGrade());
+        return bossService.updateService(staffId, staffGrade.get("staffGrade"));
     }
 
     @PostMapping("/b/post/insert")

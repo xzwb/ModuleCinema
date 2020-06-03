@@ -1,0 +1,1217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="../axios.min.js"></script>
+    <script  src="../vue-router.js"></script> 
+    <!-- <script src="/杨懿凡项目/main.js"></script> -->
+    <!-- <link rel="stylesheet" href="https://at.alicdn.com/t/font_1695482_rvr5uza4s9i.css"> -->
+    <link rel="stylesheet" href="https://at.alicdn.com/t/font_1695482_1equvfd6nfhk.css">
+    <!-- <link rel="icon" href="/Users/zhuchenguang/Downloads/TB14aHpkeH2gK0jSZJnXXaT1FXa-16-16.ico"> -->
+    <link rel="stylesheet" href="../reset.css">
+    <link rel="stylesheet" href="../jQuery.js">
+    
+        <link rel="stylesheet" href="./css.css">
+        <link rel="shortcut icon" type="image/x-icon" href="http://static1.mtime.cn/favicon.ico">
+        <!-- <link rel="stylesheet" herf="csss/iconfont.css"> -->
+        <link rel="stylesheet" herf="//at.alicdn.com/t/font_1778179_qvel9pnh7n.css">
+
+    
+    <style>
+        /* 通用属性 */
+a{
+    cursor: pointer;
+}
+.clearfix::after{
+    content: "";
+    display: block;
+    clear:both;
+}
+.left{
+    float:left;
+}
+.right{
+    float:right;
+}
+standard-width{
+    width:502px;
+}
+.headerleft ul li a{
+    color: white;
+    text-decoration: none;
+}
+/* 头部 */
+.header{
+    width: 100%;
+    height: 60px;
+    background-color: #333;
+    font-size: 14px;
+    color: #c8c8c8;
+    font-family: helvetica, 微软雅黑, "microsoft yahei", Verdana, Lucida, arial, sans-serif, 黑;
+    line-height: 60px;
+    position: relative;
+    z-index: 1;
+}
+.header .headerleft{
+    float:left;
+    width:551px;
+    height:60px;
+    margin-left: 20px;
+}
+.header .headerleft li{
+    float:left;
+    margin-right: 30px;
+}
+/* .header .headerleft li a:visited{
+    color:#fff;
+    font-weight: bold;
+} */
+.header .headerleft li a:hover{
+    color:#fff;
+    font-weight: bold;
+}
+.header .headerleft li a:active{
+    color:#fff;
+    font-weight: bold;
+}
+.header .headerleft li[class="new"]{
+    position: relative;
+}
+.header .headerleft li em{
+    background: url(./img/head.png) -165px -28px no-repeat;
+    width: 28px;
+    height: 14px;
+    position: absolute;
+    right: -26px;
+    top: 15px;
+}
+.header .headermiddle{
+    width:117px;
+    height:36px;
+    position: absolute;
+    left:687px;
+    top:12px;
+    display: block;
+    background: url(./img/TB1zoNfJVXXXXbCXVXXgap8FVXX-150-72.png) 0 -315px no-repeat;
+}
+.header .headermiddle a{
+    width:117px;
+    height:0px;
+    padding-top: 36px;
+    display: block;
+    overflow: hidden;
+}
+.header .headerright{
+    width:380px;
+    height:60px;
+    float:right;
+}
+.header .headerright div{
+    float:left;
+}
+.header .headerright .download{
+    width:122px;
+    height:60px;
+    position: relative;
+    cursor: pointer;
+}
+.header .headerright .download .phone{
+    background: url(./img/head.png) -54px -45px no-repeat;
+    width: 13px;
+    height: 20px;
+    margin-right: 5px;
+    display: inline-block;
+    vertical-align: middle;
+}
+.header .headerright .download span{
+    color:#fff;
+}
+.header .headerright .download .arrow{
+    width:7px;
+    height:4px;
+    display: inline-block;
+    background:url(./img/head.png) -140px 0 no-repeat;
+    margin-left: 3px;
+    margin-bottom: 3px;
+}
+.header .headerright .download .erweima{
+    width:180px;
+    height:222px;
+    position: absolute;
+    left: -46px;
+    top:65px;
+    display: none;
+}
+.header .headerright .download:hover .erweima{
+    display:block;
+}
+.header .headerright .login{
+    width:137px;
+    height:60px;
+    padding: 0 16;
+}
+.header .headerright .login .slogin{
+    width:73px;
+    position: relative;
+}
+.header .headerright .login a:hover{
+    color: #fff;
+}
+.header .headerright .login .slogin .sslogin{
+    width:285px;
+    height:357px;
+    position: absolute;
+    left:-145px;
+    top:60px;
+    border: 2px solid #f5f5f5;
+    border-top: none;
+    background-color: #fff;
+    box-sizing: border-box;
+    display: none;
+    line-height: 27px;
+}
+.header .headerright .login .slogin:hover .sslogin{
+    display: block;
+}
+.header .headerright .login .slogin .sslogin .hheader{
+    width:245px;
+    height:47px;
+    text-align: center;
+    font-size: 16px;
+    color: #9b9b9b;
+    background-color: #fff;
+    margin-left: 21px;
+    margin-top: 20px;
+}
+.header .headerright .login .slogin .sslogin .hheader span:nth-child(1){
+    font-size: 22px;
+    display:block;
+    color: #333;
+    height: 27px;
+}
+.header .headerright .login .slogin .sslogin .denglu{
+    width: 245px;
+    height: 196px;
+    margin-left: 21px;
+    margin-top: 5px;
+}
+.header .headerright .login .slogin .sslogin .denglu input[type="text"]{
+    width: 245px;
+    height: 40px;
+    border: 1px solid #9b9b9b;
+    border-radius: 5px;
+    margin-top:  10px;   
+    font-size: 12px;
+    color: #949494;;
+    padding-left: 12px;
+}
+.header .headerright .login .slogin .sslogin .denglu .wangjimima{
+    width: 245px;
+}
+.header .headerright .login .slogin .sslogin .denglu .wangjimima a{
+    float: right;
+    width: 70px;
+    height: 38px;
+    margin-right: 0px;
+    line-height: 38px;
+}
+.header .headerright .login .slogin .sslogin .denglu input[type="button"]{
+    width: 245px;
+    height: 30px;
+    background-color:#1e7dd7;
+    border-radius: 50px;
+    font-size: 15px;
+    color:#fff;
+    cursor: pointer;
+}
+.header .headerright .login .slogin .sslogin .denglu .fangshi{
+    color: #1e7dd7;
+    line-height: 38px;
+    cursor: pointer;
+}
+.header .headerright .login .slogin .sslogin .footer{
+    width: 285px;
+    height: 80px;
+    background: #f5f5f5;
+    padding: 20px 40px;
+    border-top: 1px solid #ddd;
+    border-radius: 0 0 5px 5px;
+    box-sizing: border-box;
+    margin-left: 0px;
+    margin-top: 5px;
+}
+.header .headerright .login .slogin .sslogin .footer .wechat{
+    background: url(./img/head.png) -54px -356px no-repeat;
+    width: 42px;
+    height: 42px;
+    display: inline-block;
+    margin: 0 15px;
+}
+.header .headerright .login .slogin .sslogin .footer .qq{
+    background: url(./img/head.png) -6px -356px no-repeat;
+    width: 42px;
+    height: 42px;
+    display: inline-block;
+    margin: 0 7px;
+}
+.header .headerright .login .slogin .sslogin .footer .weibo{
+    background: url(./img/head.png) -103px -356px no-repeat;
+    width: 42px;
+    height: 42px;
+    display: inline-block;
+    margin: 0 7px;
+}
+.header .headerright .login a:nth-child(1){
+    margin-right: 45px;
+}
+.header .headerright .shopping-cart{
+    width: 62px;
+    height: 62px;
+    background-color: #e83729;
+    position: relative;
+}
+.header .headerright .shopping-cart .icon{
+    background: url(./img/head.png) 0 -45px no-repeat;
+    width: 26px;
+    height: 20px;
+    display: inline-block;
+    margin-top: 20px;
+    margin-left: 15px;
+}
+.header .headerright .shopping-cart .shoppingcar{
+    width: 350px;
+    background-color: #fff;
+    border: 1px solid #f5f5f5;
+    border-top: 3px solid #e83729;
+    height: 200px;
+    position: absolute;
+    top:60px;
+    right: 0px ;
+    text-align: center;
+    line-height: 200px;
+    display: none;
+}
+.header .headerright .shopping-cart:hover .shoppingcar{
+    display: block;
+}
+/* 正文部分 */
+.article .article-header{
+    padding:20px 0px;
+    padding-top: 80px;
+}
+.article .article-header .search-box{
+    width:500px;
+    height: 39px;
+    border-radius: 20px;
+    border: 1px solid #e0e0e0;
+    margin: auto;
+    line-height: 39px;
+    position: relative;
+}
+.article .article-header .search-box .search-box-left{
+    width: 80px;
+    height: 45px;
+    color: #999;
+    font-size: 14px;
+    margin-left: 20px;
+    cursor: pointer;
+}
+.article .article-header .search-box .search-box-left span[class="arrow"]{
+    width:16px;
+    height:6px;
+    display: inline-block;
+    background:url(./img/head.png) -149px 0 no-repeat;
+    margin-left: 3px;
+    margin-bottom: 2px;
+}
+.article .article-header .search-box .search-box-right{
+    line-height: 24px;
+    width: 75%;
+    padding: 10px 0px;
+    border: none;
+    font-size: 13px;
+}
+.article .article-header .search-box .search-box-right input{
+    width: 85%;   
+}
+.article .article-header .search-box .search-box-right .iconfont{
+    background: url(./img/head.png) -115px -45px no-repeat;
+    width: 19px;
+    height: 19px;
+    display: block;
+    position: absolute;
+    right: 20px;
+    top:10px;
+}
+.article .article-header .movie-pictures{
+    width:1200px;
+    height:360px;
+    margin: auto;
+    margin-top: 20px;
+    overflow: hidden;
+    position: relative;
+}
+.article .article-header .movie-pictures .pictures{
+    width: 3600px;
+    height: 360px;
+}
+.article .article-header .movie-pictures .pictures a{
+    float: left;
+}
+.article .article-header .movie-pictures .pictures img{
+    width:1200px;
+    height:360px;
+}
+.article .article-header .movie-pictures .button{
+    width: 48px;
+    height: 102px;
+    background-image: url(./img/背景.png);
+    position: absolute;
+}
+.article .article-header .movie-pictures .button-left{
+    left:0px;
+    top:140px;
+}
+.article .article-header .movie-pictures .button-left i{
+    background: url(./img/index24.png) no-repeat;
+    width: 21px;
+    height: 47px;
+    display: block ;
+    position: absolute;
+    left:13px;
+    top:25px;   
+}
+.article .article-header .movie-pictures .button-right{
+    right:0px;
+    top:140px;
+}
+.article .article-header .movie-pictures .button-right i{
+    background: url(./img/index24.png) -21px 0px no-repeat;
+    width: 21px;
+    height: 47px;
+    position: absolute;
+    right:13px;
+    top:25px;
+}
+.article .article-middle{
+    width: 1200px;
+    height: 567px;
+    margin: auto;
+    margin-bottom: 30px;
+    padding: 20px 0px;
+    border: 2px solid #949494;
+}
+.article .article-middle .article-middle-left{
+    width: 895px;
+    height: 487px;
+    border: 1px solid #c8c8c8;
+}
+.article .article-middle .article-middle-left nav h2{
+    font-size: 24px;
+    line-height: 1;
+    color: #6e6e6e;
+    margin-right: 20;
+    display: inline-block;
+    vertical-align:bottom;
+}
+.article .article-middle .article-middle-left nav .option{
+    width: 470px;
+    height: 21px; 
+    display: inline-block;
+    vertical-align: middle;
+}
+.article .article-middle .article-middle-left nav .option span{
+    color: #333;
+    margin: 0 4px;
+}
+.article .article-middle .article-middle-left nav .option span[class="line"]{
+    color:#bebebe;
+}
+.article .article-middle .article-middle-right{
+    width: 290px;
+    height: 490px;
+    border: 1px solid #c8c8c8;
+}
+.article .article-middle .article-middle-right h2{
+    font-weight: 400;
+    font-size: 24px;
+    line-height: 1;
+    color: #6e6e6e;
+    vertical-align: bottom;
+    text-align: center;
+}
+/* 页脚 */
+.footer{
+    background: #f7f7f7;
+    text-align: center;
+    font-family: Verdana;
+    padding: 30px 0 20px;
+    line-height: 2em;
+    font-size: 12px;
+    width: 100%;
+    height: 200px;
+    position: relative;
+}
+.footer a{
+    width:117px;
+    height:36px;
+    position: absolute;
+    left:200px;
+    top:50px;
+    display: block;
+    background: url(./img/head.png) 0 -315px no-repeat;
+}
+.footer .ending{
+    margin-top: 75px;
+}
+
+        .ul-li li{
+        
+        height: 66px;
+        margin-left: 64px;
+        margin-right: 20px;
+        display: inline-block;
+        
+      }
+      .ul-li li .tag{
+        
+        font-size: 20px;
+        height: 45px;
+        line-height: 45px;
+        margin-top: 15px;
+        
+      }
+      .change{
+        text-align: center;
+        margin-top: 40px;
+        width: 90%;
+        height: 100px;
+        padding-left: 60px;
+        display: inline-block;
+        line-height: 150px;
+      }
+      .div-value{
+        display: block;
+        font-size: 20px;
+        height: 200px;
+        
+        line-height: 217px;
+        /* vertical-align: middle; */
+        
+      }
+      .div-name{
+        display: block;
+        font-size: 20px;
+        height: 20px;
+        
+        line-height: 20px;
+      }
+      .div-intro{
+        display: inline-block;
+        font-size: 10px;
+        height: 30px;
+        
+        line-height: 30px;
+      }
+      .tag-intro{
+        display: inline-block;
+        font-size: 20px;
+        height: 25px;
+        line-height: 25px;
+        width: 158px;
+      }
+        .ul-li{
+        height:700px;
+        width: 1200px;
+        float: center;
+        }
+        body{
+            margin: 0;
+            padding: 0;
+        }
+        .head{
+            height: 88px;
+            padding: 22px;
+            box-sizing: border-box;
+            margin-top: 20px;
+        }
+        .head-center{
+            margin: 0 auto;
+            
+            width: 1200px;
+            
+        }
+        
+        .middle{
+            /* height: 600px;
+            width: 100%; */
+        }
+        .back{
+            height: 360px;
+            width: 100%;
+            
+            background-position: 50%;
+            
+            /* overflow: hidden; */
+        }
+        .iconfont{
+            color: #ff5502;
+            font-size: 45px;
+            float: left;
+        }
+        .clock{
+            text-align: center;
+            width: 900px;
+            margin: auto;
+            background-color: #fef2f2;
+            color: #6C6C6C;
+            font-size: 12px;
+            border: 1px solid #ffb4a8;
+            height: 30px;
+            line-height: 30px;
+            box-sizing: border-box;
+            overflow: hidden;
+        }
+        .clearfix{
+            content: "";
+            clear: both;
+            display: block;
+        }
+        .size1{
+            font-size: 18px;
+            color: #f40;
+            line-height: 44px;
+        }
+        
+        .change{
+            position: relative; right: 0px;top:0;text-decoration:none;width: 125px;color: #666;font-size: 12px;line-height: 44px;
+        }
+        .change:hover{
+            color: #f40;
+        }
+        /* .login-mine{
+            width: 350px;
+            height: 350px;
+            background-color: rgba(255,255,255,.9);
+            position: absolute;
+            top: 120px;
+            right: 60px;
+        } */
+        
+        .login-content{
+            width: 300px;
+            height: 293px;
+            padding-top: 25px;
+            padding-right: 25px;
+            padding-bottom: 23px;
+            padding-left: 25px;
+        }
+        .content{
+            margin: 0 auto;height: 100%;width: 1200px;box-sizing: border-box;
+            position: relative;
+            padding-top: 25px;
+            padding-right: 25px;
+            padding-bottom: 23px;
+            padding-left: 70px;
+            
+        }
+        .content-new{
+        height: 600px;
+        width: 1200px;
+        
+        border-width: 4px;
+        
+        border-radius: 5px;
+        margin: 0 auto;
+        padding-left: 10px;
+        margin-top: 80px;
+        background-color: rgba(256, 256, 256, 0.8);
+        
+      }
+        
+        .ewm{
+            font-size: 62px;
+            cursor: pointer;
+            position: absolute;
+            color:#f40;
+            right: 0;
+            top:0;
+            margin-top: 1px;
+        }
+        .ewm:hover{
+            color: rgb(255, 0, 0);
+        }
+        .safe{
+            color: #df9c1f;
+            font-size: 16px;
+            margin-right: 7px;
+            line-height: 16px;
+        }
+        .input1{
+            margin-top: 20px;
+            position: relative;
+            width: 300px;
+            border:1px solid #ddd;
+            line-height: 40px;
+            height: 40px;
+            cursor: pointer;
+
+            
+        }
+        .lg{
+            margin-top: 20px;
+            position: relative;
+            width: 300px;
+            
+            line-height: 42px;
+            height: 42px;
+            cursor: pointer;
+            
+        }
+        .lg input{
+            padding: 11px;cursor: pointer;width: 300px;height: 42px; background-color: #f40;border-radius: 5px;text-align: center;color: #fff;letter-spacing: 0.3em;font-weight: bold;
+        }
+        .lg input:hover{
+            background-color:rgb(255, 25, 0)
+        }
+        input{
+            font: 400 14px system-ui;
+            color: black;
+            padding: 11px 11px 10px 20px;
+            position: absolute;
+            right: 0;
+            width: 240px;
+            border: none;
+        }
+        .man{
+            position: absolute;
+            left: -1px;
+            width: 40px;
+            height: 40px;
+            text-align: center;
+            color: white;
+            font-size: 24px;
+            float: left;
+            z-index: 1;
+            background-color: #ddd;
+            padding-left: 2px;
+        }
+        .wz{
+            margin-top: 20px;
+        }
+        .wz div{
+            display: inline-block;
+            margin-right: 20px;
+            color: #6c6c6c;
+            font-size: 12px;
+            line-height: 1px;
+            cursor: pointer;
+        }
+        .wz div:hover{
+            color: #f40
+        }
+        .temp1{
+            font-size: 16px;
+            color: red;
+            margin-right: 3px;
+        }
+        .temp2{
+            font-size: 16px;
+            color: #3498db;
+            margin-right: 3px;
+        }
+        .ps{
+            margin-top: 25px;
+            text-align: right;
+        }
+        .ps div{
+            margin-right: 10px;
+            display: inline-block;
+            color:#6c6c6c;
+            cursor: pointer;
+            font-size: 12px;
+        }
+        .ps div:hover{
+            color: #f40
+        }
+
+        .userball{
+            border-radius: 100%;
+            position: fixed;
+            top:20px;
+            right: 20px;
+            height: 30px;
+            width: 30px;
+            z-index: 100;
+            
+        }
+    </style>
+</head>
+<body >
+    <header class="header clearfix">
+        <div class="headerleft">
+            <ul>
+                <li><a href="">首页</a></li>
+                <li><a href="">购票</a></li>
+                <li><a href="">正版商城</a></li>
+                <li><a href="">新闻</a></li>
+                <li class="new">
+                    <a href="">视频</a>
+                    <em></em>
+                </li>
+                <li><a href="">直播</a></li>
+                <li><a href="">发现</a></li>
+                <li><a href="">社区</a></li>
+                <li><a href="">会员</a></li>
+            </ul>
+        </div>
+        <h1 class="headermiddle">
+            <a href="">时光网</a>
+        </h1>
+        <div class="headerright clearfix" style="position: absolute;right:60px;width: 200px;">
+            <div class="download">
+                <a href="">
+                    <em class="phone"></em>
+                    <span>App下载</span>
+                    <!-- <i class="iconfont icon-aixin"></i> -->
+                    <span class="arrow"></span>
+                </a>
+                <div class="erweima">
+                    <img src="./img/二维码.jpg">
+                </div>
+            </div>
+            
+            <div class="shopping-cart">
+                <a class="icon"></a>
+                <div class="shoppingcar">
+                    <span>您的购物车还是空的，赶快选购哦。</span>
+                </div>
+            </div>
+        </div>
+    </header>
+    <div id = "temp">
+    <div class = "head">
+        <div class = "head-center clearfix">
+                <a href="https://www.taobao.com/?spm=a2107.1.1000340.1.149711d9JynXf4">
+                    <div style="display: inline-block;position: absolute;
+                    top: 70px;left: 100px;">
+                        <img src="./img/TB1zoNfJVXXXXbCXVXXgap8FVXX-150-72.png" alt="">
+                    </div>
+                </a>
+                <a href="./用户登录后跳转的页面.html" style = "font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; position: absolute;top: 120px;left: 300px;font-size: 25px;text-decoration: none;color: gray;">首页</a>
+                <div style = "position: absolute;top: 120px;left: 400px;font-size: 25px;text-decoration: none;color: #ff5502;border-bottom: 1px solid #ff5502;padding-bottom: 5px;border-width: 2px;">影片</div>
+
+                <!-- <a  class = "change" href="https://survey.taobao.com/survey/Q095thIx2?spm=a2107.1.1000340.2.149711d9JynXf4">
+                    
+                          <i class = "iconfont size1">&#xe601;</i>
+                          "登录页面"改进建议
+                </a> -->
+            
+        </div>
+        
+    </div>
+    
+    <!-- <a href="./用户个人信息.html"> <img id="userHead" src="./img/nav-user-2.png" alt="" class = "userball" href = "./用户个人信息.html"></a> -->
+    
+    <div class = "middle">
+        <div class = "back" style = "position: relative;">
+            <div style=" width: 100%;height: 450px;background-color: rgba(53, 56, 58, 0.2);position: absolute;z-index: 100;display: inline-block">
+                
+            </div>
+            <img src="" alt="" id = "BackImage" style="clip:rect(0px,1440px,450px,0px);width: 100%;position: absolute;z-index: -1;display: inline-block; filter: blur(20px);top:2px">
+           <div class = "content" style = "position: absolute;z-index: 101;">
+                <div style = "width: 1000px;height: 310px;position: absolute;margin-left: 150px;">
+                    <div style="font-family: 'Courier New', Courier, monospace; font-size: 20px;color: white;font-weight: 1000;margin-bottom: 10px;margin-top: 10px;">{{arr.playName}}</div>
+                    <div style="border-bottom: 1px solid rgba(255,255,255,.3)"></div>
+                    <div>
+                        <div>
+                            <img  class = "div-value" style = "width: 210px;height: 300px;margin-top: 20px;" :src = `http://localhost:8080/ModuleCinema/${arr.playSrcFile}` alt="">
+                        </div>
+                        <div style="font-family: 'Courier New', Courier, monospace; position: absolute;top:80px;left: 220px;color: white;font-size: 13px;">
+                            <div style="margin-bottom: 20px;">导演：斯皮尔伯格</div>
+                            <div style="margin-bottom: 20px;">演员：柳泉合,王艺霏,段炎妍,江路,施瓦辛格，成龙</div>
+                            <div style="margin-bottom: 20px;">类型：成人电影</div>
+                            <div style="margin-bottom: 20px;">国家：美国🇺🇸</div>
+                            <div style="margin-bottom: 20px;">电影状态：{{arr.playState}}</div>
+                            <div style="margin-bottom: 20px;">电影标识号：{{arr.playId}}</div>
+                            <div style="margin-bottom: 20px;">电影时长：{{arr.playDuration}}</div>
+                            <div >电影简介：{{arr.playIntroduction}}</div>
+                        </div>
+                        <div style="font-family: 'Courier New', Courier, monospace; position: absolute;top:80px;right: 30px;color: white;font-size: 13px;">
+                            <!-- <a href="positionjump">
+                                <input type="button" value="立即选座购票🎬" style="cursor: pointer;" @click="lookToday();lookTomorrow();lookTDAT()">
+                            </a> -->
+                            
+                        </div>
+                        <div style="font-family: 'Courier New', Courier, monospace; position: absolute;top:110px;right: 30px;color: white;font-size: 13px;">
+                            <input type="button" value="🔍重新搜索🔍" style="cursor: pointer;" @click="jump">
+                        </div>
+                        <div style="font-family: 'Courier New', Courier, monospace; position: absolute;top:240px;right: 30px;color: white;font-size: 13px;;">
+                            <input type="button" value="👉点击查看电影场次👈" style="cursor: pointer;" @click="lookToday();lookTomorrow();lookTDAT()">
+                        </div>
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <img style="height: 180px;width: 400px;position: absolute;top:720px;left: 500px;" src="./img/today.png" alt="">
+    <img style="height: 180px;width: 430px;position: absolute;top:1345px;left: 500px;" src="./img/tomorrow.png" alt="">
+    <img style="height: 180px;width: 460px;position: absolute;top:1970px;left: 500px;" src="./img/the day after tomorrow.png " alt="">
+
+    <div style="width: 500px;height: 400px;position: relative;top:250px" >
+        <a id = "positionjump" name = "positionjump"></a>
+        <!-- <div style="font-size: 30px;font-family:'Courier New', Courier, monospace;position: absolute;left:100px;height: 30px;width: 280px;top:-80px">
+            {{ arr.playName }}-电影🎬场次:
+        </div> -->
+        <div style="width: 980px;height: 430px;border: 5px solid #FD7272;position: absolute;top:70px;left: 220px;border-radius: 10px;overflow-x: scroll;">
+            <div v-for="(item,index) in ARR" style="font-size: 20px;font-family: 'Courier New', Courier, monospace;border-radius: 10px;width: 250px;height: 350px;border: 5px solid #FD7272;display: inline-block;margin: 29px;">
+            
+            <div style="color: #FD7272;font-size: 45px;font-weight: 800;text-align: center;margin-top: 30px;">
+                {{ item.startTime }}
+                <!-- <div style="color: #c8c8c8;font-size: 15px;">
+                    ↑电影开始时间↑
+                </div> -->
+            </div>
+            <div style="color: #c8c8c8;margin-left:42px;margin-top: 50px;">
+               <div style="border-radius: 10px;width: 160px;height: 40px; background-color: #A3CB38;color: white; text-align: center; line-height:40px;">{{ item.showTing }}号电影厅</div> 
+                 
+            </div >
+            <div style="color:#c8c8c8;">
+                放映时长：{{ item.showDate }}
+            </div>
+            <div style="color: #c8c8c8;margin-left:42px;margin-top: 20px;">
+                <a style="outline: none;" @click = "choicSeat(item.showId)">
+                    <div style="border-radius: 10px;width: 160px;height: 40px; background-color: #B33771;color: white; text-align: center; line-height:40px;">选座购票</div> 
+                </a>
+                
+                  
+             </div >
+            <!-- <div style="color: #c8c8c8;">
+                剧目唯一表示：{{ item.showId }}
+            </div> -->
+            <div style="font-size: 40px;color: #ED4C67;margin-top: 40px;text-align: center;">
+                 {{ item.price }}￥
+            </div>
+        </div>
+       
+    </div>
+    <div style="width: 980px;height: 430px;border: 5px solid #FD7272;position: absolute;top:700px;left: 220px;border-radius: 10px;overflow-x: scroll;">
+        <div v-for="(item,index) in ARRT" style="font-size: 20px;font-family: 'Courier New', Courier, monospace;border-radius: 10px;width: 250px;height: 350px;border: 5px solid #FD7272;display: inline-block;margin: 29px;">
+        
+        <div style="color: #FD7272;font-size: 45px;font-weight: 800;text-align: center;margin-top: 30px;">
+            {{ item.startTime }}
+            <!-- <div style="color: #c8c8c8;font-size: 15px;">
+                ↑电影开始时间↑
+            </div> -->
+        </div>
+        <div style="color: #c8c8c8;margin-left:42px;margin-top: 20px;">
+           <div style="border-radius: 10px;width: 160px;height: 40px; background-color: #A3CB38;color: white; text-align: center; line-height:40px;">{{ item.showTing }}号电影厅</div> 
+             
+        </div >
+        <div style="color: #c8c8c8;margin-left:42px;margin-top: 20px;">
+            <div style="border-radius: 10px;width: 160px;height: 50px; background-color:tan;color: white; text-align: center; line-height:25px;font-size: 15px;">放映日期：{{ item.showDate }}</div> 
+              
+         </div >
+        
+        <div style="color: #c8c8c8;margin-left:42px;margin-top: 30px;">
+            <a style="outline: none;" @click = "choicSeat(item.showId)">
+                <div style="border-radius: 10px;width: 160px;height: 40px; background-color: #B33771;color: white; text-align: center; line-height:40px;">选座购票</div> 
+            </a>
+         </div >
+        <!-- <div style="color: #c8c8c8;">
+            剧目唯一表示：{{ item.showId }}
+        </div> -->
+        <div style="font-size: 40px;color: #ED4C67;margin-top: 40px;text-align: center;">
+             {{ item.price }}￥
+        </div>
+    </div>
+    </div>
+
+    <div style="width: 980px;height: 430px;border: 5px solid #FD7272;position: absolute;top:1350px;left: 220px;border-radius: 10px;overflow-x: scroll;">
+        <div v-for="(item,index) in ARRTDAT" style="font-size: 20px;font-family: 'Courier New', Courier, monospace;border-radius: 10px;width: 250px;height: 350px;border: 5px solid #FD7272;display: inline-block;margin: 29px;">
+        
+        <div style="color: #FD7272;font-size: 45px;font-weight: 800;text-align: center;margin-top: 30px;">
+            {{ item.startTime }}
+            <!-- <div style="color: #c8c8c8;font-size: 15px;">
+                ↑电影开始时间↑
+            </div> -->
+        </div>
+        <div style="color: #c8c8c8;margin-left:42px;margin-top: 50px;">
+           <div style="border-radius: 10px;width: 160px;height: 40px; background-color: #A3CB38;color: white; text-align: center; line-height:40px;">{{ item.showTing }}号电影厅</div> 
+             
+        </div >
+        <div style="color:#c8c8c8;">
+            放映时长：{{ item.showDate }}
+        </div>
+        <div style="color: #c8c8c8;margin-left:42px;margin-top: 20px;">
+            <a style="outline: none;" @click = "choicSeat(item.showId)">
+                <div style="border-radius: 10px;width: 160px;height: 40px; background-color: #B33771;color: white; text-align: center; line-height:40px;">选座购票</div> 
+            </a>
+              
+         </div >
+        <!-- <div style="color: #c8c8c8;">
+            剧目唯一表示：{{ item.showId }}
+        </div> -->
+        <div style="font-size: 40px;color: #ED4C67;margin-top: 40px;text-align: center;">
+             {{ item.price }}￥
+        </div>
+    </div>
+</div>
+</div>
+</div>
+
+    
+<script>
+        
+
+        // layui.use('element', function(){
+        //   var element = layui.element;
+        // });
+          changeOrigin: true,
+          axios.defaults.withCredentials = true;
+          // http.defaults.withCredentials = true;
+        
+          function action(){
+
+            $("#img").attr("src", "http://localhost:8080/ModuleCinema/" + app._data.staffAvatar)
+            
+          }
+          
+        
+          var temp
+        //   function myclick(obj){
+        //       console.log(obj.innerText)
+        //       temp = obj.innerText
+        //       app._data.page = temp
+        //       app.getMovie()
+        //   }
+          
+          
+
+          var app = new Vue({
+              el:"#temp",
+              data:{
+                  id:"",
+                  arr:[],
+                  ARR:[],
+                  ARRT:[],
+                  ARRTDAT:[],
+                  page:temp,
+                  arrdots:[],
+                  myInterval:1,
+                  fathertemp:"",
+                  
+                  playName:"",
+                  playState:"",
+                  playDuration:"",
+                  playSrcFile:"",
+                  playIntroduction:"",
+                  playId:""
+                  
+              },
+              mounted:function(){
+                // this.input()
+                this.getMovie()
+              },
+              methods:{
+                choicSeat(temp){
+                    document.location = "./选座购票.html?showId=" + (JSON.parse(temp)) + "&" + "playId=" + this.arr.playId
+                },
+                  send:function(){
+                      FixedTime.testApproves(this.send)
+                  },
+                //   input(){
+                //     var that = this;
+                //       window.onload = function (){
+                //     var url = window.location.href;
+                //     console.log(url)
+                //     var urlParmStr = url.slice(url.indexOf('?')+4);//获取问号后所有的字符串
+                //     console.log(urlParmStr)
+                //     that.number = urlParmStr
+                //     console.log(that.number)
+                //     }
+                //   },
+                  jump(){
+                    document.location = "./用户登录后跳转的页面.html"
+                  },
+                  lookToday(){
+                    var that = this;
+                    axios.get("http://localhost:8080/ModuleCinema/u/show/" + that.id + "/1")
+                      .then(resp=>{
+                          console.log(resp)
+                          that.ARR = resp.data.data
+                          for(var i = 0;i < that.ARR.length;i++){
+                              
+                              var date = new Date(that.ARR[i].showDate); 
+                              var abc = date.toLocaleString();
+                              that.ARR[i].showDate = abc
+                          }
+                          
+                          console.log(that.ARR)
+                          // img.src = `http://localhost:8080/ModuleCinema/${that.staffAvatar}`
+                          
+                          if(resp.data[9] === '-1'){
+                            document.location = "/Users/zhuchenguang/Desktop/NodejsExpressMongo/淘票票项目的副本/登录.html"
+                          }
+        
+                         
+                          
+                      }).catch(err=>{
+                        console.log('error')
+                      })
+                  },
+                  lookTomorrow(){
+                    var that = this;
+                    axios.get("http://localhost:8080/ModuleCinema/u/show/"  + that.id + "/2")
+                      .then(resp=>{
+                          console.log(resp)
+                          that.ARRT = resp.data.data
+                          for(var i = 0;i < that.ARRT.length;i++){
+                              console.log(that.ARRT[i])
+                              var date = new Date(that.ARRT[i].showDate); 
+                              var abc = date.toLocaleString();
+                              that.ARRT[i].showDate = abc
+                          }
+                          
+                          console.log(that.ARRT)
+                          // img.src = `http://localhost:8080/ModuleCinema/${that.staffAvatar}`
+                          
+                          if(resp.data[9] === '-1'){
+                            document.location = "/Users/zhuchenguang/Desktop/NodejsExpressMongo/淘票票项目的副本/登录.html"
+                          }
+        
+                         
+                          
+                      }).catch(err=>{
+                        console.log('error')
+                      })
+                  },
+                  lookTDAT(){
+                    var that = this;
+                    axios.get("http://localhost:8080/ModuleCinema/u/show/" + that.id + "/3")
+                      .then(resp=>{
+                          console.log(resp)
+                          that.ARRTDAT = resp.data.data
+                          for(var i = 0;i < that.ARRTDAT.length;i++){
+                              
+                              var date = new Date(that.ARRTDAT[i].showDate); 
+                              var abc = date.toLocaleString();
+                              that.ARRTDAT[i].showDate = abc
+                          }
+                          
+                          console.log(that.ARRTDAT)
+                          // img.src = `http://localhost:8080/ModuleCinema/${that.staffAvatar}`
+                          
+                          if(resp.data[9] === '-1'){
+                            document.location = "/Users/zhuchenguang/Desktop/NodejsExpressMongo/淘票票项目的副本/登录.html"
+                          }
+        
+                         
+                          
+                      }).catch(err=>{
+                        console.log('error')
+                      })
+                  },
+                  search(){
+                    var that = this;
+                    axios.get("http://localhost:8080/ModuleCinema/u/search/play",that.code)
+                      .then(resp=>{
+                          console.log(resp)
+                          that.arr = resp.data.data
+                          
+                          console.log(that.arr)
+                          // img.src = `http://localhost:8080/ModuleCinema/${that.staffAvatar}`
+                          
+                          if(resp.data[9] === '-1'){
+                            document.location = "/Users/zhuchenguang/Desktop/NodejsExpressMongo/淘票票项目的副本/登录.html"
+                          }
+        
+                         
+                          
+                      }).catch(err=>{
+                        console.log('error')
+                      })
+                  },
+                  getMovie(){
+                      var that = this;
+        
+                      axios.get("http://localhost:8080/ModuleCinema/u/get/home")
+                      .then(resp=>{
+                          console.log(resp)
+                          if(resp.data.message == "用户主页")
+                          {
+                              console.log("123")
+                              $("#userHead").attr('src',"./img/nav-user.png")
+                              
+                          }else{
+                            $("#userHead").attr('src',"./img/nav-user-2.png")
+                          }
+                          if(resp.data[9] === '-1'){
+                            document.location = "/Users/zhuchenguang/Desktop/NodejsExpressMongo/淘票票项目的副本/登录.html"
+                          }
+        
+                          var temp = Math.ceil((resp.data.state)/6)
+                          if(this.myInterval === 1){
+                            for(var i = 1;i <= temp;i++){
+                                that.arrdots.push(i)
+                            }
+                            console.log(that.arrdots)
+                            this.myInterval++
+                            this.fathertemp = temp
+                          }else if(fathertemp === temp){
+        
+                          }else{
+                            for(var i = 1;i <= temp;i++){
+                                that.arrdots.push(i)
+                            }
+                            console.log(that.arrdots)
+                            this.myInterval++
+                            this.fathertemp = temp
+                          }
+
+                          
+
+                      }).catch(err=>{
+                        console.log('error')
+                      })
+
+                      var url = window.location.href;
+                      console.log(url)
+                      var urlParmStr = url.slice(url.indexOf('?')+4);//获取问号后所有的字符串
+
+                      that.id = urlParmStr
+                      axios.get("http://localhost:8080/ModuleCinema/u/get/" + urlParmStr)
+                      .then(resp=>{
+                          console.log(resp)
+                          that.arr = resp.data.data
+                          console.log(that.arr)
+                          var abc = document.getElementById('BackImage')
+                          var PS = app._data.arr.playSrcFile
+                          abc.src = "http://localhost:8080/ModuleCinema/" + PS
+                          // img.src = `http://localhost:8080/ModuleCinema/${that.staffAvatar}`
+                          
+                          if(resp.data[9] === '-1'){
+                            document.location = "/Users/zhuchenguang/Desktop/NodejsExpressMongo/淘票票项目的副本/登录.html"
+                          }
+        
+                         
+                          
+                      }).catch(err=>{
+                        console.log('error')
+                      })
+        
+                      
+                      
+                  },
+                  
+              }
+          })
+          
+
+        </script>
+</body>
+</html>

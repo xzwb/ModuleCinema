@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../layui-v2.5.6/layui/layui.all.js">
+    <link rel="stylesheet" href="../layui-v2.5.6/layui/css/layui.css">
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="../../jQuery.js"></script>
+    
+    <!-- <script src="./main.js"></script> -->
+    <style>
+      .title{
+        text-align: center;
+        color: white;
+        font-size: 40px;
+      }
+      .foot{
+        text-align: center;
+        color:cornsilk;
+        font-size: 20px;
+        
+      }
+      .content{
+        height: 400px;
+        width: 700px;
+        border: 1px solid black;
+        border-width: 4px;
+        border-radius: 5px;
+        margin: 0 auto;
+        margin-top: 80px;
+        background-color: rgba(0, 0, 0, 0.6);
+      }
+      .ul-li{
+        display: inline-block;
+        height: 334px;
+        width: 350px;
+        margin-top: 30px;
+        border-right: 1px solid gray;
+        border-width: 4px;
+        position: absolute;
+      }
+      .ul-li li{
+        
+        height: 66px;
+        margin-left: 20px;
+        margin-right: 20px;
+      }
+      .ul-li li .tag{
+        display: inline-block;
+        font-size: 20px;
+        height: 45px;
+        line-height: 45px;
+        margin-top: 15px;
+      }
+      .change{
+        text-align: center;
+        margin-top: 40px;
+        width: 90%;
+        height: 100px;
+        padding-left: 70px;
+        display: inline-block;
+        line-height: 150px;
+      }
+      .div-value{
+        display: inline-block;
+        font-size: 20px;
+        height: 65px;
+        line-height: 65px;
+        /* vertical-align: middle; */
+        
+      }
+      .right{
+        display: inline-block;
+        height: 334px;
+        width: 350px;
+        margin-top: 10px;
+        position: absolute;
+        left: 430px;
+        top:20px
+      }
+    </style>
+</head>
+<body class="layui-layout-body" style = "background-image: url(/Users/zhuchenguang/Downloads/it_deployment_large_2x.jpg); background-repeat: no-repeat;background-position: top;">
+	<div class="layui-layout layui-layout-admin">
+		<div class="layui-header">
+      <div class = "title">员工管理系统</div>
+    </div>
+		<div class="layui-side layui-bg-black" style = "width: 130px;">
+      <ul class="layui-nav layui-nav-tree" lay-filter="test" style = "height: 50px;font-size: 20px;">
+          <!-- 侧边导航: <ul class="layui-nav layui-nav-tree layui-nav-side"> -->
+            <li class="layui-nav-item layui-nav-itemed">
+              <a style = "height: 50px;font-size: 15px;" href="./员工登录跳转.html">员工主页</a>
+            </li>
+            <li class="layui-nav-item">
+              <a style = "height: 50px;font-size: 15px;" href="./员工添加新电影.html">添加新电影</a>
+            </li>
+            
+            <li class="layui-nav-item"><a style = "height: 50px;font-size: 15px;" href="./查看演出剧目.html">查看演出剧目</a></li>
+            <li class="layui-nav-item"><a style = "height: 50px;font-size: 15px;" href="./添加演出剧目.html">添加演出剧目</a></li>
+            <li class="layui-nav-item"><a style = "height: 50px;font-size: 15px;" href="./删除演出剧目.html">删除演出剧目</a></li>
+          </ul>
+</div>
+    
+      <!-- 老板信息 -->
+        <div class="layui-body" id = "temp" style= "width: 90%;left: 100px;">
+            <div class = "content" style = "background-color: rgba(256,256,256,0.7);">
+              
+              <ul class = "ul-li" >
+              
+                <li>
+                    <div class = "tag">添加电影:</div>
+                    <div class = "tag">名称:
+                        <input type="textarea" name = "playName">
+                        
+                    </div>
+                  <div class = "tag">状态:
+                      <input type="textarea" name = "playState">
+                      
+                  </div>
+                  <div class = "tag">简介:
+                      <input type="textarea" name = "playIntroduction">
+                      
+                  </div>
+                  <div class = "tag">时长:
+                      <input type="textarea" name = "playDuration">
+                      
+                  </div>
+                  
+                  <div style = "text-align: center;margin-top: 30px;">
+                      <input  id = "submit" type="submit" value="提交" style="width: 200px;height: 100px;font-size: 10px;">
+                      
+                  </div>
+      
+                  <div class = "right">上传照片
+                    <input type="file" name="file" id="myfile" onchange="getfile()" style = "margin-bottom: 20px;">
+                    <img src = "" id = "img" style = "width: 180px;height: 230px;border: 1px solid;">
+                  </div>
+      
+                </li>
+              </ul>
+              
+              
+            </div>
+        
+        </div>
+            <div class="layui-footer" style = "left: 0;background-color: rgba(256,256,256,0);">
+            
+            <div class = "foot" style="background-color: (1,1,1,0);padding-left: 40px;">
+                Copyright@2020-杨懿凡
+            </div>
+        
+            </div>
+        </div>
+</body>
+
+<script>
+
+
+// $(document).ready(function(){
+//     $("#submit").click();
+
+//     $("#form").load(function(){
+
+//           var text = $(this).contents().find("body").text();      //获取到的是json的字符串
+
+//          var j = $.parseJSON(text);                                         //json字符串转换成json对象
+//         alert("ok")
+//          console.log(j)
+
+//     })
+// });
+
+
+
+
+// layui.use('element', function(){
+//   var element = layui.element;
+// });
+  changeOrigin: true,
+  axios.defaults.withCredentials = true;
+  // http.defaults.withCredentials = true;
+
+  var img = document.getElementById('img')
+
+  function getfile(){
+                var reader = new FileReader()
+                let file = document.querySelector('#myfile').files
+                reader.readAsDataURL(file[0])
+                reader.onload = function(){
+                    document.querySelector('#img').src = reader.result
+                }
+  }
+   
+    
+  var temp
+  
+  
+  var app = new Vue({
+      el:"#temp",
+      data:{
+          id:1,
+          arr:[],
+          page:temp,
+          arrdots:[],
+          myInterval:1,
+          fathertemp:"",
+          BossId:"",
+          BossName:"",
+          BossPassword:"",
+          
+      },
+      mounted:function(){
+        this.getInfor()
+      },
+      methods:{
+          send:function(){
+              FixedTime.testApproves(this.send)
+          },
+          out(){
+            var that = this
+              axios.get("http://localhost:8080/ModuleCinema/a/get/staff/logout")
+              .then(resp=>{
+                  console.log(resp)
+                  if(resp.data.message == "已注销"){
+                    alert("注销成功")
+                    document.location = "./员工登录.html"
+                  }else{
+                    alert("未登录或其他错误")
+                  }
+                  
+                  
+              }).catch(err=>{
+                console.log('error')
+              })
+            
+          },
+          getInfor(){
+              var that = this;
+              
+              axios.post("http://localhost:8080/ModuleCinema/s/insert/show")
+              .then(resp=>{
+                  console.log(resp)
+                  
+                  if(resp.data[9] === '-1'){
+                    document.location = "/Users/zhuchenguang/Desktop/NodejsExpressMongo/淘票票项目的副本/登录.html"
+                  }
+                  
+              }).catch(err=>{
+                console.log('error')
+              })
+          },
+      }
+  })
+
+</script>
+</html>

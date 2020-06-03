@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../layui-v2.5.6/layui/layui.all.js">
+    <link rel="stylesheet" href="../layui-v2.5.6/layui/css/layui.css">
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="../axios.min.js"></script>
+    <script src="../jQuery.js"></script>
+    
+    <!-- <script src="./main.js"></script> -->
+    <style>
+      .title{
+        text-align: center;
+        color: white;
+        font-size: 40px;
+      }
+      .foot{
+        text-align: center;
+        color:cornsilk;
+        font-size: 20px;
+        
+      }
+      .content{
+        height: 700px;
+        width: 900px;
+        border: 1px solid black;
+        border-width: 4px;
+        border-radius: 5px;
+        margin: 0 auto;
+        margin-top: 80px;
+        background-color: rgba(256, 256, 256, 0.8);
+        
+      }
+      .ul-li{
+        height:700px;
+        width: 1000px;
+        float: center;
+      }
+      .ul-li li{
+        
+        height: 66px;
+        margin-left: 64px;
+        margin-right: 20px;
+        display: inline-block;
+        
+      }
+      .ul-li li .tag{
+        
+        font-size: 20px;
+        height: 45px;
+        line-height: 45px;
+        margin-top: 20px;
+        
+      }
+      .change{
+        text-align: center;
+        margin-top: 40px;
+        width: 90%;
+        height: 100px;
+        padding-left: 60px;
+        display: inline-block;
+        line-height: 150px;
+      }
+      .div-value{
+        display: block;
+        font-size: 20px;
+        height: 200px;
+        
+        line-height: 217px;
+        /* vertical-align: middle; */
+        
+      }
+      .div-name{
+        display: block;
+        font-size: 20px;
+        height: 20px;
+        
+        line-height: 20px;
+      }
+      .div-intro{
+        display: inline-block;
+        font-size: 10px;
+        height: 30px;
+        
+        line-height: 30px;
+      }
+      .tag-intro{
+        display: inline-block;
+        font-size: 20px;
+        height: 25px;
+        line-height: 25px;
+        width: 158px;
+      }
+    </style>
+</head>
+<body class="layui-layout-body" style = "background-image: url(./img/timg-21.jpeg); background-repeat: no-repeat;background-size: cover;background-position: top;">
+	<div class="layui-layout layui-layout-admin">
+		<div class="layui-header">
+      <div class = "title">尊敬的用户欢迎您</div>
+    </div>
+		
+    <!-- 内容 -->
+	<div class="layui-body" id = "temp" style= "width: 85%;left: 100px;">
+      <!-- 用户信息 -->
+      <div  class = "content" style = "border:none;background-color: rgba(256,256,256,0.8);height: 400px;width: 650px;border-radius: 30px;position: relative;">
+        <ul class= "ul-li" style = "display: inline-block;
+        height: 334px;
+        width: 650px;
+        margin-top: 30px;
+        position: absolute;">
+        
+          <li style = "border-bottom: none;margin-left: 24px;text-align: center;">
+            
+            <div class = "tag">您的姓名:
+                <input style="border: none;width: 100px;background-color:transparent" type="textarea" v-model = "arr.userName">
+                
+            </div>
+            <div class = "tag" style="padding-left: 18px">您的用户ID:
+                <input style="border: none;width: 100px;background-color:transparent;" type="textarea" v-model = "arr.userId">
+                
+            </div>
+           
+            <div class = "tag">您的性别:
+              <input style="border: none;width: 100px;background-color:transparent" type="textarea" v-model = "arr.userSex">
+            </div>
+
+            <div class = "tag">您的电话:
+                <input style="border: none;width: 100px;background-color:transparent" type="textarea" v-model = "arr.phoneNumber">
+            </div>
+
+            <div class = "tag">您的密码:
+                <input style="border: none;width: 100px;background-color:transparent" type="textarea" v-model = "arr.userPassword">
+            </div>
+
+          </li>
+        </ul>
+        <div style="position: absolute;right: 50px;top:50px">
+            <img style="height:305px;width:250px" src="./img/timg-22.jpeg" alt="">
+        </div>
+        <div style="position: absolute; right: 160px;top:520px"><input style="  width: 300px;height: 50px;border-radius: 10px;background-color: #25CCF7;font-family: sans-serif;border: none;cursor: pointer;" @click = "userOut" type="button" value = "退出登录"> </div>
+        <div style="position: absolute; right: 160px;top:450px"><a href="./用户登录.html"><input style="  width: 300px;height: 50px;border-radius: 10px;background-color:tomato;font-family: sans-serif;border: none;cursor: pointer;color: aliceblue;" @click = "userOut" type="button" value = "还未登录？立即登录"> </a> </div>
+      </div>
+      
+     
+
+      </div>
+		<div class="layui-footer" style = "left: 0;
+    background-color: rgba(256,256,256,0);">
+      <div class = "foot" style="background-color: (1,1,1,0);padding-left: 40px;">Copyright@2020-杨懿凡</div>
+    </div>
+	</div>	
+</body>
+
+<script>
+
+// layui.use('element', function(){
+//   var element = layui.element;
+// });
+  changeOrigin: true,
+  axios.defaults.withCredentials = true;
+  // http.defaults.withCredentials = true;
+
+  var app = new Vue({
+      el:"#temp",
+      data:{
+          id:1,
+          arr:[],
+          page:temp,
+          arrdots:[],
+          myInterval:1,
+          fathertemp:"",
+
+      },
+      mounted:function(){
+        this.getMovie()
+      },
+      methods:{
+          
+          
+          send:function(){
+              FixedTime.testApproves(this.send)
+          },
+          
+          getMovie(){
+              var that = this
+              axios.get("http://localhost:8080/ModuleCinema/u/get/home")
+              .then(resp=>{
+                  console.log(resp)
+                  that.arr = resp.data.data
+                  
+              }).catch(err=>{
+                console.log('error')
+              })
+
+              
+              
+          },
+          userOut(){
+            var that = this
+              axios.get("http://localhost:8080/ModuleCinema/a/get/user/logout")
+              .then(resp=>{
+                  console.log(resp)
+                  if(resp.data.message == "已注销"){
+                    alert("注销成功")
+                    document.location = "./用户登录.html"
+                  }else{
+                    alert("未登录或其他错误")
+                  }
+                  
+                  
+              }).catch(err=>{
+                console.log('error')
+              })
+            
+          }
+          // getInfor(){
+          //     var that = this;
+              
+          //     axios.get("http://localhost:8080/ModuleCinema/s/home")
+          //     .then(resp=>{
+          //         console.log(resp)
+          //         that.staffAvatar = resp.data.data.staffAvatar 
+          //         that.staffGrade = resp.data.data.staffGrade
+          //         that.staffId = resp.data.data.staffId
+          //         that.staffName = resp.data.data.staffName
+          //         that.staffPassword = resp.data.data.staffPassword
+          //         // img.src = `http://localhost:8080/ModuleCinema/${that.staffAvatar}`
+                  
+          //         if(resp.data[9] === '-1'){
+          //           document.location = "/Users/zhuchenguang/Desktop/NodejsExpressMongo/淘票票项目的副本/登录.html"
+          //         }
+
+
+                  
+          //     }).catch(err=>{
+          //       console.log('error')
+          //     })
+          // },
+      }
+  })
+
+</script>
+</html>
